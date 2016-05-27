@@ -23,23 +23,23 @@ test_requirements = [
 ]
 
 setup(
-    name='odoo-dependency-helper',
+    name='candyshop',
     version='0.1.0',
-    description="A helper to determine if all your dependencies are declared properly.",
+    description="Candyshop is a helper to determine if all your dependencies are declared properly.",
     long_description=readme + '\n\n' + history,
     author="Luis Alejandro Martínez Faneyth",
     author_email='luisalejandro@vauxoo.com',
-    url='https://github.com/LuisAlejandro/odoo-dependency-helper',
+    url='https://github.com/vauxoo/candyshop',
     packages=[
-        'odoo-dependency-helper',
+        'candyshop',
     ],
-    package_dir={'odoo-dependency-helper':
-                 'odoo-dependency-helper'},
+    package_dir={'candyshop':
+                 'candyshop'},
     include_package_data=True,
     install_requires=requirements,
     license="ISCL",
     zip_safe=False,
-    keywords='odoo-dependency-helper',
+    keywords='candyshop',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',

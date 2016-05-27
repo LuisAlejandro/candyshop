@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use Odoo Dependency Helper in a project::
+To use Odoo Candyshop in a project::
 
-    import odoo-dependency-helper
+    import candyshop

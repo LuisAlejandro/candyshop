@@ -2,19 +2,19 @@
 # -*- coding: utf-8 -*-
 
 """
-test_odoo-dependency-helper
+test_candyshop
 ----------------------------------
 
-Tests for `odoo-dependency-helper` module.
+Tests for `candyshop` module.
 """
 
 
 import unittest
 
-from odoo-dependency-helper import odoo-dependency-helper
+from candyshop import candyshop
 
 
-class TestOdoo-Dependency-Helper(unittest.TestCase):
+class TestCandyshop(unittest.TestCase):
 
     def setUp(self):
         pass

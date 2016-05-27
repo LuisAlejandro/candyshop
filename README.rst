@@ -1,22 +1,22 @@
 ===============================
-Odoo Dependency Helper
+Odoo Candyshop
 ===============================
 
-.. image:: https://img.shields.io/pypi/v/odoo-dependency-helper.svg
-        :target: https://pypi.python.org/pypi/odoo-dependency-helper
+.. image:: https://img.shields.io/pypi/v/candyshop.svg
+        :target: https://pypi.python.org/pypi/candyshop
 
-.. image:: https://img.shields.io/travis/LuisAlejandro/odoo-dependency-helper.svg
-        :target: https://travis-ci.org/LuisAlejandro/odoo-dependency-helper
+.. image:: https://img.shields.io/travis/vauxoo/candyshop.svg
+        :target: https://travis-ci.org/vauxoo/candyshop
 
-.. image:: https://readthedocs.org/projects/odoo-dependency-helper/badge/?version=latest
-        :target: https://readthedocs.org/projects/odoo-dependency-helper/?badge=latest
+.. image:: https://readthedocs.org/projects/candyshop/badge/?version=latest
+        :target: https://readthedocs.org/projects/candyshop/?badge=latest
         :alt: Documentation Status
 
 
-A helper to determine if all your dependencies are declared properly.
+Candyshop is a helper to determine if all your dependencies are declared properly.
 
 * Free software: ISC license
-* Documentation: https://odoo-dependency-helper.readthedocs.org.
+* Documentation: https://candyshop.readthedocs.org.
 
 Features
 --------

@@ -85,17 +85,17 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/odoo-dependency-helper.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/candyshop.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/odoo-dependency-helper.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/candyshop.qhc"
 
 devhelp:
 	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/odoo-dependency-helper"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/odoo-dependency-helper"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/candyshop"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/candyshop"
 	@echo "# devhelp"
 
 epub:
