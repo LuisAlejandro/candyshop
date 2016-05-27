@@ -29,7 +29,7 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Luis Alejandro Martínez Faneyth",
     author_email='luisalejandro@vauxoo.com',
-    url='https://github.com/vauxoo/candyshop',
+    url='https://github.com/vauxoo/odoo-candyshop',
     packages=[
         'candyshop',
     ],
