@@ -17,7 +17,7 @@ class ModulesBundle(object):
             self.modules = list(self.get_modules())
             assert self.modules
         except BaseException as e:
-            raise e('The specified path does not contain Odoo Modules.')
+            raise type(e)('The specified path does not contain Odoo Modules.')
         else:
             self.oca_dependencies = self.parse_oca_dependencies()
 
@@ -39,7 +39,7 @@ class ModulesBundle(object):
         if self.get_oca_dependencies_file():
             with open(self.oca_dependencies_file) as oca:
                 deps = [d.split() for d in oca.read().split('\n')]
-            return {k: v for k, v in deps}
+            return {k: v for k, v in filter(None, deps)}
         return {}
 
 
@@ -52,8 +52,9 @@ class Module(object):
             self.manifest = self.get_manifest()
             assert self.manifest
         except BaseException as e:
-            raise e('The specified path does not contain an Odoo Module.')
+            raise type(e)('The specified path does not contain an Odoo Module.')
         else:
+            self.name = os.path.basename(self.path)
             self.properties = self.extract_properties()
 
     def extract_properties(self):
@@ -62,7 +63,7 @@ class Module(object):
             with open(self.manifest) as properties:
                 self.properties = literal_eval(properties.read())
         except BaseException as e:
-            raise e('An error ocurred while reading %s' % self.manifest)
+            raise type(e)('An error ocurred while reading %s' % self.manifest)
 
     def is_python_package(self):
         assert self.path, 'This is not an addon or it hasn\'t been properly initialized.'
@@ -78,7 +79,7 @@ class Module(object):
             for mfst in MANIFEST_FILES:
                 found = find_files(self.path, mfst)
                 if found:
-                    return found
+                    return found[0]
         return False
 
     def parse_xml(self, xml_file):

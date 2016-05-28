@@ -21,6 +21,9 @@ class Environment(object):
         for bundle in self.bundles:
             for name, repo in bundle.oca_dependencies:
                 self.git_clone(repo, os.path.join(bundle.path, name))
+            bundle.refresh()
 
     def git_clone(self, repo, path):
+        git.clone(repo, depth=1, path)
+
 
