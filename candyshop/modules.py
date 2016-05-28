@@ -1,44 +1,85 @@
-
+import os
+from ast import literal_eval
 
 from lxml import etree
 
+from .utils import find_files
+
 MANIFEST_FILES = ['__odoo__.py', '__openerp__.py', '__terp__.py']
 
-class AddOn(object):
+
+class ModulesBundle(object):
+
     def __init__(self, path):
         self.path = path
-        if self.is_addon():
-            self.manifest = self.get_addon_manifest()
-            self.properties = self.extract_addons_properties()
-        else:
-            raise OSError('The specified path does not contain an Odoo Module.')
 
-    def extract_addons_properties(self):
+        try:
+            self.modules = list(self.get_modules())
+            assert self.modules
+        except BaseException as e:
+            raise e('The specified path does not contain Odoo Modules.')
+        else:
+            self.oca_dependencies = self.parse_oca_dependencies()
+
+    def get_modules(self):
+        assert self.path, 'This is not a Modules Bundle or it hasn\'t been properly initialized.'
+        if os.path.isdir(self.path):
+            for mfst in MANIFEST_FILES:
+                for mods in find_files(self.path, mfst):
+                    yield Module(os.path.dirname(mods))
+
+    def get_oca_dependencies_file(self):
+        oca_dependencies_file = os.path.join(self.path, 'oca_dependencies.txt')
+        if os.path.isfile(oca_dependencies_file):
+            self.oca_dependencies_file = oca_dependencies_file
+            return True
+        return False
+
+    def parse_oca_dependencies(self):
+        if self.get_oca_dependencies_file():
+            with open(self.oca_dependencies_file) as oca:
+                deps = [d.split() for d in oca.read().split('\n')]
+            return {k: v for k, v in deps}
+        return {}
+
+
+class Module(object):
+
+    def __init__(self, path):
+        self.path = path
+
+        try:
+            self.manifest = self.get_manifest()
+            assert self.manifest
+        except BaseException as e:
+            raise e('The specified path does not contain an Odoo Module.')
+        else:
+            self.properties = self.extract_properties()
+
+    def extract_properties(self):
         assert self.manifest, 'This is not an addon or it hasn\'t been properly initialized.'
         try:
             with open(self.manifest) as properties:
-                self.properties = eval(properties.read())
+                self.properties = literal_eval(properties.read())
         except BaseException as e:
             raise e('An error ocurred while reading %s' % self.manifest)
 
-    def is_addon(self):
+    def is_python_package(self):
         assert self.path, 'This is not an addon or it hasn\'t been properly initialized.'
-        return self.get_addon_manifest()
+        if os.path.isdir(self.path):
+            return find_files(self.path, '__init__.py')
+        return False
 
-    def get_addon_manifest(self):
+    def get_manifest(self):
         """return False if the path doesn't contain an odoo module, and the full
         path to the module manifest otherwise"""
-        assert self.path, 'This is not an addon or it hasn\'t been properly initialized.'
 
-        if not os.path.isdir(path):
-            return False
-        files = os.listdir(path)
-        filtered = [x for x in files if x in (MANIFEST_FILES + ['__init__.py'])]
-        if len(filtered) == 2 and '__init__.py' in filtered:
-            return os.path.join(
-                path, next(x for x in filtered if x != '__init__.py'))
-        else:
-            return False
+        if self.is_python_package():
+            for mfst in MANIFEST_FILES:
+                found = find_files(self.path, mfst)
+                if found:
+                    return found
+        return False
 
     def parse_xml(self, xml_file):
         """Get xml parsed.
