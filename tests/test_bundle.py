@@ -27,14 +27,14 @@ class TestModulesBundle(unittest.TestCase):
         pass
 
     def test_01_get_modules(self):
-        def modules_name_list(instance):
+        def modules_slug_list(instance):
             for module in instance.modules:
-                yield module.name
+                yield module.properties.slug
 
         odoo_afr = ModulesBundle(self.odoo_afr_dir)
         odoo_afr_modules_should_be = ['account_afr_group_auditory',
                                       'account_financial_report']
-        self.assertListEqual(list(modules_name_list(odoo_afr)),
+        self.assertListEqual(list(modules_slug_list(odoo_afr)),
                              odoo_afr_modules_should_be)
 
     def test_02_modules_are_instances_of_module(self):
