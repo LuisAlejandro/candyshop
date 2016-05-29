@@ -39,8 +39,8 @@ class OdooEnvironment(object):
                 self.insert_bundles([new_bundle_dir])
 
     def git_clone(self, repo, branch, path):
-        git.clone(repo, quiet=True, single_branch=True,
-                  depth=1, branch=branch, path)
+        git.clone(repo, path, quiet=True, single_branch=True,
+                  depth=1, branch=branch)
 
     def get_modules_list(self):
         for bundle in self.bundles:

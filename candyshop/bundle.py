@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import os
 from ast import literal_eval
 
@@ -17,43 +19,45 @@ class ModuleProperties(object):
 class Module(object):
 
     def __init__(self, bundle=None, path=None):
+        assert os.path.isdir(path), '%s is not a directory or does not exist.' % path
+        assert isinstance(bundle, ModulesBundle) or None, 'Wrong bundle type.'
+
         self.bundle = bundle
         self.path = path
 
         try:
             self.manifest = self.get_manifest()
-            assert self.manifest
         except BaseException as e:
-            raise type(e)('The specified path does not contain an Odoo Module.')
+            print('The specified path does not contain an Odoo Module.')
+            raise
         else:
+            assert self.is_python_package(), 'The module is not a python package.'
+            assert self.manifest, ('The specified path does not contain a '
+                                   'manifest file.')
             self.properties = ModuleProperties(self.extract_properties())
             self.properties.slug = os.path.basename(self.path)
 
     def extract_properties(self):
-        assert self.manifest, 'This is not an addon or it hasn\'t been properly initialized.'
         try:
             with open(self.manifest) as properties:
                 props = literal_eval(properties.read())
         except BaseException as e:
-            raise type(e)('An error ocurred while reading %s' % self.manifest)
+            raise IOError('An error ocurred while reading %s.' % self.manifest)
         else:
             return props
 
     def is_python_package(self):
-        assert self.path, 'This is not an addon or it hasn\'t been properly initialized.'
-        if os.path.isdir(self.path):
-            return find_files(self.path, '__init__.py')
+        if find_files(self.path, '__init__.py'):
+            return True
         return False
 
     def get_manifest(self):
         """return False if the path doesn't contain an odoo module, and the full
         path to the module manifest otherwise"""
-
-        if self.is_python_package():
-            for mfst in MANIFEST_FILES:
-                found = find_files(self.path, mfst)
-                if found:
-                    return found[0]
+        for mfst in MANIFEST_FILES:
+            found = find_files(self.path, mfst)
+            if found:
+                return found[0]
         return False
 
     def get_record_ids_module_references(self):
@@ -124,24 +128,26 @@ class Module(object):
 
 class ModulesBundle(object):
 
-    def __init__(self, path):
+    def __init__(self, path=None):
+        assert os.path.isdir(path), '%s is not a directory or does not exist.' % path
+
         self.path = path
 
         try:
             self.modules = list(self.get_modules())
-            assert self.modules
         except BaseException as e:
-            raise type(e)('The specified path does not contain Odoo Modules.')
+            print('The specified path contains broken Odoo Modules.')
+            raise
         else:
+            assert self.modules, ('The specified path does not contain valid '
+                                  'Odoo modules.')
             self.name = os.path.basename(self.path)
             self.oca_dependencies = self.parse_oca_dependencies()
 
     def get_modules(self):
-        assert self.path, 'This is not a Modules Bundle or it hasn\'t been properly initialized.'
-        if os.path.isdir(self.path):
-            for mfst in MANIFEST_FILES:
-                for mods in find_files(self.path, mfst):
-                    yield Module(self, os.path.dirname(mods))
+        for mfst in MANIFEST_FILES:
+            for mods in find_files(self.path, mfst):
+                yield Module(self, os.path.dirname(mods))
 
     def get_oca_dependencies_file(self):
         oca_dependencies_file = os.path.join(self.path, 'oca_dependencies.txt')
