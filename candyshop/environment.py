@@ -1,13 +1,14 @@
 
+import os
 import tempfile
 
 from sh import git
 
 from .modules import ModulesBundle
 
-
 DEFAULT_REPO = 'https://github.com/vauxoo/odoo'
 DEFAULT_BRANCH = '8.0'
+
 
 class OdooEnvironment(object):
 
@@ -67,6 +68,3 @@ class OdooEnvironment(object):
                 if ref not in set(self.get_modules_slug_list()):
                     notmetlist.append(ref)
             yield {module.properties.slug: notmetlist}
-
-
-

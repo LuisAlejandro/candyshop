@@ -15,6 +15,46 @@ import unittest
 from candyshop.bundle import ModulesBundle, Module
 
 
+class TestModule(unittest.TestCase):
+
+    def setUp(self):
+        self.testdir = os.path.dirname(__file__)
+        self.exampledir = os.path.join(self.testdir, 'examples')
+        self.odoo_afr_dir = os.path.join(self.exampledir, 'odoo-afr')
+        self.broken_manifest_dir = os.path.join(self.exampledir, 'broken-manifest')
+        self.is_not_package_dir = os.path.join(self.exampledir, 'is-not-package',
+                                               'is_not_package')
+        self.non_existent_dir = os.path.join(self.exampledir, 'non-existent')
+        self.empty_dir = os.path.join(self.exampledir, 'empty')
+        self.openacademy_project_dir = os.path.join(self.exampledir, 'odoo-beginners',
+                                                    'openacademy-project')
+
+    def test_01_is_python_package(self):
+        openacademy_project = Module(None, self.openacademy_project_dir)
+        self.assertTrue(openacademy_project.is_python_package())
+
+    def test_02_is_not_python_package(self):
+        self.assertRaisesRegexp(
+            AssertionError, 'The module is not a python package.',
+            Module, None, self.is_not_package_dir
+        )
+
+    def test_03_match_properties(self):
+        openacademy = Module(None, self.openacademy_project_dir)
+        self.assertEqual(openacademy.properties.name, 'Open Academy')
+        self.assertEqual(openacademy.properties.version, '0.1')
+        self.assertListEqual(openacademy.properties.depends, ['base', 'board'])
+
+    def test_04_get_record_ids_module_references(self):
+        openacademy = Module(None, self.openacademy_project_dir)
+        self.assertListEqual(openacademy.get_record_ids_module_references(),
+                             ['openacademy-project'])
+
+    # def test_02_is_python_package(self):
+    # def test_02_is_python_package(self):
+    # def test_02_is_python_package(self):
+
+
 class TestModulesBundle(unittest.TestCase):
 
     def setUp(self):
@@ -69,25 +109,25 @@ class TestBrokenModulesBundle(unittest.TestCase):
         self.empty_dir = os.path.join(self.exampledir, 'empty')
 
     def test_01_non_existent_bundle(self):
-        self.assertRaisesRegex(
+        self.assertRaisesRegexp(
             AssertionError, '%s is not a directory or does not exist.' % self.non_existent_dir,
             ModulesBundle, self.non_existent_dir
         )
 
     def test_02_empty_bundle(self):
-        self.assertRaisesRegex(
+        self.assertRaisesRegexp(
             AssertionError, 'The specified path does not contain valid Odoo modules.',
             ModulesBundle, self.empty_dir
         )
 
     def test_03_broken_manifest(self):
-        self.assertRaisesRegex(
+        self.assertRaisesRegexp(
             IOError, 'An error ocurred while reading.*',
             ModulesBundle, self.broken_manifest_dir
         )
 
     def test_04_is_not_package(self):
-        self.assertRaisesRegex(
+        self.assertRaisesRegexp(
             AssertionError, 'The module is not a python package.',
             ModulesBundle, self.is_not_package_dir
         )

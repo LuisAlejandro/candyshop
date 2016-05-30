@@ -19,29 +19,28 @@ class ModuleProperties(object):
 class Module(object):
 
     def __init__(self, bundle=None, path=None):
-        assert os.path.isdir(path), '%s is not a directory or does not exist.' % path
-        assert isinstance(bundle, ModulesBundle) or None, 'Wrong bundle type.'
+        assert os.path.isdir(path), \
+            '%s is not a directory or does not exist.' % path
+        assert (isinstance(bundle, ModulesBundle) or not bundle), \
+            'Wrong bundle type.'
 
         self.bundle = bundle
         self.path = path
+        self.manifest = self.get_manifest()
 
-        try:
-            self.manifest = self.get_manifest()
-        except BaseException as e:
-            print('The specified path does not contain an Odoo Module.')
-            raise
-        else:
-            assert self.is_python_package(), 'The module is not a python package.'
-            assert self.manifest, ('The specified path does not contain a '
-                                   'manifest file.')
-            self.properties = ModuleProperties(self.extract_properties())
-            self.properties.slug = os.path.basename(self.path)
+        assert self.manifest, \
+            'The specified path does not contain a manifest file.'
+        assert self.is_python_package(), \
+            'The module is not a python package.'
+
+        self.properties = ModuleProperties(self.extract_properties())
+        self.properties.slug = os.path.basename(self.path)
 
     def extract_properties(self):
         try:
             with open(self.manifest) as properties:
                 props = literal_eval(properties.read())
-        except BaseException as e:
+        except BaseException:
             raise IOError('An error ocurred while reading %s.' % self.manifest)
         else:
             return props
@@ -61,10 +60,12 @@ class Module(object):
         return False
 
     def get_record_ids_module_references(self):
-        for xmldict in self.get_record_ids():
-            for ids in xmldict.values():
-                for id in ids:
-                    yield id.split('.')[0]
+        def generator(data):
+            for xmldict in data:
+                for ids in xmldict.values():
+                    for id in ids:
+                        yield id.split('.')[0]
+        return list(set(generator(self.get_record_ids())))
 
     def get_record_ids(self):
         for data in self.properties.data:
@@ -129,18 +130,19 @@ class Module(object):
 class ModulesBundle(object):
 
     def __init__(self, path=None):
-        assert os.path.isdir(path), '%s is not a directory or does not exist.' % path
+        assert os.path.isdir(path), \
+            '%s is not a directory or does not exist.' % path
 
         self.path = path
 
         try:
             self.modules = list(self.get_modules())
-        except BaseException as e:
+        except BaseException:
             print('The specified path contains broken Odoo Modules.')
             raise
         else:
-            assert self.modules, ('The specified path does not contain valid '
-                                  'Odoo modules.')
+            assert self.modules, \
+                'The specified path does not contain valid Odoo modules.'
             self.name = os.path.basename(self.path)
             self.oca_dependencies = self.parse_oca_dependencies()
 

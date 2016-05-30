@@ -2,6 +2,7 @@
 import os
 import fnmatch
 
+
 def get_path(path=[]):
     """
     Builds and normalizes a path. This will resolve symlinks to their
@@ -19,6 +20,7 @@ def get_path(path=[]):
     assert type(path) == list
     return os.path.normpath(os.path.realpath(
         os.path.abspath(os.path.join(*path))))
+
 
 def find_files(path=None, pattern='*'):
     """
