@@ -1,30 +1,37 @@
-===============================
+==============
 Odoo Candyshop
-===============================
+==============
 
-.. image:: https://img.shields.io/pypi/v/candyshop.svg
-        :target: https://pypi.python.org/pypi/candyshop
+.. image:: https://img.shields.io/pypi/v/odoo-candyshop.svg
+        :target: https://pypi.python.org/pypi/odoo-candyshop
 
-.. image:: https://img.shields.io/travis/vauxoo/candyshop.svg
-        :target: https://travis-ci.org/vauxoo/candyshop
+.. image:: https://img.shields.io/travis/vauxoo/odoo-candyshop.svg
+        :target: https://travis-ci.org/vauxoo/odoo-candyshop
 
-.. image:: https://readthedocs.org/projects/candyshop/badge/?version=latest
-        :target: https://readthedocs.org/projects/candyshop/?badge=latest
+.. image:: https://readthedocs.org/projects/odoo-candyshop/badge/?version=latest
+        :target: https://readthedocs.org/projects/odoo-candyshop/?badge=latest
         :alt: Documentation Status
 
 
-Candyshop is a helper to determine if all your dependencies are declared properly.
+Odoo Candyshop is a helper determine if all your dependencies were declared properly.
 
 * Free software: ISC license
-* Documentation: https://candyshop.readthedocs.org.
+* Documentation: https://odoo-candyshop.readthedocs.org.
 
 Features
 --------
 
-* TODO
+* Access an Odoo Module as an object abstraction.
+* Get all module references from all xml files of a module.
+* Generate and clone the dependency tree of a group of modules (bundle).
+* Generate a virtual enviroment where you can add group of modules.
+* Determine which Odoo Modules declare a dependency to another module that is not
+  present in the environment.
+* Determine which XML files make reference to an Odoo Module that is not present
+  in the environment.
 
 Credits
----------
+-------
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 

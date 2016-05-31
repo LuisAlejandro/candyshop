@@ -65,12 +65,11 @@ class Module(object):
         return False
 
     def get_record_ids_module_references(self):
-        def generator(data):
-            for xmldict in data:
-                for ids in xmldict.values():
-                    for id in ids:
-                        yield id.split('.')[0]
-        return list(set(generator(self.get_record_ids())))
+        for xmldict in self.get_record_ids():
+            for data, ids in xmldict.items():
+                record_ids = list(set([id.split('.')[0] for id in ids]))
+                if record_ids:
+                    yield {data: record_ids}
 
     def get_record_ids(self):
         if hasattr(self.properties, 'data'):
@@ -140,8 +139,8 @@ class Module(object):
                     xml_module, xml_id = id
                 if module and xml_module != module:
                     continue
-                yield '%s.%s.noupdate=%s' % (xml_module, xml_id,
-                                             record.getparent().get('noupdate', '0'))
+                noupdate = record.getparent().get('noupdate', '0')
+                yield '%s.%s.noupdate=%s' % (xml_module, xml_id, noupdate)
 
 
 class ModulesBundle(object):

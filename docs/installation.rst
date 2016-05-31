@@ -30,13 +30,13 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/vauxoo/candyshop
+    $ git clone git://github.com/vauxoo/odoo-candyshop
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/vauxoo/candyshop/tarball/master
+    $ curl  -OL https://github.com/vauxoo/odoo-candyshop/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -45,5 +45,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/vauxoo/candyshop
-.. _tarball: https://github.com/vauxoo/candyshop/tarball/master
+.. _Github repo: https://github.com/vauxoo/odoo-candyshop
+.. _tarball: https://github.com/vauxoo/odoo-candyshop/tarball/master

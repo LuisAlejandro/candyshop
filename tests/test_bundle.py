@@ -23,12 +23,12 @@ class TestModule(unittest.TestCase):
         self.exampledir = os.path.join(self.testdir, 'examples')
         self.is_not_package_dir = os.path.join(self.exampledir, 'is-not-package',
                                                'is_not_package')
-        self.openacademy_project_dir = os.path.join(self.exampledir, 'odoo-beginners',
-                                                    'openacademy-project')
-        self.openacademy_project = Module(None, self.openacademy_project_dir)
+        self.openacademy_dir = os.path.join(self.exampledir, 'odoo-beginners',
+                                            'openacademy')
+        self.openacademy = Module(None, self.openacademy_dir)
 
     def test_01_is_python_package(self):
-        self.assertTrue(self.openacademy_project.is_python_package())
+        self.assertTrue(self.openacademy.is_python_package())
 
     def test_02_is_not_python_package(self):
         self.assertRaisesRegexp(
@@ -37,13 +37,22 @@ class TestModule(unittest.TestCase):
         )
 
     def test_03_match_properties(self):
-        self.assertEqual(self.openacademy_project.properties.name, 'Open Academy')
-        self.assertEqual(self.openacademy_project.properties.version, '0.1')
-        self.assertListEqual(self.openacademy_project.properties.depends, ['base', 'board'])
+        self.assertEqual(self.openacademy.properties.name, 'Open Academy')
+        self.assertEqual(self.openacademy.properties.version, '0.1')
+        self.assertListEqual(self.openacademy.properties.depends, ['base', 'board'])
 
     def test_04_get_record_ids_module_references(self):
-        self.assertListEqual(self.openacademy_project.get_record_ids_module_references(),
-                             ['openacademy-project'])
+        record_ids_should_be = [
+            {'view/openacademy_course_view.xml': ['openacademy']},
+            {'view/openacademy_session_view.xml': ['openacademy']},
+            {'view/partner_view.xml': ['openacademy']},
+            {'workflow/openacademy_session_workflow.xml': ['openacademy']},
+            {'security/security.xml': ['openacademy']},
+            {'view/openacademy_wizard_view.xml': ['openacademy']},
+            {'view/openacademy_session_board.xml': ['openacademy']}
+        ]
+        self.assertListEqual(list(self.openacademy.get_record_ids_module_references()),
+                             record_ids_should_be)
 
 
 class TestModulesBundle(unittest.TestCase):

@@ -7,6 +7,7 @@ candyshop.environment
 
 
 import os
+import sys
 import tempfile
 
 from sh import git
@@ -28,7 +29,8 @@ class OdooEnvironment(object):
         if init:
             self.initialize_odoo(repo, branch, init_from)
 
-    def initialize_odoo(self, repo, branch, init_from):
+    def initialize_odoo(self, repo=DEFAULT_REPO, branch=DEFAULT_BRANCH,
+                        init_from=None):
         if init_from:
             odoo_dir = os.path.abspath(init_from)
         else:
@@ -74,49 +76,72 @@ class OdooEnvironment(object):
         for bundle in self.bundles:
             yield bundle.path
 
+    def get_modules_list(self):
+        for bundle in self.bundles:
+            for module in bundle.modules:
+                yield module
+
     def get_modules_slug_list(self):
         for bundle in self.bundles:
             for module in bundle.modules:
                 yield module.properties.slug
 
-    def generate_notmet_dependencies(self):
-        for i, bundle in enumerate(self.bundles):
-            for j, module in enumerate(bundle.modules):
-                notmetlist = []
-                if hasattr(module.properties, 'depends'):
-                    for dep in module.properties.depends:
-                        if dep not in set(self.get_modules_slug_list()):
-                            notmetlist.append(dep)
-                    if notmetlist:
-                        self.bundles[i].modules[j].notmet_dependencies = notmetlist
-
     def get_notmet_dependencies(self):
-        self.generate_notmet_dependencies()
-        for bundle in self.bundles:
-            moduledict = {}
-            for module in bundle.modules:
-                if hasattr(module, 'notmet_dependencies'):
-                    moduledict[module.properties.slug] = module.notmet_dependencies
-            if moduledict:
-                yield {bundle.name: moduledict}
-
-    def generate_notmet_record_ids(self):
-        for i, bundle in enumerate(self.bundles):
-            for j, module in enumerate(bundle.modules):
-                notmetlist = []
-                for ref in set(module.get_record_ids_module_references()):
-                    if ref not in set(self.get_modules_slug_list()):
-                        notmetlist.append(ref)
-                if notmetlist:
-                    self.bundles[i].modules[j].notmet_record_ids = notmetlist
+        for module in self.get_modules_list():
+            if hasattr(module.properties, 'depends'):
+                deplist = []
+                for dep in module.properties.depends:
+                    if dep not in self.get_modules_slug_list():
+                        deplist.append(dep)
+                if deplist:
+                    yield {module.bundle.name:
+                        {module.properties.slug: deplist}}
 
     def get_notmet_record_ids(self):
-        self.generate_notmet_record_ids()
-        for bundle in self.bundles:
-            moduledict = {}
-            for module in bundle.modules:
-                if hasattr(module, 'notmet_record_ids'):
-                    moduledict[module.properties.slug] = module.notmet_record_ids
-            if moduledict:
-                yield {bundle.name: moduledict}
+        for module in self.get_modules_list():
+            for data in module.get_record_ids_module_references():
+                for xml, refs in data.items():
+                    deplist = []
+                    for ref in refs:
+                        if ref not in self.get_modules_slug_list():
+                            deplist.append(ref)
+                    if deplist:
+                        relxml = os.path.join(module.properties.slug, xml)
+                        yield {module.bundle.name: {relxml: deplist}}
 
+    def get_notmet_dependencies_report(self):
+        report = list(self.get_notmet_dependencies())
+        if report:
+            print('The following module dependencies are not found'
+                  ' in the environment:')
+            for item in report:
+                bundle, data = list(item.items())[0]
+                module, depends = list(data.items())[0]
+                print('')
+                print('    Bundle: %s' % bundle)
+                print('    Module: %s' % module)
+                print('    Missing dependencies:')
+                for dep in depends:
+                    print('        - %s' % dep)
+            print('')
+            sys.exit(1)
+        else:
+            print('All dependencies are satisfied in the environment.')
+
+    def get_notmet_record_ids_report(self):
+        report = list(self.get_notmet_record_ids())
+        if report:
+            print('The following record ids are not found in the environment:')
+            for item in report:
+                bundle, data = item.items()[0]
+                xmlfile, depends = data.items()[0]
+                print('')
+                print('    Bundle: %s' % bundle)
+                print('    XML file: %s' % xmlfile)
+                print('    Missing references:')
+                for dep in depends:
+                    print('        - %s' % dep)
+            print('')
+            sys.exit(1)
+        else:
+            print('All references are present in the environment.')

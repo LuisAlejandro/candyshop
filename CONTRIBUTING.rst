@@ -57,12 +57,12 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `candyshop` for local development.
+Ready to contribute? Here's how to set up `odoo-candyshop` for local development.
 
-1. Fork the `candyshop` repo on GitHub.
+1. Fork the `odoo-candyshop` repo on GitHub.
 2. Clone your fork locally::
 
-    $ git clone git@github.com:your_name_here/candyshop.git
+    $ git clone git@github.com:your_name_here/odoo-candyshop.git
 
 3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
 
@@ -111,4 +111,6 @@ Tips
 To run a subset of tests::
 
 
-    $ python -m unittest tests.test_candyshop
+    $ python -m unittest tests.test_bundle
+    $ python -m unittest tests.test_environment
+    $ python -m unittest tests.test_utils
