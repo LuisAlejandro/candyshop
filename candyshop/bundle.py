@@ -2,7 +2,7 @@
 #   This file is part of Odoo Candyshop
 #   ------------------------------------------------------------------------
 #   Copyright:
-#   Copyright (C) 2016 Vauxoo (<http://vauxoo.com>)
+#   Copyright (c) 2016, Vauxoo (<http://vauxoo.com>)
 #   All Rights Reserved
 #   ------------------------------------------------------------------------
 #   Contributors:
@@ -56,8 +56,8 @@ class Module(object):
     This class represents an Odoo Module.
 
     :param path: a path pointing to the root directory of an Odoo Module.
-    :param bundle: a ``Bundle`` instance (indicating this module is part of such
-                   bundle), or ``None`` (indicating that is a standalone
+    :param bundle: a ``Bundle`` instance (indicating this module is part of
+                   such bundle), or ``None`` (indicating that is a standalone
                    module).
     :return: a ``Module`` instance.
     '''
@@ -102,7 +102,8 @@ class Module(object):
 
         Private method to find the manifest file within the module.
         '''
-        assert self.__is_python_package(), 'The module is not a python package.'
+        assert self.__is_python_package(), \
+            'The module is not a python package.'
         for mfst in MANIFEST_FILES:
             found = find_files(self.path, mfst)
             if found:

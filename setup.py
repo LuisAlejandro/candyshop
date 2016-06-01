@@ -1,25 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
-from pip.req import parse_requirements
-from pip.download import PipSession
-
 from candyshop import (__author__, __email__, __version__,__url__,
                        __description__)
-
-def cat(f):
-    with open(f) as o:
-        return o.read()
-
-def reqs(r):
-    for req in parse_requirements(r, session= PipSession()):
-        yield str(req.req)
 
 setup(
     name='candyshop',
@@ -28,14 +16,15 @@ setup(
     author_email=__email__,
     url=__url__,
     description=__description__,
-    long_description='%s\n\n%s' % (cat('README.rst'), cat('HISTORY.rst')),
+    long_description='%s\n\n%s' % (open('README.rst').read(),
+                                   open('HISTORY.rst').read()),
     packages=[
         'candyshop',
     ],
     package_dir={'candyshop':
                  'candyshop'},
     include_package_data=True,
-    install_requires=list(reqs('requirements.txt')),
+    install_requires=open('requirements.txt').read().split('\n'),
     license='AGPL-3',
     zip_safe=False,
     keywords='candyshop',
@@ -50,5 +39,5 @@ setup(
         'Programming Language :: Python :: 3.5',
     ],
     test_suite='tests',
-    tests_require=list(reqs('requirements_dev.txt'))
+    tests_require=open('requirements-dev.txt').read().split('\n')
 )

@@ -2,7 +2,7 @@
 #   This file is part of Odoo Candyshop
 #   ------------------------------------------------------------------------
 #   Copyright:
-#   Copyright (C) 2016 Vauxoo (<http://vauxoo.com>)
+#   Copyright (c) 2016, Vauxoo (<http://vauxoo.com>)
 #   All Rights Reserved
 #   ------------------------------------------------------------------------
 #   Contributors:
@@ -41,8 +41,8 @@ class ModuleProperties(object):
     This class holds the properties of a module. It recieves a Dictionary and
     converts it to class attributes for better access.
 
-    :param data: a dictionary containing the properties of a module as specified
-                 in the manifest file of an Odoo Module.
+    :param data: a dictionary containing the properties of a module as
+                 specified in the manifest file of an Odoo Module.
     :return: each key-value is assigned as an attribute to this class.
 
     For example:

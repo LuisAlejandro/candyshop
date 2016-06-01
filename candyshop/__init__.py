@@ -29,8 +29,8 @@ Odoo Candyshop is a package that serves as a processor of the information
 contained in Odoo Modules. It's primarily aimed at making reports of missing
 dependencies in an Odoo Environment.
 
-It has abstractions that represent Odoo Modules and virtual Odoo Enviroments, as
-well as functions to resolve dependency trees.
+It has abstractions that represent Odoo Modules and virtual Odoo Enviroments,
+as well as functions to resolve dependency trees.
 '''
 
 __author__ = 'Luis Alejandro Martínez Faneyth'

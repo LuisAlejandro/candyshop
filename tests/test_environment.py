@@ -38,13 +38,13 @@ class TestOdooEnvironment(unittest.TestCase):
             yield bundle.name
 
     def test_01_initialization(self):
-        self.assertListEqual(list(self.bundle_name_list(self.odoo)),
-                             ['addons', 'addons'])
+        self.assertListEqual(sorted(list(self.bundle_name_list(self.odoo))),
+                             sorted(['addons', 'addons']))
 
-    def test_02_insert_bundles(self):
-        self.odoo.insert_bundles([self.odoo_afr_dir, self.odoo_beginners_dir], False)
-        self.assertListEqual(list(self.bundle_name_list(self.odoo)),
-                             ['addons', 'addons', 'odoo-afr', 'odoo-beginners'])
+    def test_02_addbundles(self):
+        self.odoo.addbundles([self.odoo_afr_dir, self.odoo_beginners_dir], False)
+        self.assertListEqual(sorted(list(self.bundle_name_list(self.odoo))),
+                             sorted(['addons', 'addons', 'odoo-afr', 'odoo-beginners']))
 
     def test_03_unexistent_record_ids(self):
         notmet_record_ids_should_be = [
@@ -62,9 +62,8 @@ class TestOdooEnvironment(unittest.TestCase):
         )
 
         sys.exit = lambda *args: None
-        self.odoo.clear_bundles()
-        self.odoo.initialize_odoo()
-        self.odoo.insert_bundles([self.odoo_beginners_dir], False)
+        self.odoo = OdooEnvironment()
+        self.odoo.addbundles([self.odoo_beginners_dir], False)
         self.assertListEqual(list(self.odoo.get_notmet_record_ids()),
                              notmet_record_ids_should_be)
         with capture(self.odoo.get_notmet_record_ids_report) as output:
@@ -87,9 +86,8 @@ class TestOdooEnvironment(unittest.TestCase):
         )
 
         sys.exit = lambda *args: None
-        self.odoo.clear_bundles()
-        self.odoo.initialize_odoo()
-        self.odoo.insert_bundles([self.odoo_beginners_dir], False)
+        self.odoo = OdooEnvironment()
+        self.odoo.addbundles([self.odoo_beginners_dir], False)
         self.assertListEqual(list(self.odoo.get_notmet_dependencies()),
                              notmet_dependencies_should_be)
         with capture(self.odoo.get_notmet_dependencies_report) as output:
@@ -97,10 +95,8 @@ class TestOdooEnvironment(unittest.TestCase):
                                       output)
 
     def test_05_satisfy_oca_dependencies(self):
-        self.odoo.clear_bundles()
-        self.odoo.initialize_odoo()
-        self.odoo.insert_bundles([self.odoo_afr_dir], False)
-        self.odoo.satisfy_oca_dependencies()
+        self.odoo = OdooEnvironment()
+        self.odoo.addbundles([self.odoo_afr_dir], False)
         self.assertIn('addons-vauxoo', list(self.bundle_name_list(self.odoo)))
 
 

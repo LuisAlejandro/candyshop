@@ -118,13 +118,15 @@ html_theme = 'alabaster'
 # theme further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    'logo': 'candyshop.png',
+    'logo': 'candyshop.svg',
     'logo_name': False,
     'logo_text_align': 'center',
     'description': candyshop.__description__,
     'github_user': 'vauxoo',
     'github_repo': 'odoo-candyshop',
     'travis_button': True,
+    'link': '#3782BE',
+    'link_hover': '#3782BE',
 }
 
 html_sidebars = {

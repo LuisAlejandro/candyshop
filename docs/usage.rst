@@ -31,30 +31,41 @@ The ``Bundle`` class
 ====================
 
 The ``Bundle`` class is an abstraction of a *Group* of modules, often referred
-to as *Addons*. Here you can see
+to as *Addons*. Here you can see how to interact with a bundle::
+
+    >>> from candyshop.bundle import Bundle
+
+    >>> # Create a Bundle instance
+    >>> bundle = Bundle('path/to/bundle')
+
+    >>> # Query for data
+    >>> print(bundle.name)
+    >>> print(bundle.path)
+    >>> print(bundle.modules)
+    >>> print(bundle.oca_dependencies)
+
 
 The ``OdooEnvironment`` class
 =============================
 
-#. Create an Odoo Environment, add bundles and make reports.
-   ::
+The ``OdooEnvironment`` class is an abstraction of a virtual Odoo Environment.
+Think of it as an imaginary container inside of which you can add ``Bundles``
+and ask for specific information about them. For example::
 
-        from candyshop.environment import OdooEnvironment
+    from candyshop.environment import OdooEnvironment
 
-        # Create an Environment
-        env = OdooEnvironment()
+    # Create an Environment
+    env = OdooEnvironment()
 
-        # Insert bundles
-        env.insert_bundles(['./path-to-bundle', '../addons', '../etc'])
+    # Insert bundles
+    # If any bundle has an oca_dependencies.txt file,
+    # clone its dependencies and insert them as bundles
+    env.addbundles(['./path-to-bundle', '../addons', '../etc'])
 
-        # If any bundle has an oca_dependencies.txt file,
-        # clone its dependencies
-        env.satisfy_oca_dependencies()
+    # Make a report about record ids that reference modules
+    # which are not present in the environment
+    env.get_notmet_record_ids_report()
 
-        # Make a report about record ids that reference modules
-        # which are not present in the environment
-        env.get_notmet_record_ids_report()
-
-        # Make a report about dependencies that are not present in
-        # the environment
-        env.get_notmet_dependencies_report()
+    # Make a report about dependencies that are not present in
+    # the environment
+    env.get_notmet_dependencies_report()

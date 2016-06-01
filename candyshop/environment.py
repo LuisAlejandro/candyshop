@@ -2,7 +2,7 @@
 #   This file is part of Odoo Candyshop
 #   ------------------------------------------------------------------------
 #   Copyright:
-#   Copyright (C) 2016 Vauxoo (<http://vauxoo.com>)
+#   Copyright (c) 2016, Vauxoo (<http://vauxoo.com>)
 #   All Rights Reserved
 #   ------------------------------------------------------------------------
 #   Contributors:
@@ -27,7 +27,7 @@ candyshop.environment module
 ----------------------------
 
 This module implements an abstraction layer to create an environment where
-bundles can be consulted.
+bundles can be consulted for different reports.
 '''
 
 import os
@@ -46,31 +46,89 @@ class OdooEnvironment(object):
     '''
     .. versionadded:: 0.1.0
 
+    An Odoo Environment is a virtual environment where you can enclose Odoo
+    bundles. Think about it as an invisible container where you can put bundles
+    to study its relationships; for example, listing all modules and see which
+    ones have missing dependencies (that are not within the environment).
 
+    :param init: (boolean) specifies if the environment should be initialized,
+                 that is, if an Odoo repo should be cloned and the native
+                 addons added as bundles. Default: True.
+    :param init_from: (string) a path pointing to an Odoo codebase. If present,
+                      the Odoo codebase will be taken from this folder instead
+                      of cloning from start.
+    :param repo: (string) a URI pointing to a git repository. This URI is used
+                 to clone the Odoo Codebase if ``init`` is ``True`` and
+                 ``init_from`` is ``None``.
+    :param branch: (string) the branch used to clone ``repo``.
+    :return: an ``OdooEnvironment`` instance.
     '''
     def __init__(self, init=True, init_from=None,
                  repo=DEFAULT_REPO, branch=DEFAULT_BRANCH):
 
+        #: Attribute ``OdooEnvironment.bundles`` (list): A list of ``Bundle``
+        #: instances representing the bundles contained in this environment.
         self.bundles = []
-        self.tempdir = tempfile.mkdtemp()
+
+        #: Attribute ``OdooEnvironment.path`` (string): A path pointing to
+        #: the temporary directory where odoo and OCA dependencies will be
+        #: cloned.
+        self.path = tempfile.mkdtemp()
 
         if init:
-            self.initialize_odoo(repo, branch, init_from)
+            self.__initialize_odoo(repo, branch, init_from)
 
-    def initialize_odoo(self, repo=DEFAULT_REPO, branch=DEFAULT_BRANCH,
-                        init_from=None):
+    def __initialize_odoo(self, repo=DEFAULT_REPO, branch=DEFAULT_BRANCH,
+                          init_from=None):
+        '''
+        .. versionadded:: 0.1.0
+
+        Private method to clone an Odoo codebase to the Environment path.
+        '''
         if init_from:
             odoo_dir = os.path.abspath(init_from)
         else:
-            odoo_dir = os.path.join(self.tempdir, 'odoo')
+            odoo_dir = os.path.join(self.path, 'odoo')
             if not os.path.isdir(odoo_dir):
                 self.git_clone(repo, branch, odoo_dir)
-        self.insert_bundles([
+        self.addbundles([
             os.path.join(odoo_dir, 'addons'),
             os.path.join(odoo_dir, 'openerp', 'addons')
         ])
 
-    def insert_bundles(self, locations=[], exclude_tests=True):
+    def __git_clone(self, repo, branch, path):
+        '''
+        .. versionadded:: 0.1.0
+
+
+        '''
+        try:
+            git.clone(repo, path, quiet=True, depth=1, branch=branch)
+        except BaseException:
+            print('There was a problem cloning %s.' % repo)
+            raise
+
+    def __satisfy_oca_dependencies(self):
+        '''
+        .. versionadded:: 0.1.0
+
+
+        '''
+        for bundle in self.bundles:
+            for name, repo in bundle.oca_dependencies.items():
+                bundle_dir = os.path.join(self.path, name)
+                if not os.path.isdir(bundle_dir):
+                    self.__git_clone(repo=repo, branch=DEFAULT_BRANCH,
+                                     path=bundle_dir)
+                    self.addbundles([bundle_dir])
+                    self.__satisfy_oca_dependencies()
+
+    def addbundles(self, locations=[], exclude_tests=True):
+        '''
+        .. versionadded:: 0.1.0
+
+
+        '''
         for location in locations:
             location = os.path.abspath(location)
             if location not in self.get_bundle_path_list():
@@ -80,65 +138,81 @@ class OdooEnvironment(object):
                     print(('There was a problem inserting the bundle'
                            ' located at %s') % location)
                     raise
-
-    def clear_bundles(self):
-        self.bundles = []
-
-    def satisfy_oca_dependencies(self):
-        for bundle in self.bundles:
-            for name, repo in bundle.oca_dependencies.items():
-                bundle_dir = os.path.join(self.tempdir, name)
-                if not os.path.isdir(bundle_dir):
-                    self.git_clone(repo=repo, branch=DEFAULT_BRANCH,
-                                   path=bundle_dir)
-                    self.insert_bundles([bundle_dir])
-                    self.satisfy_oca_dependencies()
-
-    def git_clone(self, repo, branch, path):
-        try:
-            git.clone(repo, path, quiet=True, depth=1, branch=branch)
-        except BaseException:
-            print('There was a problem cloning %s.' % repo)
-            raise
+                else:
+                    self.__satisfy_oca_dependencies()
 
     def get_bundle_path_list(self):
+        '''
+        .. versionadded:: 0.1.0
+
+
+        '''
         for bundle in self.bundles:
             yield bundle.path
 
     def get_modules_list(self):
+        '''
+        .. versionadded:: 0.1.0
+
+
+        '''
         for bundle in self.bundles:
             for module in bundle.modules:
                 yield module
 
     def get_modules_slug_list(self):
+        '''
+        .. versionadded:: 0.1.0
+
+
+        '''
         for bundle in self.bundles:
             for module in bundle.modules:
                 yield module.properties.slug
 
+    def __deps_notin_e(self, deps):
+        '''
+        .. versionadded:: 0.1.0
+
+
+        '''
+        for dep in deps:
+            if dep not in self.get_modules_slug_list():
+                yield dep
+
     def get_notmet_dependencies(self):
+        '''
+        .. versionadded:: 0.1.0
+
+
+        '''
         for module in self.get_modules_list():
             if hasattr(module.properties, 'depends'):
-                deplist = []
-                for dep in module.properties.depends:
-                    if dep not in self.get_modules_slug_list():
-                        deplist.append(dep)
+                deplist = list(self.__deps_notin_e(module.properties.depends))
                 if deplist:
                     yield {module.bundle.name:
                            {module.properties.slug: deplist}}
 
     def get_notmet_record_ids(self):
+        '''
+        .. versionadded:: 0.1.0
+
+
+        '''
         for module in self.get_modules_list():
             for data in module.get_record_ids_module_references():
                 for xml, refs in data.items():
-                    deplist = []
-                    for ref in refs:
-                        if ref not in self.get_modules_slug_list():
-                            deplist.append(ref)
+                    deplist = list(self.__deps_notin_e(refs))
                     if deplist:
                         relxml = os.path.join(module.properties.slug, xml)
                         yield {module.bundle.name: {relxml: deplist}}
 
     def get_notmet_dependencies_report(self):
+        '''
+        .. versionadded:: 0.1.0
+
+
+        '''
         report = list(self.get_notmet_dependencies())
         if report:
             print('The following module dependencies are not found'
@@ -158,6 +232,11 @@ class OdooEnvironment(object):
             print('All dependencies are satisfied in the environment.')
 
     def get_notmet_record_ids_report(self):
+        '''
+        .. versionadded:: 0.1.0
+
+
+        '''
         report = list(self.get_notmet_record_ids())
         if report:
             print('The following record ids are not found in the environment:')
