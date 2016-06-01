@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+#   -*- coding: utf-8 -*-
+#   This file is part of Odoo Candyshop
 #   ------------------------------------------------------------------------
 #   Copyright:
 #   Copyright (C) 2016 Vauxoo (<http://vauxoo.com>)
@@ -25,6 +26,8 @@
 candyshop.utils module
 ----------------------
 
+This module contains several utilities to process information coming from the
+other modules.
 '''
 
 import os
@@ -46,7 +49,7 @@ class ModuleProperties(object):
 
     >>> p = ModuleProperties({'name': 'Vauxoo Module'})
     >>> p.name
-    Vauxoo Module
+    'Vauxoo Module'
     '''
     def __init__(self, data):
         for key in data:
@@ -69,7 +72,7 @@ def get_path(path=[]):
 
     >>> p = ['/usr', 'share', 'logs/vars', 'included', 'hola.txt']
     >>> get_path(p)
-    /usr/share/logs/vars/included/hola.txt
+    '/usr/share/logs/vars/included/hola.txt'
     '''
     assert type(path) == list
     return os.path.normpath(os.path.realpath(

@@ -15,7 +15,7 @@ Odoo Candyshop
 
 Odoo Candyshop is a helper determine if all your dependencies were declared properly.
 
-* Free software: ISC license
+* Free software: AGPL-3
 * Documentation: https://odoo-candyshop.readthedocs.org.
 
 Features
@@ -29,11 +29,3 @@ Features
   present in the environment.
 * Determine which XML files make reference to an Odoo Module that is not present
   in the environment.
-
-Credits
--------
-
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage

@@ -36,3 +36,6 @@ well as functions to resolve dependency trees.
 __author__ = 'Luis Alejandro Martínez Faneyth'
 __email__ = 'luisalejandro@vauxoo.com'
 __version__ = '0.1.0'
+__url__ = 'https://github.com/vauxoo/odoo-candyshop'
+__description__ = '''Candyshop is a helper to determine if all your dependencies
+ are declared properly.'''

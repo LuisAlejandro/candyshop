@@ -32,6 +32,7 @@ project_root = os.path.dirname(cwd)
 sys.path.insert(0, project_root)
 
 import candyshop
+import alabaster
 
 # -- General configuration ---------------------------------------------
 
@@ -40,7 +41,7 @@ import candyshop
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'alabaster']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -56,7 +57,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Odoo Candyshop'
-copyright = u'2016, Luis Alejandro Martínez Faneyth'
+copyright = u'2016, Vauxoo'
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
@@ -111,15 +112,31 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'default'
+html_theme = 'alabaster'
 
 # Theme options are theme-specific and customize the look and feel of a
 # theme further.  For a list of options available for each theme, see the
 # documentation.
-#html_theme_options = {}
+html_theme_options = {
+    'logo': 'candyshop.png',
+    'logo_name': False,
+    'logo_text_align': 'center',
+    'description': candyshop.__description__,
+    'github_user': 'vauxoo',
+    'github_repo': 'odoo-candyshop',
+    'travis_button': True,
+}
 
+html_sidebars = {
+    '**': [
+        'about.html',
+        'navigation.html',
+        'searchbox.html',
+        'donate.html',
+    ]
+}
 # Add any paths that contain custom themes here, relative to this directory.
-#html_theme_path = []
+html_theme_path = [alabaster.get_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".

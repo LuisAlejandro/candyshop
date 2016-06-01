@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+#   -*- coding: utf-8 -*-
+#   This file is part of Odoo Candyshop
 #   ------------------------------------------------------------------------
 #   Copyright:
 #   Copyright (C) 2016 Vauxoo (<http://vauxoo.com>)
@@ -25,9 +26,9 @@
 candyshop.environment module
 ----------------------------
 
-
+This module implements an abstraction layer to create an environment where
+bundles can be consulted.
 '''
-
 
 import os
 import sys
@@ -42,7 +43,11 @@ DEFAULT_BRANCH = '8.0'
 
 
 class OdooEnvironment(object):
+    '''
+    .. versionadded:: 0.1.0
 
+
+    '''
     def __init__(self, init=True, init_from=None,
                  repo=DEFAULT_REPO, branch=DEFAULT_BRANCH):
 
@@ -58,7 +63,8 @@ class OdooEnvironment(object):
             odoo_dir = os.path.abspath(init_from)
         else:
             odoo_dir = os.path.join(self.tempdir, 'odoo')
-            self.git_clone(repo, branch, odoo_dir)
+            if not os.path.isdir(odoo_dir):
+                self.git_clone(repo, branch, odoo_dir)
         self.insert_bundles([
             os.path.join(odoo_dir, 'addons'),
             os.path.join(odoo_dir, 'openerp', 'addons')

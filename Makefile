@@ -52,24 +52,18 @@ lint:
 	flake8 candyshop tests
 
 test:
-
 	python setup.py test
 
 test-all:
 	tox
 
 coverage:
-
 	coverage run --source candyshop setup.py test
-
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
 docs:
-	rm -f docs/candyshop.rst
-	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ candyshop
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html

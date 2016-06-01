@@ -19,8 +19,9 @@ class TestModule(unittest.TestCase):
                                             'openacademy')
         self.openacademy = Module(self.openacademy_dir)
 
-    def test_01_is_python_package(self):
-        self.assertTrue(self.openacademy.is_python_package())
+    def test_01_has_manifest(self):
+        self.assertEqual(self.openacademy.manifest,
+                         os.path.join(self.openacademy_dir, '__openerp__.py'))
 
     def test_02_is_not_python_package(self):
         self.assertRaisesRegexp(
@@ -43,8 +44,8 @@ class TestModule(unittest.TestCase):
             {'view/openacademy_wizard_view.xml': ['openacademy']},
             {'view/openacademy_session_board.xml': ['openacademy']}
         ]
-        self.assertListEqual(list(self.openacademy.get_record_ids_module_references()),
-                             record_ids_should_be)
+        self.assertListEqual(sorted(list(self.openacademy.get_record_ids_module_references())),
+                             sorted(record_ids_should_be))
 
 
 class TestBundle(unittest.TestCase):
@@ -62,8 +63,8 @@ class TestBundle(unittest.TestCase):
     def test_01_get_modules(self):
         odoo_afr_modules_should_be = ['account_afr_group_auditory',
                                       'account_financial_report']
-        self.assertListEqual(list(self.modules_slug_list(self.odoo_afr)),
-                             odoo_afr_modules_should_be)
+        self.assertListEqual(sorted(list(self.modules_slug_list(self.odoo_afr))),
+                             sorted(odoo_afr_modules_should_be))
 
     def test_02_modules_are_instances_of_module(self):
         for module in self.odoo_afr.modules:
