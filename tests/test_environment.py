@@ -9,7 +9,7 @@ import doctest
 import unittest
 from contextlib import contextmanager
 
-from candyshop.environment import OdooEnvironment
+from candyshop.environment import Environment
 
 try:
     from cStringIO import StringIO
@@ -24,14 +24,14 @@ def capture(command, *args, **kwargs):
     yield sys.stdout.read()
     sys.stdout = out
 
-class TestOdooEnvironment(unittest.TestCase):
+class TestEnvironment(unittest.TestCase):
 
     def setUp(self):
         self.testdir = os.path.dirname(__file__)
         self.exampledir = os.path.join(self.testdir, 'examples')
         self.odoo_afr_dir = os.path.join(self.exampledir, 'odoo-afr')
         self.odoo_beginners_dir = os.path.join(self.exampledir, 'odoo-beginners')
-        self.odoo = OdooEnvironment()
+        self.odoo = Environment()
 
     def bundle_name_list(self, environment):
         for bundle in environment.bundles:
@@ -44,7 +44,8 @@ class TestOdooEnvironment(unittest.TestCase):
     def test_02_addbundles(self):
         self.odoo.addbundles([self.odoo_afr_dir, self.odoo_beginners_dir], False)
         self.assertListEqual(sorted(list(self.bundle_name_list(self.odoo))),
-                             sorted(['addons', 'addons', 'odoo-afr', 'odoo-beginners']))
+                             sorted(['addons', 'addons', 'addons-vauxoo', 'odoo-afr',
+                                     'odoo-beginners']))
 
     def test_03_unexistent_record_ids(self):
         notmet_record_ids_should_be = [
@@ -62,7 +63,7 @@ class TestOdooEnvironment(unittest.TestCase):
         )
 
         sys.exit = lambda *args: None
-        self.odoo = OdooEnvironment()
+        self.odoo = Environment()
         self.odoo.addbundles([self.odoo_beginners_dir], False)
         self.assertListEqual(list(self.odoo.get_notmet_record_ids()),
                              notmet_record_ids_should_be)
@@ -86,7 +87,7 @@ class TestOdooEnvironment(unittest.TestCase):
         )
 
         sys.exit = lambda *args: None
-        self.odoo = OdooEnvironment()
+        self.odoo = Environment()
         self.odoo.addbundles([self.odoo_beginners_dir], False)
         self.assertListEqual(list(self.odoo.get_notmet_dependencies()),
                              notmet_dependencies_should_be)
@@ -95,7 +96,7 @@ class TestOdooEnvironment(unittest.TestCase):
                                       output)
 
     def test_05_satisfy_oca_dependencies(self):
-        self.odoo = OdooEnvironment()
+        self.odoo = Environment()
         self.odoo.addbundles([self.odoo_afr_dir], False)
         self.assertIn('addons-vauxoo', list(self.bundle_name_list(self.odoo)))
 

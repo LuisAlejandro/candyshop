@@ -118,7 +118,7 @@ html_theme = 'alabaster'
 # theme further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    'logo': 'candyshop.svg',
+    'logo': 'logo.svg',
     'logo_name': False,
     'logo_text_align': 'center',
     'description': candyshop.__description__,

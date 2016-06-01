@@ -21,7 +21,8 @@
 #   You should have received a copy of the GNU Affero General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #   ------------------------------------------------------------------------
-'''
+""".
+
 candyshop package
 -----------------
 
@@ -31,11 +32,11 @@ dependencies in an Odoo Environment.
 
 It has abstractions that represent Odoo Modules and virtual Odoo Enviroments,
 as well as functions to resolve dependency trees.
-'''
+"""
 
 __author__ = 'Luis Alejandro Martínez Faneyth'
 __email__ = 'luisalejandro@vauxoo.com'
 __version__ = '0.1.0'
 __url__ = 'https://github.com/vauxoo/odoo-candyshop'
-__description__ = '''Candyshop is a helper to determine if all your dependencies
- are declared properly.'''
+__description__ = '''Odoo Candyshop is a helper to determine if all your
+ dependencies are declared properly.'''

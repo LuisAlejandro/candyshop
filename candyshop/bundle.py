@@ -22,15 +22,16 @@
 #   You should have received a copy of the GNU Affero General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #   ------------------------------------------------------------------------
-'''
-candyshop.bundle module
------------------------
+"""
+Candyshop submodule.
+
+candyshop.bundle
+----------------
 
 This module contains abstraction classes to represent a ``Module`` or a
 ``Bundle`` (a group of modules). These classes are *read-only*. For now,
 you cannot create or modify Bundles or Modules through these abstractions.
-
-'''
+"""
 
 from __future__ import print_function
 
@@ -50,18 +51,30 @@ except NameError:
 
 
 class Module(object):
-    '''
-    .. versionadded:: 0.1.0
-
+    """
     This class represents an Odoo Module.
 
-    :param path: a path pointing to the root directory of an Odoo Module.
-    :param bundle: a ``Bundle`` instance (indicating this module is part of
-                   such bundle), or ``None`` (indicating that is a standalone
-                   module).
-    :return: a ``Module`` instance.
-    '''
+    An Odoo module is a method to extend the Odoo codebase, adding or
+    customizing functionalities. It is declared through its manifest file,
+    and often contains other data files.
+
+    For more information, please refer to official documentation.
+
+    `Modules <https://www.odoo.com/documentation/8.0/howtos/backend.html>`_.
+    """
+
     def __init__(self, path, bundle=None):
+        """
+        Initialize the ``Module`` instance.
+
+        :param path: a path pointing to the root directory of an Odoo Module.
+        :param bundle: a ``Bundle`` instance (indicating this module is part of
+                       such bundle), or ``None`` (indicating that is a standalone
+                       module).
+        :return: a ``Module`` instance.
+
+        .. versionadded:: 0.1.0
+        """
         assert os.path.isdir(path), \
             '%s is not a directory or does not exist.' % path
         assert (isinstance(bundle, Bundle) or not bundle), \
@@ -87,21 +100,21 @@ class Module(object):
         self.properties.slug = os.path.basename(self.path)
 
     def __is_python_package(self):
-        '''
-        .. versionadded:: 0.1.0
-
+        """
         Private method to determine if a module is a python package.
-        '''
+
+        .. versionadded:: 0.1.0
+        """
         if find_files(self.path, '__init__.py'):
             return True
         return False
 
     def __get_manifest(self):
-        '''
-        .. versionadded:: 0.1.0
-
+        """
         Private method to find the manifest file within the module.
-        '''
+
+        .. versionadded:: 0.1.0
+        """
         assert self.__is_python_package(), \
             'The module is not a python package.'
         for mfst in MANIFEST_FILES:
@@ -111,11 +124,11 @@ class Module(object):
         return False
 
     def __extract_properties(self):
-        '''
-        .. versionadded:: 0.1.0
-
+        """
         Private method to extract information of the module's manifest file.
-        '''
+
+        .. versionadded:: 0.1.0
+        """
         assert self.manifest, \
             'The specified path does not contain a manifest file.'
         try:
@@ -127,24 +140,24 @@ class Module(object):
             return props
 
     def __xmlfile_isfrom_module(self, xmlfile):
-        '''
-        .. versionadded:: 0.1.0
-
+        """
         Private method to determine if a module contains an XML file.
-        '''
+
+        .. versionadded:: 0.1.0
+        """
         return hasattr(self.properties, 'data') and \
             xmlfile.replace('%s/' % self.path, '') in self.properties.data
 
     def parse_xml_fromfile(self, xmlfile):
-        '''
-        .. versionadded:: 0.1.0
-
+        """
         Get XML parsed from an input file.
 
         :param xmlfile: (string) a path pointing to an XML file.
         :return: Parsed document (``lxml.etree`` object). If there is
                  a syntax error return string error message.
-        '''
+
+        .. versionadded:: 0.1.0
+        """
         assert self.__xmlfile_isfrom_module(xmlfile), \
             'The file %s does not belong to this module.' % xmlfile
         try:
@@ -156,9 +169,7 @@ class Module(object):
             return doc
 
     def get_records_fromfile(self, xmlfile, model=None):
-        '''
-        .. versionadded:: 0.1.0
-
+        """
         Get ``record`` tags of an Odoo XML file.
 
         :param xmlfile: (string) a path pointing to an XML file.
@@ -166,7 +177,9 @@ class Module(object):
                       If model is None (default) then get all records.
         :return: a list of lxml ``record`` nodes. If there
                  is a syntax error return [].
-        '''
+
+        .. versionadded:: 0.1.0
+        """
         model_filter = ''
         if model:
             model_filter = '[@model="{model}"]'.format(model=model)
@@ -177,9 +190,7 @@ class Module(object):
                 doc.xpath('/odoo//record' + model_filter))
 
     def get_record_ids_fromfile(self, xmlfile, module=None):
-        '''
-        .. versionadded:: 0.1.0
-
+        """
         Get ids from `record` tags of an Odoo XML file.
 
         :param xmlfile: (string) a path pointing to the XML file.
@@ -187,7 +198,9 @@ class Module(object):
                        If module is None (default) then get all modules.
         :return: a generator that produces an iterable of strings
                  with all ``[MODULE].[ID]`` found.
-        '''
+
+        .. versionadded:: 0.1.0
+        """
         for record in self.get_records_fromfile(xmlfile):
             id = record.get('id', '').split('.')
             if id[0]:
@@ -201,9 +214,7 @@ class Module(object):
                 yield '%s.%s.noupdate=%s' % (xml_module, xml_id, noupdate)
 
     def get_record_ids(self):
-        '''
-        .. versionadded:: 0.1.0
-
+        """
         Get all record ids contained in all of the module's XML files.
 
         :return: a generator that returns an iterable of dictionaries
@@ -211,10 +222,12 @@ class Module(object):
                  XML file, like this one::
 
                      [
-                        {'file1.xml': ['module_a.id_a.noupdate=0']},
-                        {'file2.xml': ['module_b.id_b.noupdate=0']}
+                        {'path/file1.xml': ['module_a.id_a.noupdate=0']},
+                        {'path/file2.xml': ['module_b.id_b.noupdate=0']}
                      ]
-        '''
+
+        .. versionadded:: 0.1.0
+        """
         if hasattr(self.properties, 'data'):
             for data in self.properties.data:
                 datafile = os.path.join(self.path, data)
@@ -222,9 +235,7 @@ class Module(object):
                     yield {data: self.get_record_ids_fromfile(datafile)}
 
     def get_record_ids_module_references(self):
-        '''
-        .. versionadded:: 0.1.0
-
+        """
         Get all modules referenced in Odoo XML files.
 
         :return: a generator that returns an iterable of dictionaries
@@ -232,10 +243,12 @@ class Module(object):
                  XML file, like this one::
 
                      [
-                        {'file1.xml': ['module_a', 'module_b']},
-                        {'file2.xml': ['module_c']}
+                        {'path/file1.xml': ['module_a', 'module_b']},
+                        {'path/file2.xml': ['module_c']}
                      ]
-        '''
+
+        .. versionadded:: 0.1.0
+        """
         for xmldict in self.get_record_ids():
             for data, ids in xmldict.items():
                 record_ids = list(set([id.split('.')[0] for id in ids]))
@@ -244,19 +257,29 @@ class Module(object):
 
 
 class Bundle(object):
-    '''
-    .. versionadded:: 0.1.0
+    """
+    This class represents a group of modules or ``Bundle``.
 
-    This class represents a group of modules.
+    Also referred as ``Addons``, a group of modules is simply a folder where
+    you can put modules. Optionally, it can have a ``oca_dependencies.txt``
+    file (located at the root folder), where you can specify other git
+    repositories needed for the correct operation of some of the modules
+    included in the ``Bundle``.
+    """
 
-    :param path: (string) a path pointing to the root directory containing
-                 Odoo Modules.
-    :param exclude_tests: (boolean) ``True`` (default) to exclude modules
-                          that are inside a ``tests`` folder. ``False`` to
-                          include such modules.
-    :return: a ``Bundle`` instance.
-    '''
     def __init__(self, path=None, exclude_tests=True):
+        """
+        Initialize a ``Bundle`` instance.
+
+        :param path: (string) a path pointing to the root directory containing
+                     Odoo Modules.
+        :param exclude_tests: (boolean) ``True`` (default) to exclude modules
+                              that are inside a ``tests`` folder. ``False`` to
+                              include such modules.
+        :return: a ``Bundle`` instance.
+
+        .. versionadded:: 0.1.0
+        """
         assert os.path.isdir(path), \
             '%s is not a directory or does not exist.' % path
 
@@ -288,11 +311,11 @@ class Bundle(object):
             self.oca_dependencies = self.__parse_oca_dependencies()
 
     def __get_modules(self):
-        '''
-        .. versionadded:: 0.1.0
-
+        """
         Private method to find and instance all valid modules inside a bundle.
-        '''
+
+        .. versionadded:: 0.1.0
+        """
         for mfst in MANIFEST_FILES:
             for mods in find_files(self.path, mfst):
                 if self.exclude_tests:
@@ -302,11 +325,11 @@ class Bundle(object):
                     yield Module(os.path.dirname(mods), bundle=self)
 
     def __get_oca_dependencies_file(self):
-        '''
-        .. versionadded:: 0.1.0
-
+        """
         Private method to find (if any) the oca_dependencies.txt file.
-        '''
+
+        .. versionadded:: 0.1.0
+        """
         oca_dependencies_file = os.path.join(self.path, 'oca_dependencies.txt')
         if os.path.isfile(oca_dependencies_file):
             self.oca_dependencies_file = oca_dependencies_file
@@ -314,11 +337,11 @@ class Bundle(object):
         return False
 
     def __parse_oca_dependencies(self):
-        '''
-        .. versionadded:: 0.1.0
-
+        """
         Private method to parse (if any) the oca_dependencies.txt file.
-        '''
+
+        .. versionadded:: 0.1.0
+        """
         if self.__get_oca_dependencies_file():
             with open(self.oca_dependencies_file) as oca:
                 deps = [d.split() for d in oca.read().split('\n')]
