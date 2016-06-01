@@ -1,13 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""
-test_environment
-----------------
-
-Tests for the `candyshop.environment` module.
-"""
-
 from __future__ import print_function
 
 import os

@@ -1,7 +1,30 @@
 # -*- coding: utf-8 -*-
+#   ------------------------------------------------------------------------
+#   Copyright:
+#   Copyright (C) 2016 Vauxoo (<http://vauxoo.com>)
+#   All Rights Reserved
+#   ------------------------------------------------------------------------
+#   Contributors:
+#   Author: Luis Alejandro Martínez Faneyth (luisalejandro@vauxoo.com)
+#   ------------------------------------------------------------------------
+#   License:
+#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU Affero General Public License as published
+#   by the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU Affero General Public License for more details.
+#
+#   You should have received a copy of the GNU Affero General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#   ------------------------------------------------------------------------
 '''
-candyshop.environment
----------------------
+candyshop.environment module
+----------------------------
+
 
 '''
 
@@ -12,7 +35,7 @@ import tempfile
 
 from sh import git
 
-from .bundle import ModulesBundle
+from .bundle import Bundle
 
 DEFAULT_REPO = 'https://github.com/vauxoo/odoo'
 DEFAULT_BRANCH = '8.0'
@@ -46,7 +69,7 @@ class OdooEnvironment(object):
             location = os.path.abspath(location)
             if location not in self.get_bundle_path_list():
                 try:
-                    self.bundles.append(ModulesBundle(location, exclude_tests))
+                    self.bundles.append(Bundle(location, exclude_tests))
                 except BaseException:
                     print(('There was a problem inserting the bundle'
                            ' located at %s') % location)
@@ -95,7 +118,7 @@ class OdooEnvironment(object):
                         deplist.append(dep)
                 if deplist:
                     yield {module.bundle.name:
-                        {module.properties.slug: deplist}}
+                           {module.properties.slug: deplist}}
 
     def get_notmet_record_ids(self):
         for module in self.get_modules_list():

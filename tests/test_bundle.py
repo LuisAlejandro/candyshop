@@ -1,19 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""
-test_bundle
------------
-
-Tests for the `candyshop.bundle` module.
-"""
-
-
 import os
 import doctest
 import unittest
 
-from candyshop.bundle import ModulesBundle, Module
+from candyshop.bundle import Bundle, Module
 
 
 class TestModule(unittest.TestCase):
@@ -25,7 +17,7 @@ class TestModule(unittest.TestCase):
                                                'is_not_package')
         self.openacademy_dir = os.path.join(self.exampledir, 'odoo-beginners',
                                             'openacademy')
-        self.openacademy = Module(None, self.openacademy_dir)
+        self.openacademy = Module(self.openacademy_dir)
 
     def test_01_is_python_package(self):
         self.assertTrue(self.openacademy.is_python_package())
@@ -33,7 +25,7 @@ class TestModule(unittest.TestCase):
     def test_02_is_not_python_package(self):
         self.assertRaisesRegexp(
             AssertionError, 'The module is not a python package.',
-            Module, None, self.is_not_package_dir
+            Module, self.is_not_package_dir
         )
 
     def test_03_match_properties(self):
@@ -55,13 +47,13 @@ class TestModule(unittest.TestCase):
                              record_ids_should_be)
 
 
-class TestModulesBundle(unittest.TestCase):
+class TestBundle(unittest.TestCase):
 
     def setUp(self):
         self.testdir = os.path.dirname(__file__)
         self.exampledir = os.path.join(self.testdir, 'examples')
         self.odoo_afr_dir = os.path.join(self.exampledir, 'odoo-afr')
-        self.odoo_afr = ModulesBundle(self.odoo_afr_dir, exclude_tests=False)
+        self.odoo_afr = Bundle(self.odoo_afr_dir, exclude_tests=False)
 
     def modules_slug_list(self, bundle):
         for module in bundle.modules:
@@ -90,11 +82,11 @@ class TestModulesBundle(unittest.TestCase):
 
     def test_05_modules_reference_bundle_instances(self):
         for module in self.odoo_afr.modules:
-            self.assertIsInstance(module.bundle, ModulesBundle)
+            self.assertIsInstance(module.bundle, Bundle)
             self.assertEqual(module.bundle.name, 'odoo-afr')
 
 
-class TestBrokenModulesBundle(unittest.TestCase):
+class TestBrokenBundle(unittest.TestCase):
 
     def setUp(self):
         self.testdir = os.path.dirname(__file__)
@@ -107,25 +99,25 @@ class TestBrokenModulesBundle(unittest.TestCase):
     def test_01_non_existent_bundle(self):
         self.assertRaisesRegexp(
             AssertionError, '%s is not a directory or does not exist.' % self.non_existent_dir,
-            ModulesBundle, self.non_existent_dir, exclude_tests=False
+            Bundle, self.non_existent_dir, exclude_tests=False
         )
 
     def test_02_empty_bundle(self):
         self.assertRaisesRegexp(
             AssertionError, 'The specified path does not contain valid Odoo modules.',
-            ModulesBundle, self.empty_dir, exclude_tests=False
+            Bundle, self.empty_dir, exclude_tests=False
         )
 
     def test_03_broken_manifest(self):
         self.assertRaisesRegexp(
             IOError, 'An error ocurred while reading.*',
-            ModulesBundle, self.broken_manifest_dir, exclude_tests=False
+            Bundle, self.broken_manifest_dir, exclude_tests=False
         )
 
     def test_04_is_not_package(self):
         self.assertRaisesRegexp(
             AssertionError, 'The module is not a python package.',
-            ModulesBundle, self.is_not_package_dir, exclude_tests=False
+            Bundle, self.is_not_package_dir, exclude_tests=False
         )
 
 def load_tests(loader, tests, pattern):

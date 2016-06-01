@@ -25,7 +25,7 @@ help:
 	@echo "dist - package"
 	@echo "install - install the package to the active Python's site-packages"
 
-clean: clean-build clean-pyc clean-test
+clean: clean-build clean-pyc clean-test clean-docs
 
 clean-build:
 	rm -fr build/
@@ -44,6 +44,9 @@ clean-test:
 	rm -fr .tox/
 	rm -f .coverage
 	rm -fr htmlcov/
+
+clean-docs:
+	rm -fr docs/_build
 
 lint:
 	flake8 candyshop tests
