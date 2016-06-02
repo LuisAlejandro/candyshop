@@ -136,10 +136,11 @@ class Environment(object):
         for bundle in self.bundles:
             for name, repo in bundle.oca_dependencies.items():
                 bundle_dir = os.path.join(self.path, name)
-                if not os.path.isdir(bundle_dir):
-                    self.__git_clone(repo=repo, branch=DEFAULT_BRANCH,
-                                     path=bundle_dir)
-                    self.addbundles([bundle_dir])
+                if os.path.isdir(bundle_dir):
+                    continue
+                self.__git_clone(repo=repo, branch=DEFAULT_BRANCH,
+                                 path=bundle_dir)
+                self.addbundles([bundle_dir])
 
     def __deps_notin_e(self, deps=[]):
         """
@@ -171,15 +172,16 @@ class Environment(object):
         """
         for location in locations:
             location = os.path.abspath(location)
-            if location not in self.get_bundle_path_list():
-                try:
-                    self.bundles.append(Bundle(location, exclude_tests))
-                except BaseException:
-                    print(('There was a problem inserting the bundle'
-                           ' located at %s') % location)
-                    raise
-                else:
-                    self.__clone_deptree()
+            if location in self.get_bundle_path_list():
+                continue
+            try:
+                self.bundles.append(Bundle(location, exclude_tests))
+            except BaseException:
+                print(('There was a problem inserting the bundle'
+                       ' located at %s') % location)
+                raise
+            else:
+                self.__clone_deptree()
 
     def get_bundle_path_list(self):
         """
@@ -243,9 +245,9 @@ class Environment(object):
         for module in self.get_modules_list():
             if hasattr(module.properties, 'depends'):
                 deplist = list(self.__deps_notin_e(module.properties.depends))
-                if deplist:
-                    yield {module.bundle.name:
-                           {module.properties.slug: deplist}}
+                if not deplist:
+                    continue
+                yield {module.bundle.name: {module.properties.slug: deplist}}
 
     def get_notmet_record_ids(self):
         """
@@ -270,9 +272,10 @@ class Environment(object):
             for data in module.get_record_ids_module_references():
                 for xml, refs in data.items():
                     deplist = list(self.__deps_notin_e(refs))
-                    if deplist:
-                        relxml = os.path.join(module.properties.slug, xml)
-                        yield {module.bundle.name: {relxml: deplist}}
+                    if not deplist:
+                        continue
+                    relxml = os.path.join(module.properties.slug, xml)
+                    yield {module.bundle.name: {relxml: deplist}}
 
     def get_notmet_dependencies_report(self):
         """

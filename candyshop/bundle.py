@@ -119,8 +119,9 @@ class Module(object):
             'The module is not a python package.'
         for mfst in MANIFEST_FILES:
             found = find_files(self.path, mfst)
-            if found:
-                return found[0]
+            if not found:
+                continue
+            return found[0]
         return False
 
     def __extract_properties(self):
@@ -202,16 +203,17 @@ class Module(object):
         .. versionadded:: 0.1.0
         """
         for record in self.get_records_fromfile(xmlfile):
-            id = record.get('id', '').split('.')
-            if id[0]:
-                if len(id) == 1:
-                    xml_module, xml_id = [self.properties.slug, id[0]]
-                else:
-                    xml_module, xml_id = id
-                if module and xml_module != module:
-                    continue
-                noupdate = record.getparent().get('noupdate', '0')
-                yield '%s.%s.noupdate=%s' % (xml_module, xml_id, noupdate)
+            rid = record.get('id', '').split('.')
+            if not rid[0]:
+                continue
+            if len(rid) == 1:
+                xml_module, xml_id = [self.properties.slug, rid[0]]
+            else:
+                xml_module, xml_id = rid
+            if module and xml_module != module:
+                continue
+            noupdate = record.getparent().get('noupdate', '0')
+            yield '%s.%s.noupdate=%s' % (xml_module, xml_id, noupdate)
 
     def get_record_ids(self):
         """
@@ -228,11 +230,14 @@ class Module(object):
 
         .. versionadded:: 0.1.0
         """
-        if hasattr(self.properties, 'data'):
-            for data in self.properties.data:
-                datafile = os.path.join(self.path, data)
-                if os.path.splitext(datafile)[1].lower() == '.xml':
-                    yield {data: self.get_record_ids_fromfile(datafile)}
+        if not hasattr(self.properties, 'data'):
+            return
+            yield
+        for data in self.properties.data:
+            datafile = os.path.join(self.path, data)
+            if os.path.splitext(datafile)[1].lower() != '.xml':
+                continue
+            yield {data: self.get_record_ids_fromfile(datafile)}
 
     def get_record_ids_module_references(self):
         """
@@ -251,9 +256,10 @@ class Module(object):
         """
         for xmldict in self.get_record_ids():
             for data, ids in xmldict.items():
-                record_ids = list(set([id.split('.')[0] for id in ids]))
-                if record_ids:
-                    yield {data: record_ids}
+                record_ids = list(set([i.split('.')[0] for i in ids]))
+                if not record_ids:
+                    continue
+                yield {data: record_ids}
 
 
 class Bundle(object):
