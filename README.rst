@@ -11,7 +11,7 @@
 .. image:: https://readthedocs.org/projects/odoo-candyshop/badge/?version=latest
            :target: https://readthedocs.org/projects/odoo-candyshop/?badge=latest
 
-Odoo Candyshop is a helper determine if all your dependencies were declared
+Odoo Candyshop is a helper to determine if all your dependencies are declared
 properly. A Candyshop is a place where you can pick sweets and candies from
 a list of wonderful options ... but choose wisely.
 
