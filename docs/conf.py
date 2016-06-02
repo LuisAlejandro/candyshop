@@ -125,8 +125,8 @@ html_theme_options = {
     'github_user': 'vauxoo',
     'github_repo': 'odoo-candyshop',
     'travis_button': True,
-    'link': '#3782BE',
-    'link_hover': '#3782BE',
+    'link': '#af5d7b',
+    'link_hover': '#512440',
 }
 
 html_sidebars = {

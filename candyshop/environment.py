@@ -164,8 +164,8 @@ class Environment(object):
 
         :param locations: (list) a list of strings containing relative or
                           absolute paths to directories containig bundles.
-        :param exclude_tests: (boolean) if ``True``, will exclude modules inside
-                              ``tests`` directories.
+        :param exclude_tests: (boolean) if ``True``, will exclude modules
+                              inside ``tests`` directories.
 
         .. versionadded:: 0.1.0
         """

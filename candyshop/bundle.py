@@ -69,8 +69,8 @@ class Module(object):
 
         :param path: a path pointing to the root directory of an Odoo Module.
         :param bundle: a ``Bundle`` instance (indicating this module is part of
-                       such bundle), or ``None`` (indicating that is a standalone
-                       module).
+                       such bundle), or ``None`` (indicating that is a
+                       standalone module).
         :return: a ``Module`` instance.
 
         .. versionadded:: 0.1.0

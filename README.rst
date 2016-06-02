@@ -1,8 +1,6 @@
-.. image:: _static/banner.svg
+.. image:: docs/_static/banner.svg
 
-..
-
-``Odoo Candyshop is a helper determine if all your dependencies were declared properly.``
+-----
 
 .. image:: https://img.shields.io/pypi/v/odoo-candyshop.svg
            :target: https://pypi.python.org/pypi/odoo-candyshop
@@ -14,7 +12,9 @@
            :target: https://readthedocs.org/projects/odoo-candyshop/?badge=latest
            :alt: Documentation Status
 
------
+Odoo Candyshop is a helper determine if all your dependencies were declared
+properly. A Candyshop is a place where you can pick sweets and candies from
+a list of wonderful options ... but choose wisely.
 
 * Free software: AGPL-3
 * Documentation: https://odoo-candyshop.readthedocs.org.
