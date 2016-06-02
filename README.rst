@@ -1,4 +1,4 @@
-.. image:: docs/_static/banner.svg
+.. image:: https://raw.githubusercontent.com/vauxoo/odoo-candyshop/master/docs/_static/banner.svg
 
 -----
 
@@ -10,7 +10,6 @@
 
 .. image:: https://readthedocs.org/projects/odoo-candyshop/badge/?version=latest
            :target: https://readthedocs.org/projects/odoo-candyshop/?badge=latest
-           :alt: Documentation Status
 
 Odoo Candyshop is a helper determine if all your dependencies were declared
 properly. A Candyshop is a place where you can pick sweets and candies from
