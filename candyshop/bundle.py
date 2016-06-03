@@ -23,10 +23,7 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #   ------------------------------------------------------------------------
 """
-Candyshop submodule.
-
-candyshop.bundle
-----------------
+``candyshop.bundle`` is a module for representing Odoo Modules.
 
 This module contains abstraction classes to represent a ``Module`` or a
 ``Bundle`` (a group of modules). These classes are *read-only*. For now,
@@ -36,13 +33,16 @@ you cannot create or modify Bundles or Modules through these abstractions.
 from __future__ import print_function
 
 import os
+import re
 from ast import literal_eval
 
 from lxml import etree
 
-from .utils import find_files, ModuleProperties
+from .utils import find_files, ModuleProperties, strip_comments_and_blanks
 
 MANIFEST_FILES = ['__odoo__.py', '__openerp__.py', '__terp__.py']
+DEFAULT_OCA_USER = 'OCA'
+DEFAULT_OCA_BRANCH = '8.0'
 
 try:
     basestring
@@ -314,7 +314,7 @@ class Bundle(object):
             #: Attribute ``Bundle.oca_dependencies`` (dict): A dictionary
             #: containing key-values of the names and repositories of
             #: OCA dependencies.
-            self.oca_dependencies = self.__parse_oca_dependencies()
+            self.oca_dependencies = list(self.__parse_oca_dependencies())
 
     def __get_modules(self):
         """
@@ -348,8 +348,15 @@ class Bundle(object):
 
         .. versionadded:: 0.1.0
         """
-        if self.__get_oca_dependencies_file():
-            with open(self.oca_dependencies_file) as oca:
-                deps = [d.split() for d in oca.read().split('\n')]
-            return {k: v for k, v in filter(None, deps)}
-        return {}
+        if not self.__get_oca_dependencies_file():
+            return
+            yield
+        with open(self.oca_dependencies_file) as f:
+            oca = strip_comments_and_blanks(f.read())
+        for dep in [o.split() for o in oca.split('\n')]:
+            if len(dep) < 2:
+                dep.append('https://github.com/%s/%s' % (DEFAULT_OCA_USER,
+                                                         dep[0]))
+            if len(dep) < 3:
+                dep.append(DEFAULT_OCA_BRANCH)
+            yield dep

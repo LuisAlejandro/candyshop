@@ -23,16 +23,14 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #   ------------------------------------------------------------------------
 """
-Candyshop submodule.
-
-candyshop.utils
----------------
+``candyshop.utils`` is a utility module.
 
 This module contains several utilities to process information coming from the
 other modules.
 """
 
 import os
+import re
 import fnmatch
 
 
@@ -62,6 +60,35 @@ class ModuleProperties(object):
         """
         for key in data:
             setattr(self, key, data[key])
+
+
+def strip_comments_and_blanks(strng=None):
+    """
+    Remove single-line comments and blank lines.
+
+    This function receives a string and removes every line containing a comment
+    or a blank line.
+
+    :param strng: (string) a string.
+    :return: (string) the string without comments or blank lines.
+
+    For example:
+
+    >>> s = '''
+    ... # This is a comment
+    ...
+    ... bar # This is an inline comment
+    ...
+    ... foo # Another comment
+    ... # I comment a lot
+    ...
+    ... '''
+    >>> strip_comments_and_blanks(s)
+    'bar\\nfoo'
+
+    .. versionadded:: 0.1.0
+    """
+    return '\n'.join(filter(None, re.sub('\s*#.*', '', strng).split('\n')))
 
 
 def get_path(path=[]):

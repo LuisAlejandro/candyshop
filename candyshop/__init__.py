@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#   This file is part of Odoo Candyshop
 #   ------------------------------------------------------------------------
 #   Copyright:
 #   Copyright (C) 2016 Vauxoo (<http://vauxoo.com>)
@@ -21,10 +22,8 @@
 #   You should have received a copy of the GNU Affero General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #   ------------------------------------------------------------------------
-""".
-
-candyshop package
------------------
+"""
+``candyshop`` is just pure art.
 
 Odoo Candyshop is a package that serves as a processor of the information
 contained in Odoo Modules. It's primarily aimed at making reports of missing

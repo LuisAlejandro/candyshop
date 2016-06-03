@@ -11,7 +11,7 @@ from candyshop.bundle import Bundle, Module
 class TestModule(unittest.TestCase):
 
     def setUp(self):
-        self.testdir = os.path.dirname(__file__)
+        self.testdir = os.path.dirname(os.path.abspath(__file__))
         self.exampledir = os.path.join(self.testdir, 'examples')
         self.is_not_package_dir = os.path.join(self.exampledir, 'is-not-package',
                                                'is_not_package')
@@ -51,10 +51,12 @@ class TestModule(unittest.TestCase):
 class TestBundle(unittest.TestCase):
 
     def setUp(self):
-        self.testdir = os.path.dirname(__file__)
+        self.testdir = os.path.dirname(os.path.abspath(__file__))
         self.exampledir = os.path.join(self.testdir, 'examples')
         self.odoo_afr_dir = os.path.join(self.exampledir, 'odoo-afr')
+        self.odoo_beginners_dir = os.path.join(self.exampledir, 'odoo-beginners')
         self.odoo_afr = Bundle(self.odoo_afr_dir, exclude_tests=False)
+        self.odoo_beginners = Bundle(self.odoo_beginners_dir, exclude_tests=False)
 
     def modules_slug_list(self, bundle):
         for module in bundle.modules:
@@ -77,8 +79,10 @@ class TestBundle(unittest.TestCase):
                          oca_dependencies_file_should_be)
 
     def test_04_parse_oca_dependencies(self):
-        oca_dependencies_should_be = {'addons-vauxoo':'https://github.com/Vauxoo/addons-vauxoo.git'}
-        self.assertDictEqual(self.odoo_afr.oca_dependencies,
+        oca_dependencies_should_be = [['addons-vauxoo',
+                                       'https://github.com/Vauxoo/addons-vauxoo.git',
+                                       '8.0']]
+        self.assertListEqual(self.odoo_afr.oca_dependencies,
                              oca_dependencies_should_be)
 
     def test_05_modules_reference_bundle_instances(self):
@@ -86,11 +90,20 @@ class TestBundle(unittest.TestCase):
             self.assertIsInstance(module.bundle, Bundle)
             self.assertEqual(module.bundle.name, 'odoo-afr')
 
+    def test_06_parse_complicated_oca_dependencies(self):
+        oca_dependencies_should_be = [['addon', 'http://myurl.com/foo', 'branch'],
+                                      ['foo', 'https://github.com/OCA/foo', '8.0'],
+                                      ['bar', 'http://bar.foo/jhon', '8.0'],
+                                      ['bundle', 'http://doe.com/joe', 'master'],
+                                      ['odoo', 'http://another.url/', 'anotherbranch']]
+        self.assertListEqual(self.odoo_beginners.oca_dependencies,
+                             oca_dependencies_should_be)
+
 
 class TestBrokenBundle(unittest.TestCase):
 
     def setUp(self):
-        self.testdir = os.path.dirname(__file__)
+        self.testdir = os.path.dirname(os.path.abspath(__file__))
         self.exampledir = os.path.join(self.testdir, 'examples')
         self.broken_manifest_dir = os.path.join(self.exampledir, 'broken-manifest')
         self.is_not_package_dir = os.path.join(self.exampledir, 'is-not-package')

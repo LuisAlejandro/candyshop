@@ -27,7 +27,7 @@ def capture(command, *args, **kwargs):
 class TestEnvironment(unittest.TestCase):
 
     def setUp(self):
-        self.testdir = os.path.dirname(__file__)
+        self.testdir = os.path.dirname(os.path.abspath(__file__))
         self.exampledir = os.path.join(self.testdir, 'examples')
         self.odoo_afr_dir = os.path.join(self.exampledir, 'odoo-afr')
         self.odoo_beginners_dir = os.path.join(self.exampledir, 'odoo-beginners')

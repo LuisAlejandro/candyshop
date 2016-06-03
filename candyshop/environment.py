@@ -23,10 +23,7 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #   ------------------------------------------------------------------------
 """
-Candyshop submodule.
-
-candyshop.environment
----------------------
+``candyshop.environment`` is a module for creating Odoo environments.
 
 This module implements an abstraction layer to create an environment where
 bundles can be consulted for different reports.
@@ -40,7 +37,7 @@ from sh import git
 
 from .bundle import Bundle
 
-DEFAULT_REPO = 'https://github.com/vauxoo/odoo'
+DEFAULT_URL = 'https://github.com/vauxoo/odoo'
 DEFAULT_BRANCH = '8.0'
 
 
@@ -54,7 +51,7 @@ class Environment(object):
     """
 
     def __init__(self, init=True, init_from=None,
-                 repo=DEFAULT_REPO, branch=DEFAULT_BRANCH):
+                 url=DEFAULT_URL, branch=DEFAULT_BRANCH):
         """
         Initialize the ``Environment`` instance.
 
@@ -64,10 +61,10 @@ class Environment(object):
         :param init_from: (string) a path pointing to an Odoo codebase. If
                           present, the Odoo codebase will be taken from this
                           folder instead of cloning from start.
-        :param repo: (string) a URI pointing to a git repository. This URI is
+        :param url: (string) an URL pointing to a git repository. This URL is
                      used to clone the Odoo Codebase if ``init`` is ``True``
                      and ``init_from`` is ``None``.
-        :param branch: (string) the branch used to clone ``repo``.
+        :param branch: (string) the branch used to clone ``url``.
         :return: an ``Environment`` instance.
 
         .. versionadded:: 0.1.0
@@ -82,14 +79,14 @@ class Environment(object):
         self.path = tempfile.mkdtemp()
 
         if init:
-            self.__initialize_odoo(repo, branch, init_from)
+            self.__initialize_odoo(url, branch, init_from)
 
-    def __initialize_odoo(self, repo=DEFAULT_REPO, branch=DEFAULT_BRANCH,
+    def __initialize_odoo(self, url=DEFAULT_URL, branch=DEFAULT_BRANCH,
                           init_from=None):
         """
         Private method to clone an Odoo codebase inside the Environment path.
 
-        This method clones an odoo codebase specified by ``repo`` and
+        This method clones an odoo codebase specified by ``url`` and
         ``branch`` so that bundles can have the native odoo bundles to compare
         with. Without this method, native modules (base, board, etc) would
         appear as missing dependencies.
@@ -101,26 +98,26 @@ class Environment(object):
         else:
             odoo_dir = os.path.join(self.path, 'odoo')
             if not os.path.isdir(odoo_dir):
-                self.__git_clone(repo, branch, odoo_dir)
+                self.__git_clone(url, branch, odoo_dir)
         self.addbundles([
             os.path.join(odoo_dir, 'addons'),
             os.path.join(odoo_dir, 'openerp', 'addons')
         ])
 
-    def __git_clone(self, repo, branch, path):
+    def __git_clone(self, url, branch, path):
         """
         Private method to clone a git repository.
 
-        This method clones a git repository specified by ``repo`` and
+        This method clones a git repository specified by ``url`` and
         ``branch`` to a folder ``path``. The ``--depth=1`` option is passed
         to the command to avoid cloning full history.
 
         .. versionadded:: 0.1.0
         """
         try:
-            git.clone(repo, path, quiet=True, depth=1, branch=branch)
+            git.clone(url, path, quiet=True, depth=1, branch=branch)
         except BaseException:
-            print('There was a problem cloning %s.' % repo)
+            print('There was a problem cloning %s.' % url)
             raise
 
     def __clone_deptree(self):
@@ -134,12 +131,11 @@ class Environment(object):
         .. versionadded:: 0.1.0
         """
         for bundle in self.bundles:
-            for name, repo in bundle.oca_dependencies.items():
+            for name, url, branch in bundle.oca_dependencies:
                 bundle_dir = os.path.join(self.path, name)
                 if os.path.isdir(bundle_dir):
                     continue
-                self.__git_clone(repo=repo, branch=DEFAULT_BRANCH,
-                                 path=bundle_dir)
+                self.__git_clone(url=url, branch=branch, path=bundle_dir)
                 self.addbundles([bundle_dir])
 
     def __deps_notin_e(self, deps=[]):
