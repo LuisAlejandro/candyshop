@@ -33,6 +33,9 @@ class TestEnvironment(unittest.TestCase):
         self.odoo_beginners_dir = os.path.join(self.exampledir, 'odoo-beginners')
         self.odoo = Environment()
 
+    def tearDown(self):
+        self.odoo.destroy()
+
     def bundle_name_list(self, environment):
         for bundle in environment.bundles:
             yield bundle.name
@@ -63,7 +66,7 @@ class TestEnvironment(unittest.TestCase):
         )
 
         sys.exit = lambda *args: None
-        self.odoo = Environment()
+        self.odoo.reset()
         self.odoo.addbundles([self.odoo_beginners_dir], False)
         self.assertListEqual(list(self.odoo.get_notmet_record_ids()),
                              notmet_record_ids_should_be)
@@ -87,7 +90,7 @@ class TestEnvironment(unittest.TestCase):
         )
 
         sys.exit = lambda *args: None
-        self.odoo = Environment()
+        self.odoo.reset()
         self.odoo.addbundles([self.odoo_beginners_dir], False)
         self.assertListEqual(list(self.odoo.get_notmet_dependencies()),
                              notmet_dependencies_should_be)
@@ -96,7 +99,7 @@ class TestEnvironment(unittest.TestCase):
                                       output)
 
     def test_05_satisfy_oca_dependencies(self):
-        self.odoo = Environment()
+        self.odoo.reset()
         self.odoo.addbundles([self.odoo_afr_dir], False)
         self.assertIn('addons-vauxoo', list(self.bundle_name_list(self.odoo)))
 

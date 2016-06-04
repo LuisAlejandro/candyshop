@@ -55,8 +55,10 @@ class TestBundle(unittest.TestCase):
         self.exampledir = os.path.join(self.testdir, 'examples')
         self.odoo_afr_dir = os.path.join(self.exampledir, 'odoo-afr')
         self.odoo_beginners_dir = os.path.join(self.exampledir, 'odoo-beginners')
+        self.oca_deps_dir = os.path.join(self.exampledir, 'oca-deps')
         self.odoo_afr = Bundle(self.odoo_afr_dir, exclude_tests=False)
         self.odoo_beginners = Bundle(self.odoo_beginners_dir, exclude_tests=False)
+        self.oca_deps = Bundle(self.oca_deps_dir, exclude_tests=False)
 
     def modules_slug_list(self, bundle):
         for module in bundle.modules:
@@ -96,7 +98,7 @@ class TestBundle(unittest.TestCase):
                                       ['bar', 'http://bar.foo/jhon', '8.0'],
                                       ['bundle', 'http://doe.com/joe', 'master'],
                                       ['odoo', 'http://another.url/', 'anotherbranch']]
-        self.assertListEqual(self.odoo_beginners.oca_dependencies,
+        self.assertListEqual(self.oca_deps.oca_dependencies,
                              oca_dependencies_should_be)
 
 

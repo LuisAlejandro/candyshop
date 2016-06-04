@@ -31,6 +31,7 @@ bundles can be consulted for different reports.
 
 import os
 import sys
+import shutil
 import tempfile
 
 from sh import git
@@ -178,6 +179,28 @@ class Environment(object):
                 raise
             else:
                 self.__clone_deptree()
+
+    def destroy(self):
+        """
+        Public method to destroy an ``Environment`` instance.
+
+        This method empties the bundle list and deletes the environment path,
+        including all previously clones bundles.
+
+        .. versionadded:: 0.1.0
+        """
+        self.bundles = []
+        shutil.rmtree(self.path)
+
+    def reset(self):
+        """
+        Public method to destroy and initialize the ``Environment`` instance.
+
+        This method calls ``self.destroy()`` on the instance and then
+        re-initializes the Odoo environment.
+        """
+        self.destroy()
+        self.__initialize_odoo()
 
     def get_bundle_path_list(self):
         """
