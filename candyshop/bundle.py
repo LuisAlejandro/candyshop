@@ -33,7 +33,6 @@ you cannot create or modify Bundles or Modules through these abstractions.
 from __future__ import print_function
 
 import os
-import re
 from ast import literal_eval
 
 from lxml import etree

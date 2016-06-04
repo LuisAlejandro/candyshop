@@ -30,6 +30,7 @@ other modules.
 """
 
 import os
+import re
 import fnmatch
 
 
