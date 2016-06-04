@@ -63,7 +63,7 @@ class ModuleProperties(object):
 
 
 def strip_comments_and_blanks(strng=None):
-    """
+    r"""
     Remove single-line comments and blank lines.
 
     This function receives a string and removes every line containing a comment
@@ -84,7 +84,7 @@ def strip_comments_and_blanks(strng=None):
     ...
     ... '''
     >>> strip_comments_and_blanks(s)
-    'bar\\nfoo'
+    'bar\nfoo'
 
     .. versionadded:: 0.1.0
     """
