@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
 import doctest
 import unittest
 
@@ -44,8 +45,11 @@ class TestModule(unittest.TestCase):
             {'view/openacademy_wizard_view.xml': ['openacademy']},
             {'view/openacademy_session_board.xml': ['openacademy']}
         ]
-        self.assertListEqual(sorted(list(self.openacademy.get_record_ids_module_references())),
-                             sorted(record_ids_should_be))
+
+        if sys.version_info < (3,):
+            self.assertCountEqual = self.assertItemsEqual
+        self.assertCountEqual(list(self.openacademy.get_record_ids_module_references()),
+                              record_ids_should_be)
 
 
 class TestBundle(unittest.TestCase):

@@ -105,7 +105,8 @@ class Environment(object):
             os.path.join(odoo_dir, 'openerp', 'addons')
         ])
 
-    def __git_clone(self, url, branch, path):
+    @staticmethod
+    def __git_clone(url, branch, path):
         """
         Private method to clone a git repository.
 

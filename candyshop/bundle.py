@@ -135,7 +135,8 @@ class Module(object):
             with open(self.manifest) as properties:
                 props = literal_eval(properties.read())
         except BaseException:
-            raise IOError('An error ocurred while reading {0}.'.format(self.manifest))
+            raise IOError(('An error ocurred while '
+                           'reading {0}.').format(self.manifest))
         else:
             return props
 
@@ -145,8 +146,9 @@ class Module(object):
 
         .. versionadded:: 0.1.0
         """
-        return hasattr(self.properties, 'data') and \
-            xmlfile.replace('{0}/'.format(self.path), '') in self.properties.data
+        return (hasattr(self.properties, 'data') and
+                xmlfile.replace('{0}/'.format(self.path), '')
+                in self.properties.data)
 
     def parse_xml_fromfile(self, xmlfile):
         """
@@ -255,10 +257,10 @@ class Module(object):
         """
         for xmldict in self.get_record_ids():
             for data, ids in xmldict.items():
-                record_ids = list({i.split('.')[0] for i in ids})
+                record_ids = [i.split('.')[0] for i in ids]
                 if not record_ids:
                     continue
-                yield {data: record_ids}
+                yield {data: list(set(record_ids))}
 
 
 class Bundle(object):
@@ -323,10 +325,9 @@ class Bundle(object):
         """
         for mfst in MANIFEST_FILES:
             for mods in find_files(self.path, mfst):
-                if self.exclude_tests:
-                    if 'tests' not in mods.split(os.sep):
-                        yield Module(os.path.dirname(mods), bundle=self)
-                else:
+                if ((self.exclude_tests and
+                     'tests' not in mods.split(os.sep)) or
+                   not self.exclude_tests):
                     yield Module(os.path.dirname(mods), bundle=self)
 
     def __get_oca_dependencies_file(self):
@@ -354,8 +355,8 @@ class Bundle(object):
             oca = strip_comments_and_blanks(f.read())
         for dep in [o.split() for o in oca.split('\n')]:
             if len(dep) < 2:
-                dep.append('https://github.com/{0}/{1}'.format(DEFAULT_OCA_USER,
-                                                               dep[0]))
+                dep.append('https://github.com/{0}/{1}'.format(
+                    DEFAULT_OCA_USER, dep[0]))
             if len(dep) < 3:
                 dep.append(DEFAULT_OCA_BRANCH)
             yield dep
