@@ -16,8 +16,8 @@ setup(
     author_email=__email__,
     url=__url__,
     description=__description__,
-    long_description='%s\n\n%s' % (open('README.rst').read(),
-                                   open('HISTORY.rst').read()),
+    long_description='{0}\n\n{1}'.format(open('README.rst').read(),
+                                         open('HISTORY.rst').read()),
     packages=[
         'candyshop',
     ],

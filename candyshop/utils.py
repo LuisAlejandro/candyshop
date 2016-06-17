@@ -91,7 +91,7 @@ def strip_comments_and_blanks(strng=None):
     return '\n'.join(filter(None, re.sub('\s*#.*', '', strng).split('\n')))
 
 
-def get_path(path=[]):
+def get_path(path=None):
     """
     Build and normalize a path.
 
@@ -110,6 +110,7 @@ def get_path(path=[]):
 
     .. versionadded:: 0.1.0
     """
+    path = path or []
     assert type(path) == list
     return os.path.normpath(os.path.realpath(
         os.path.abspath(os.path.join(*path))))

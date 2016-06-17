@@ -75,7 +75,7 @@ class Module(object):
         .. versionadded:: 0.1.0
         """
         assert os.path.isdir(path), \
-            '%s is not a directory or does not exist.' % path
+            '{0} is not a directory or does not exist.'.format(path)
         assert (isinstance(bundle, Bundle) or not bundle), \
             'Wrong bundle type.'
 
@@ -135,7 +135,7 @@ class Module(object):
             with open(self.manifest) as properties:
                 props = literal_eval(properties.read())
         except BaseException:
-            raise IOError('An error ocurred while reading %s.' % self.manifest)
+            raise IOError('An error ocurred while reading {0}.'.format(self.manifest))
         else:
             return props
 
@@ -146,7 +146,7 @@ class Module(object):
         .. versionadded:: 0.1.0
         """
         return hasattr(self.properties, 'data') and \
-            xmlfile.replace('%s/' % self.path, '') in self.properties.data
+            xmlfile.replace('{0}/'.format(self.path), '') in self.properties.data
 
     def parse_xml_fromfile(self, xmlfile):
         """
@@ -159,7 +159,7 @@ class Module(object):
         .. versionadded:: 0.1.0
         """
         assert self.__xmlfile_isfrom_module(xmlfile), \
-            'The file %s does not belong to this module.' % xmlfile
+            'The file {0} does not belong to this module.'.format(xmlfile)
         try:
             with open(xmlfile) as x:
                 doc = etree.parse(x)
@@ -212,7 +212,7 @@ class Module(object):
             if module and xml_module != module:
                 continue
             noupdate = record.getparent().get('noupdate', '0')
-            yield '%s.%s.noupdate=%s' % (xml_module, xml_id, noupdate)
+            yield '{0}.{1}.noupdate={2}'.format(xml_module, xml_id, noupdate)
 
     def get_record_ids(self):
         """
@@ -255,7 +255,7 @@ class Module(object):
         """
         for xmldict in self.get_record_ids():
             for data, ids in xmldict.items():
-                record_ids = list(set([i.split('.')[0] for i in ids]))
+                record_ids = list({i.split('.')[0] for i in ids})
                 if not record_ids:
                     continue
                 yield {data: record_ids}
@@ -286,7 +286,7 @@ class Bundle(object):
         .. versionadded:: 0.1.0
         """
         assert os.path.isdir(path), \
-            '%s is not a directory or does not exist.' % path
+            '{0} is not a directory or does not exist.'.format(path)
 
         #: Attribute ``Bundle.path`` (string): Refers to the absolute path
         #: of the root directory that contains the bundle.
@@ -354,8 +354,8 @@ class Bundle(object):
             oca = strip_comments_and_blanks(f.read())
         for dep in [o.split() for o in oca.split('\n')]:
             if len(dep) < 2:
-                dep.append('https://github.com/%s/%s' % (DEFAULT_OCA_USER,
-                                                         dep[0]))
+                dep.append('https://github.com/{0}/{1}'.format(DEFAULT_OCA_USER,
+                                                               dep[0]))
             if len(dep) < 3:
                 dep.append(DEFAULT_OCA_BRANCH)
             yield dep

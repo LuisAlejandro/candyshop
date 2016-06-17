@@ -118,7 +118,7 @@ class Environment(object):
         try:
             git.clone(url, path, quiet=True, depth=1, branch=branch)
         except BaseException:
-            print('There was a problem cloning %s.' % url)
+            print('There was a problem cloning {0}.'.format(url))
             raise
 
     def __clone_deptree(self):
@@ -139,7 +139,7 @@ class Environment(object):
                 self.__git_clone(url=url, branch=branch, path=bundle_dir)
                 self.addbundles([bundle_dir])
 
-    def __deps_notin_e(self, deps=[]):
+    def __deps_notin_e(self, deps=None):
         """
         Private method that informs about missing modules in the environment.
 
@@ -149,11 +149,12 @@ class Environment(object):
 
         .. versionadded:: 0.1.0
         """
+        deps = deps or []
         for dep in deps:
             if dep not in self.get_modules_slug_list():
                 yield dep
 
-    def addbundles(self, locations=[], exclude_tests=True):
+    def addbundles(self, locations=None, exclude_tests=True):
         """
         Public method that inserts bundles inside the environment.
 
@@ -167,6 +168,7 @@ class Environment(object):
 
         .. versionadded:: 0.1.0
         """
+        locations = locations or []
         for location in locations:
             location = os.path.abspath(location)
             if location in self.get_bundle_path_list():
@@ -175,7 +177,7 @@ class Environment(object):
                 self.bundles.append(Bundle(location, exclude_tests))
             except BaseException:
                 print(('There was a problem inserting the bundle'
-                       ' located at %s') % location)
+                       ' located at {0}').format(location))
                 raise
             else:
                 self.__clone_deptree()
@@ -313,11 +315,11 @@ class Environment(object):
                 bundle, data = list(item.items())[0]
                 module, depends = list(data.items())[0]
                 print('')
-                print('    Bundle: %s' % bundle)
-                print('    Module: %s' % module)
+                print('    Bundle: {0}'.format(bundle))
+                print('    Module: {0}'.format(module))
                 print('    Missing dependencies:')
                 for dep in depends:
-                    print('        - %s' % dep)
+                    print('        - {0}'.format(dep))
             print('')
             sys.exit(1)
         else:
@@ -339,11 +341,11 @@ class Environment(object):
                 bundle, data = item.items()[0]
                 xmlfile, depends = data.items()[0]
                 print('')
-                print('    Bundle: %s' % bundle)
-                print('    XML file: %s' % xmlfile)
+                print('    Bundle: {0}'.format(bundle))
+                print('    XML file: {0}'.format(xmlfile))
                 print('    Missing references:')
                 for dep in depends:
-                    print('        - %s' % dep)
+                    print('        - {0}'.format(dep))
             print('')
             sys.exit(1)
         else:

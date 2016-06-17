@@ -8,6 +8,12 @@
 .. image:: https://img.shields.io/travis/Vauxoo/odoo-candyshop.svg
            :target: https://travis-ci.org/Vauxoo/odoo-candyshop
 
+.. image:: https://coveralls.io/repos/github/Vauxoo/odoo-candyshop/badge.svg?branch=master
+           :target: https://coveralls.io/github/Vauxoo/odoo-candyshop?branch=master
+
+.. image:: https://www.quantifiedcode.com/api/v1/project/72f2154c6fbf464e931194f7015f6a65/badge.svg
+           :target: https://www.quantifiedcode.com/app/project/72f2154c6fbf464e931194f7015f6a65
+
 .. image:: https://readthedocs.org/projects/odoo-candyshop/badge/?version=latest
            :target: https://readthedocs.org/projects/odoo-candyshop/?badge=latest
 

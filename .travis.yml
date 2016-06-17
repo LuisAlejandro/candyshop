@@ -7,3 +7,4 @@ matrix:
           env: TOXENV=py35
 install: pip install -r requirements-dev.txt
 script: tox -e $TOXENV
+after_success: coveralls
