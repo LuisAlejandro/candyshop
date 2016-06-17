@@ -1,12 +1,12 @@
-.. image:: https://cdn.rawgit.com/Vauxoo/odoo-candyshop/master/docs/_static/banner.svg
+.. image:: https://cdn.rawgit.com/vauxoo/odoo-candyshop/master/docs/_static/banner.svg
 
 -----
 
 .. image:: https://img.shields.io/pypi/v/odoo-candyshop.svg
            :target: https://pypi.python.org/pypi/odoo-candyshop
 
-.. image:: https://img.shields.io/travis/vauxoo/odoo-candyshop.svg
-           :target: https://travis-ci.org/vauxoo/odoo-candyshop
+.. image:: https://img.shields.io/travis/Vauxoo/odoo-candyshop.svg
+           :target: https://travis-ci.org/Vauxoo/odoo-candyshop
 
 .. image:: https://readthedocs.org/projects/odoo-candyshop/badge/?version=latest
            :target: https://readthedocs.org/projects/odoo-candyshop/?badge=latest
