@@ -1,4 +1,4 @@
-.. image:: https://raw.githubusercontent.com/vauxoo/odoo-candyshop/master/docs/_static/banner.svg
+.. image:: https://cdn.rawgit.com/Vauxoo/odoo-candyshop/master/docs/_static/banner.svg
 
 -----
 
