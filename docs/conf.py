@@ -57,7 +57,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Odoo Candyshop'
-copyright = u'2016, Vauxoo'
+copyright = u'2016, Odoo Candyshop Developers'
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
@@ -122,7 +122,7 @@ html_theme_options = {
     'logo_name': False,
     'logo_text_align': 'center',
     'description': candyshop.__description__,
-    'github_user': 'Vauxoo',
+    'github_user': 'LuisAlejandro',
     'github_repo': 'odoo-candyshop',
     'travis_button': True,
     'link': '#af5d7b',

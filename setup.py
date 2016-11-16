@@ -6,7 +6,7 @@ try:
 except ImportError:
     from distutils.core import setup
 
-from candyshop import (__author__, __email__, __version__,__url__,
+from candyshop import (__author__, __email__, __version__, __url__,
                        __description__)
 
 setup(

@@ -5,7 +5,7 @@ Authors
 Development Lead
 ----------------
 
-* Luis Alejandro Martínez Faneyth <luisalejandro@vauxoo.com>
+* Luis Alejandro Martínez Faneyth <luis@huntingbears.com.ve>
 
 Contributors
 ------------
