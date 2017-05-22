@@ -1,3 +1,6 @@
+.. image:: https://badge.waffle.io/LuisAlejandro/odoo-candyshop.png?label=ready&title=Ready 
+ :target: https://waffle.io/LuisAlejandro/odoo-candyshop?utm_source=badge
+ :alt: 'Stories in Ready'
 .. image:: https://cdn.rawgit.com/LuisAlejandro/odoo-candyshop/master/docs/_static/banner.svg
 
 -----
