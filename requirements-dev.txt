@@ -1,5 +1,5 @@
 sh==1.12.14
-lxml==3.6.0
+lxml==3.8.0
 bumpversion==0.5.3
 wheel==0.23.0
 watchdog==0.8.3
