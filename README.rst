@@ -20,6 +20,10 @@
    :target: https://codeclimate.com/github/LuisAlejandro/pypicontents
    :alt: Code Climate
 
+.. image:: https://pyup.io/repos/github/LuisAlejandro/pipsalabim/shield.svg
+   :target: https://pyup.io/repos/github/LuisAlejandro/pipsalabim/
+   :alt: Updates
+
 .. image:: https://readthedocs.org/projects/odoo-candyshop/badge/?version=latest
    :target: https://readthedocs.org/projects/odoo-candyshop/?badge=latest
    :alt: Read The Docs
@@ -184,7 +188,7 @@ Made with :heart: and :hamburger:
 
 .. _Patreon: https://www.patreon.com/luisalejandro
 .. _Flattr: https://flattr.com/profile/luisalejandro
-.. _PayPal: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8LPXHQY8QE8Y
+.. _PayPal: https://www.paypal.me/martinezfaneyth
 .. _LuisAlejandroTwitter: https://twitter.com/LuisAlejandro
 .. _LuisAlejandroGitHub: https://github.com/LuisAlejandro
 .. _huntingbears.com.ve: http://huntingbears.com.ve
