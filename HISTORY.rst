@@ -2,6 +2,14 @@ Changelog
 =========
 
 
+0.1.3 (2017-07-17)
+------------------
+
+Fix
+~~~
+- Fixing links. [Luis Alejandro Martínez Faneyth]
+
+
 0.1.2 (2017-07-17)
 ------------------
 
@@ -11,6 +19,7 @@ Changes
 
 Other
 ~~~~~
+- Updating Changelog and version. [Luis Alejandro Martínez Faneyth]
 - Updating Changelog and version. [Luis Alejandro martínez Faneyth]
 
 
