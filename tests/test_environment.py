@@ -6,7 +6,6 @@ from __future__ import print_function
 import os
 import sys
 import doctest
-import unittest
 from contextlib import contextmanager
 
 from candyshop.environment import Environment
@@ -16,6 +15,12 @@ try:
 except ImportError:
     from io import StringIO
 
+if sys.version_info[:2] == (2, 6):
+    import unittest2 as unittest
+else:
+    import unittest
+
+
 @contextmanager
 def capture(command, *args, **kwargs):
     out, sys.stdout = sys.stdout, StringIO()
@@ -24,14 +29,17 @@ def capture(command, *args, **kwargs):
     yield sys.stdout.read()
     sys.stdout = out
 
+
 class TestEnvironment(unittest.TestCase):
 
     def setUp(self):
+
         self.testdir = os.path.dirname(os.path.abspath(__file__))
         self.exampledir = os.path.join(self.testdir, 'examples')
         self.odoo_afr_dir = os.path.join(self.exampledir, 'odoo-afr')
-        self.odoo_beginners_dir = os.path.join(self.exampledir, 'odoo-beginners')
-        self.odoo = Environment()
+        self.odoo_beginners_dir = os.path.join(self.exampledir,
+                                               'odoo-beginners')
+        self.odoo = Environment(branch=os.environ.get('ODOO_BRANCH', '8.0'))
 
     def tearDown(self):
         self.odoo.destroy()
@@ -45,10 +53,11 @@ class TestEnvironment(unittest.TestCase):
                              sorted(['addons', 'addons']))
 
     def test_02_addbundles(self):
-        self.odoo.addbundles([self.odoo_afr_dir, self.odoo_beginners_dir], False)
+        self.odoo.addbundles([self.odoo_afr_dir, self.odoo_beginners_dir],
+                             False)
         self.assertListEqual(sorted(list(self.bundle_name_list(self.odoo))),
-                             sorted(['addons', 'addons', 'addons-vauxoo', 'odoo-afr',
-                                     'odoo-beginners']))
+                             sorted(['addons', 'addons', 'addons-vauxoo',
+                                     'odoo-afr', 'odoo-beginners']))
 
     def test_03_unexistent_record_ids(self):
         notmet_record_ids_should_be = [
@@ -108,6 +117,6 @@ def load_tests(loader, tests, pattern):
     tests.addTests(doctest.DocTestSuite('candyshop.environment'))
     return tests
 
+
 if __name__ == '__main__':
-    import sys
     sys.exit(unittest.main())

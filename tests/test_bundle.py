@@ -4,9 +4,13 @@
 import os
 import sys
 import doctest
-import unittest
 
 from candyshop.bundle import Bundle, Module
+
+if sys.version_info[:2] == (2, 6):
+    import unittest2 as unittest
+else:
+    import unittest
 
 
 class TestModule(unittest.TestCase):
@@ -140,10 +144,11 @@ class TestBrokenBundle(unittest.TestCase):
             Bundle, self.is_not_package_dir, exclude_tests=False
         )
 
+
 def load_tests(loader, tests, pattern):
     tests.addTests(doctest.DocTestSuite('candyshop.bundle'))
     return tests
 
+
 if __name__ == '__main__':
-    import sys
     sys.exit(unittest.main())
