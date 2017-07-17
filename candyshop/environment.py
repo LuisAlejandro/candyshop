@@ -336,8 +336,8 @@ class Environment(object):
         if report:
             print('The following record ids are not found in the environment:')
             for item in report:
-                bundle, data = item.items()[0]
-                xmlfile, depends = data.items()[0]
+                bundle, data = list(item.items())[0]
+                xmlfile, depends = list(data.items())[0]
                 print('')
                 print('    Bundle: {0}'.format(bundle))
                 print('    XML file: {0}'.format(xmlfile))

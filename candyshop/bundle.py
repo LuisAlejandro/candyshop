@@ -30,6 +30,7 @@ you cannot create or modify Bundles or Modules through these abstractions.
 from __future__ import print_function
 
 import os
+import sys
 from ast import literal_eval
 
 from lxml import etree
@@ -40,9 +41,7 @@ MANIFEST_FILES = ['__odoo__.py', '__openerp__.py', '__terp__.py']
 DEFAULT_OCA_USER = 'OCA'
 DEFAULT_OCA_BRANCH = '8.0'
 
-try:
-    basestring
-except NameError:
+if not sys.version_info < (3,):
     basestring = str
 
 
@@ -160,8 +159,7 @@ class Module(object):
         assert self.__xmlfile_isfrom_module(xmlfile), \
             'The file {0} does not belong to this module.'.format(xmlfile)
         try:
-            with open(xmlfile) as x:
-                doc = etree.parse(x)
+            doc = etree.parse(xmlfile)
         except etree.XMLSyntaxError as e:
             return e.message
         else:
