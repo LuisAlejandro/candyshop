@@ -2,6 +2,18 @@ Changelog
 =========
 
 
+0.1.2 (2017-07-17)
+------------------
+
+Changes
+~~~~~~~
+- Changing name to Candyshop. [Luis Alejandro martínez Faneyth]
+
+Other
+~~~~~
+- Updating Changelog and version. [Luis Alejandro martínez Faneyth]
+
+
 0.1.1 (2017-07-17)
 ------------------
 
