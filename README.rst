@@ -1,19 +1,19 @@
-.. image:: https://gitcdn.xyz/repo/LuisAlejandro/odoo-candyshop/master/docs/_static/banner.svg
+.. image:: https://gitcdn.xyz/repo/LuisAlejandro/candyshop/master/docs/_static/banner.svg
 
 ..
 
     An assistant to determine if all your dependencies are declared properly in your odoo module.
 
-.. image:: https://img.shields.io/pypi/v/odoo-candyshop.svg
-   :target: https://pypi.python.org/pypi/odoo-candyshop
+.. image:: https://img.shields.io/pypi/v/candyshop.svg
+   :target: https://pypi.python.org/pypi/candyshop
    :alt: PyPI Package
 
-.. image:: https://img.shields.io/travis/LuisAlejandro/odoo-candyshop.svg
-   :target: https://travis-ci.org/LuisAlejandro/odoo-candyshop
+.. image:: https://img.shields.io/travis/LuisAlejandro/candyshop.svg
+   :target: https://travis-ci.org/LuisAlejandro/candyshop
    :alt: Travis CI
 
-.. image:: https://coveralls.io/repos/github/LuisAlejandro/odoo-candyshop/badge.svg?branch=master
-   :target: https://coveralls.io/github/LuisAlejandro/odoo-candyshop?branch=master
+.. image:: https://coveralls.io/repos/github/LuisAlejandro/candyshop/badge.svg?branch=master
+   :target: https://coveralls.io/github/LuisAlejandro/candyshop?branch=master
    :alt: Coveralls
 
 .. image:: https://codeclimate.com/github/LuisAlejandro/pypicontents/badges/gpa.svg
@@ -24,16 +24,16 @@
    :target: https://pyup.io/repos/github/LuisAlejandro/pipsalabim/
    :alt: Updates
 
-.. image:: https://readthedocs.org/projects/odoo-candyshop/badge/?version=latest
-   :target: https://readthedocs.org/projects/odoo-candyshop/?badge=latest
+.. image:: https://readthedocs.org/projects/candyshop/badge/?version=latest
+   :target: https://readthedocs.org/projects/candyshop/?badge=latest
    :alt: Read The Docs
 
-.. image:: https://cla-assistant.io/readme/badge/LuisAlejandro/odoo-candyshop
-   :target: https://cla-assistant.io/LuisAlejandro/odoo-candyshop
+.. image:: https://cla-assistant.io/readme/badge/LuisAlejandro/candyshop
+   :target: https://cla-assistant.io/LuisAlejandro/candyshop
    :alt: Contributor License Agreement
 
-.. image:: https://badges.gitter.im/LuisAlejandro/odoo-candyshop.svg
-   :target: https://gitter.im/LuisAlejandro/odoo-candyshop
+.. image:: https://badges.gitter.im/LuisAlejandro/candyshop.svg
+   :target: https://gitter.im/LuisAlejandro/candyshop
    :alt: Gitter Chat
 
 |
@@ -41,7 +41,7 @@
 
 .. _full documentation: https://pipsalabim.readthedocs.org
 
-Odoo Candyshop is a helper to determine if all your dependencies are declared
+Candyshop is a helper to determine if all your dependencies are declared
 properly. A Candyshop is a place where you can pick sweets and candies from
 a list of wonderful options, but choose wisely.
 
@@ -65,22 +65,22 @@ Getting started
 Installation
 ------------
 
-.. _PyPI: https://pypi.python.org/pypi/odoo-candyshop
+.. _PyPI: https://pypi.python.org/pypi/candyshop
 
-The ``odoo-candyshop`` program is written in python and hosted on PyPI_. Therefore, you can use
+The ``candyshop`` program is written in python and hosted on PyPI_. Therefore, you can use
 pip to install the stable version::
 
-    $ pip install --upgrade odoo-candyshop
+    $ pip install --upgrade candyshop
 
 If you want to install the development version (not recomended), you can install
 directlty from GitHub like this::
 
-    $ pip install --upgrade https://github.com/LuisAlejandro/odoo-candyshop/archive/master.tar.gz
+    $ pip install --upgrade https://github.com/LuisAlejandro/candyshop/archive/master.tar.gz
 
 Usage
 -----
 
-Here you can consult practical uses for some of the Odoo Candyshop functions.
+Here you can consult practical uses for some of the Candyshop functions.
 For a more detailed review on what you can do with it, we recommend you to read
 the `api` documentation.
 
@@ -149,7 +149,7 @@ and ask for specific information about them. For example::
 Getting help
 ============
 
-.. _Gitter Chat: https://gitter.im/LuisAlejandro/odoo-candyshop
+.. _Gitter Chat: https://gitter.im/LuisAlejandro/candyshop
 .. _StackOverflow: http://stackoverflow.com/questions/ask
 
 If you have any doubts or problems, suscribe to our `Gitter Chat`_ and ask for help. You can also
@@ -177,7 +177,7 @@ License
 .. _AUTHORS.rst: AUTHORS.rst
 .. _GPL-3 License: LICENSE.rst
 
-Copyright 2016-2017, Odoo Candyshop Developers (read AUTHORS.rst_ for a full list of copyright holders).
+Copyright 2016-2017, Candyshop Developers (read AUTHORS.rst_ for a full list of copyright holders).
 
 Released under a `GPL-3 License`_ (read COPYING.rst_ for license details).
 
