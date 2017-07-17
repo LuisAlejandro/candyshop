@@ -16,12 +16,12 @@
    :target: https://coveralls.io/github/LuisAlejandro/candyshop?branch=master
    :alt: Coveralls
 
-.. image:: https://codeclimate.com/github/LuisAlejandro/pypicontents/badges/gpa.svg
-   :target: https://codeclimate.com/github/LuisAlejandro/pypicontents
+.. image:: https://codeclimate.com/github/LuisAlejandro/candyshop/badges/gpa.svg
+   :target: https://codeclimate.com/github/LuisAlejandro/candyshop
    :alt: Code Climate
 
-.. image:: https://pyup.io/repos/github/LuisAlejandro/pipsalabim/shield.svg
-   :target: https://pyup.io/repos/github/LuisAlejandro/pipsalabim/
+.. image:: https://pyup.io/repos/github/LuisAlejandro/candyshop/shield.svg
+   :target: https://pyup.io/repos/github/LuisAlejandro/candyshop/
    :alt: Updates
 
 .. image:: https://readthedocs.org/projects/candyshop/badge/?version=latest
@@ -39,7 +39,7 @@
 |
 |
 
-.. _full documentation: https://pipsalabim.readthedocs.org
+.. _full documentation: https://candyshop.readthedocs.org
 
 Candyshop is a helper to determine if all your dependencies are declared
 properly. A Candyshop is a place where you can pick sweets and candies from
