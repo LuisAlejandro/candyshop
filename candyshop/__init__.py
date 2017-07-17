@@ -32,7 +32,7 @@ as well as functions to resolve dependency trees.
 
 __author__ = 'Luis Alejandro Martínez Faneyth'
 __email__ = 'luis@huntingbears.com.ve'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 __url__ = 'https://github.com/LuisAlejandro/odoo-candyshop'
 __description__ = '''Odoo Candyshop is a helper to determine if all your
  dependencies are declared properly.'''
