@@ -2,7 +2,7 @@
 Use cases
 =========
 
-Here you can consult practical uses for some of the Odoo Candyshop functions.
+Here you can consult practical uses for some of the Candyshop functions.
 For a more detailed review on what you can do with it, we recommend you to read
 the :doc:`api` documentation.
 

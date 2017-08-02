@@ -56,8 +56,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Odoo Candyshop'
-copyright = u'2016, Odoo Candyshop Developers'
+project = u'Candyshop'
+copyright = u'2016, Candyshop Developers'
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
@@ -123,7 +123,7 @@ html_theme_options = {
     'logo_text_align': 'center',
     'description': candyshop.__description__,
     'github_user': 'LuisAlejandro',
-    'github_repo': 'odoo-candyshop',
+    'github_repo': 'candyshop',
     'travis_button': True,
     'link': '#af5d7b',
     'link_hover': '#512440',
@@ -228,7 +228,7 @@ latex_elements = {
 # [howto/manual]).
 latex_documents = [
     ('index', 'candyshop.tex',
-     u'Odoo Candyshop Documentation',
+     u'Candyshop Documentation',
      u'Luis Alejandro Martínez Faneyth', 'manual'),
 ]
 
@@ -259,7 +259,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'candyshop',
-     u'Odoo Candyshop Documentation',
+     u'Candyshop Documentation',
      [u'Luis Alejandro Martínez Faneyth'], 1)
 ]
 
@@ -274,7 +274,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     ('index', 'candyshop',
-     u'Odoo Candyshop Documentation',
+     u'Candyshop Documentation',
      u'Luis Alejandro Martínez Faneyth',
      'candyshop',
      'One line description of project.',
