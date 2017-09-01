@@ -22,7 +22,7 @@ sphinx==1.4.9; python_version == '2.6' or python_version == '3.2'				# pyup: ign
 unittest2; python_version == '2.6'												# pyup: ignore
 
 sh==1.12.14
-lxml
+lxml==3.8.0
 gitchangelog
 bumpversion
 wheel
