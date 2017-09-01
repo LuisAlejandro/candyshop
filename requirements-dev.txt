@@ -23,7 +23,7 @@ unittest2; python_version == '2.6'												# pyup: ignore
 
 sh==1.12.14
 lxml==3.8.0
-gitchangelog
+gitchangelog==3.0.3
 bumpversion
 wheel
 tox
