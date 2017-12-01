@@ -26,5 +26,5 @@ lxml==4.1.1
 gitchangelog==3.0.3
 bumpversion==0.5.3
 wheel==0.30.0
-tox==2.7.0
+tox==2.9.1
 coveralls==1.2.0
