@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 #
-#   This file is part of Odoo Candyshop
-#   Copyright (C) 2016, Odoo Candyshop Developers
+#   This file is part of Candyshop
+#   Copyright (C) 2016, Candyshop Developers
 #   All rights reserved.
 #
 #   Please refer to AUTHORS.md for a complete list of Copyright
 #   holders.
 #
-#   Odoo Candyshop is free software: you can redistribute it and/or modify
+#   Candyshop is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU Affero General Public License as published
 #   by the Free Software Foundation, either version 3 of the License, or
 #   (at your option) any later version.
 #
-#   Odoo Candyshop is distributed in the hope that it will be useful,
+#   Candyshop is distributed in the hope that it will be useful,
 #   but WITHOUT ANY WARRANTY; without even the implied warranty of
 #   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #   GNU Affero General Public License for more details.
@@ -30,6 +30,7 @@ you cannot create or modify Bundles or Modules through these abstractions.
 from __future__ import print_function
 
 import os
+import sys
 from ast import literal_eval
 
 from lxml import etree
@@ -40,9 +41,7 @@ MANIFEST_FILES = ['__odoo__.py', '__openerp__.py', '__terp__.py']
 DEFAULT_OCA_USER = 'OCA'
 DEFAULT_OCA_BRANCH = '8.0'
 
-try:
-    basestring
-except NameError:
+if not sys.version_info < (3,):
     basestring = str
 
 
@@ -160,8 +159,7 @@ class Module(object):
         assert self.__xmlfile_isfrom_module(xmlfile), \
             'The file {0} does not belong to this module.'.format(xmlfile)
         try:
-            with open(xmlfile) as x:
-                doc = etree.parse(x)
+            doc = etree.parse(xmlfile)
         except etree.XMLSyntaxError as e:
             return e.message
         else:

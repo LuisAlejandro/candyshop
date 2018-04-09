@@ -210,8 +210,3 @@ __ LuisAlejandroTwitter_
 
 |
 |
-
-
-.. image:: https://badges.gitter.im/LuisAlejandro/candyshop.svg
-   :alt: Join the chat at https://gitter.im/LuisAlejandro/candyshop
-   :target: https://gitter.im/LuisAlejandro/candyshop?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge

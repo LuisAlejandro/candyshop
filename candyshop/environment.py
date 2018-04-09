@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 #
-#   This file is part of Odoo Candyshop
-#   Copyright (C) 2016, Odoo Candyshop Developers
+#   This file is part of Candyshop
+#   Copyright (C) 2016, Candyshop Developers
 #   All rights reserved.
 #
 #   Please refer to AUTHORS.md for a complete list of Copyright
 #   holders.
 #
-#   Odoo Candyshop is free software: you can redistribute it and/or modify
+#   Candyshop is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU Affero General Public License as published
 #   by the Free Software Foundation, either version 3 of the License, or
 #   (at your option) any later version.
 #
-#   Odoo Candyshop is distributed in the hope that it will be useful,
+#   Candyshop is distributed in the hope that it will be useful,
 #   but WITHOUT ANY WARRANTY; without even the implied warranty of
 #   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #   GNU Affero General Public License for more details.
@@ -336,8 +336,8 @@ class Environment(object):
         if report:
             print('The following record ids are not found in the environment:')
             for item in report:
-                bundle, data = item.items()[0]
-                xmlfile, depends = data.items()[0]
+                bundle, data = list(item.items())[0]
+                xmlfile, depends = list(data.items())[0]
                 print('')
                 print('    Bundle: {0}'.format(bundle))
                 print('    XML file: {0}'.format(xmlfile))
