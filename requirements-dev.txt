@@ -1,4 +1,4 @@
-setuptools==36.3.0; python_version != '2.6' and python_version != '3.2'
+setuptools==36.5.0; python_version != '2.6' and python_version != '3.2'
 setuptools==29.0.1; python_version == '2.6' or python_version == '3.2'			# pyup: ignore
 
 pip==9.0.1; python_version != '3.2'
@@ -16,15 +16,15 @@ virtualenv==13.1.2; python_version == '3.2'										# pyup: ignore
 coverage==4.4.1; python_version != '3.2'
 coverage==3.7.1; python_version == '3.2'										# pyup: ignore
 
-sphinx==1.6.3; python_version != '2.6' and python_version != '3.2'
+sphinx==1.6.4; python_version != '2.6' and python_version != '3.2'
 sphinx==1.4.9; python_version == '2.6' or python_version == '3.2'				# pyup: ignore
 
 unittest2; python_version == '2.6'												# pyup: ignore
 
 sh==1.12.14
-lxml==3.8.0
+lxml==4.0.0
 gitchangelog==3.0.3
 bumpversion==0.5.3
-wheel==0.29.0
-tox==2.7.0
+wheel==0.30.0
+tox==2.9.1
 coveralls==1.2.0
