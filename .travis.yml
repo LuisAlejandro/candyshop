@@ -20,7 +20,7 @@ matrix:
 install:
     - |
         if [  "${TRAVIS_PYTHON_VERSION}" == "3.2" ]; then
-            pip install cython==0.26.1
+            pip install cython==0.20
         fi
     - pip freeze
     - pip install -r requirements-dev.txt
