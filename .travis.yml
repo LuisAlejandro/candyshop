@@ -18,7 +18,7 @@ matrix:
         - python: "3.6"
           env: TOXENV=py36
 install:
-    -|
+    - |
         if [  "${TRAVIS_PYTHON_VERSION}" == "3.2" ]; then
             pip install cython==0.26.1
         fi
