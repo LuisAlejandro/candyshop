@@ -31,7 +31,7 @@ unittest2; python_version == '2.6'												# pyup: ignore
 
 cython==0.20; python_version == '3.2'											# pyup: ignore
 
-lxml==4.2.1; python_version != '3.2'
+lxml==4.2.3; python_version != '3.2'
 lxml==3.7.2; python_version == '3.2'		    								# pyup: ignore
 
 sh==1.12.14
