@@ -2,5 +2,5 @@ sh==1.12.14
 
 cython==0.20; python_version == '3.2'											# pyup: ignore
 
-lxml==4.2.1; python_version != '3.2'
+lxml==4.2.3; python_version != '3.2'
 lxml==3.7.2; python_version == '3.2'		    								# pyup: ignore
