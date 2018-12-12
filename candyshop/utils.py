@@ -85,7 +85,7 @@ def strip_comments_and_blanks(strng=None):
 
     .. versionadded:: 0.1.0
     """
-    return '\n'.join(filter(None, re.sub('\s*#.*', '', strng).split('\n')))
+    return '\n'.join(filter(None, re.sub(r'\s*#.*', '', strng).split('\n')))
 
 
 def get_path(path=None):
