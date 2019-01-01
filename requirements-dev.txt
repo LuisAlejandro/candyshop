@@ -2,7 +2,7 @@ setuptools==40.6.3
 pip==18.1
 flake8==3.6.0
 wheel==0.32.3
-tox==3.5.3
+tox==3.6.1
 pydocstyle==3.0.0
 virtualenv==16.1.0
 coverage==4.5.2
