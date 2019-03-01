@@ -11,4 +11,4 @@ lxml==4.3.2
 sh==1.12.14
 gitchangelog==3.0.4
 bumpversion==0.5.3
-coveralls==1.5.1
+coveralls==1.6.0
