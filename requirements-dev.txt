@@ -3,7 +3,7 @@ pip==19.2.3
 flake8==3.7.8
 wheel==0.33.6
 tox==3.13.2
-pydocstyle==3.0.0
+pydocstyle==4.0.1
 virtualenv==16.4.3
 coverage==4.5.2
 sphinx==1.8.4
