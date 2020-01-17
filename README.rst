@@ -12,8 +12,8 @@
    :target: https://travis-ci.org/CollageLabs/candyshop
    :alt: Travis CI
 
-.. image:: https://coveralls.io/repos/github/CollageLabs/candyshop/badge.svg?branch=master
-   :target: https://coveralls.io/github/CollageLabs/candyshop?branch=master
+.. image:: https://coveralls.io/repos/github/CollageLabs/candyshop/badge.svg?branch=develop
+   :target: https://coveralls.io/github/CollageLabs/candyshop?branch=develop
    :alt: Coveralls
 
 .. image:: https://codeclimate.com/github/CollageLabs/candyshop/badges/gpa.svg
