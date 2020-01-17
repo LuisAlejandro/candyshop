@@ -184,26 +184,15 @@ Released under a `GPL-3 License`_ (read COPYING.rst_ for license details).
 Made with :heart: and :hamburger:
 =================================
 
-.. image:: http://huntingbears.com.ve/static/img/site/banner.svg
+.. image:: https://rawcdn.githack.com/CollageLabs/candyshop/4fc50d0f22c7c221275586b193b9e0b3170a0340/docs/_static/promo-open-source.svg
 
-.. _Patreon: https://www.patreon.com/CollageLabs
-.. _Flattr: https://flattr.com/profile/CollageLabs
-.. _PayPal: https://www.paypal.me/martinezfaneyth
 .. _CollageLabsTwitter: https://twitter.com/CollageLabs
 .. _CollageLabsGitHub: https://github.com/CollageLabs
-.. _huntingbears.com.ve: http://huntingbears.com.ve
+.. _collagelabs.org: http://collagelabs.org
 
 |
 
-My name is Luis (`@CollageLabs`__) and I'm a Free and
-Open-Source Software developer living in Maracay, Venezuela.
-
-__ CollageLabsTwitter_
-
-If you like what I do, please support me on Patreon_, Flattr_, or donate via PayPal_,
-so that I can continue doing what I love.
-
-    Blog huntingbears.com.ve_ · GitHub `@CollageLabs`__ · Twitter `@CollageLabs`__
+    Web collagelabs.org_ · GitHub `@CollageLabs`__ · Twitter `@CollageLabs`__
 
 __ CollageLabsGitHub_
 __ CollageLabsTwitter_
