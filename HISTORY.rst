@@ -2,6 +2,264 @@ Changelog
 =========
 
 
+0.1.6 (2020-01-18)
+------------------
+
+Changes
+~~~~~~~
+- Removing old versions of python. [Luis Alejandro Martínez Faneyth]
+- Improving readme. [Luis Alejandro Martínez Faneyth]
+- Improving readme. [Luis Alejandro Martínez Faneyth]
+- Starting rebranding of project. [Luis Alejandro Martínez Faneyth]
+
+Other
+~~~~~
+- Scheduled monthly dependency update for November (#37) [Luis Alejandro
+  Martínez Faneyth, pyup.io bot]
+
+  * Update setuptools from 40.8.0 to 41.6.0
+
+  * Update pip from 19.0.3 to 19.3.1
+
+  * Update flake8 from 3.7.7 to 3.7.9
+
+  * Update wheel from 0.33.1 to 0.33.6
+
+  * Update tox from 3.7.0 to 3.14.0
+
+  * Update pydocstyle from 3.0.0 to 4.0.1
+
+  * Update virtualenv from 16.4.3 to 16.7.7
+
+  * Update coverage from 4.5.2 to 4.5.4
+
+  * Update sphinx from 1.8.4 to 2.2.1
+
+  * Update lxml from 4.3.2 to 4.4.1
+
+  * Update lxml from 4.3.2 to 4.4.1
+
+  * Update coveralls from 1.6.0 to 1.8.2
+- Scheduled monthly dependency update for October (#36) [Luis Alejandro
+  Martínez Faneyth, pyup.io bot]
+
+  * Update setuptools from 40.8.0 to 41.2.0
+
+  * Update pip from 19.0.3 to 19.2.3
+
+  * Update flake8 from 3.7.7 to 3.7.8
+
+  * Update wheel from 0.33.1 to 0.33.6
+
+  * Update tox from 3.7.0 to 3.14.0
+
+  * Update pydocstyle from 3.0.0 to 4.0.1
+
+  * Update virtualenv from 16.4.3 to 16.7.5
+
+  * Update coverage from 4.5.2 to 4.5.4
+
+  * Update sphinx from 1.8.4 to 2.2.0
+
+  * Update lxml from 4.3.2 to 4.4.1
+
+  * Update lxml from 4.3.2 to 4.4.1
+
+  * Update coveralls from 1.6.0 to 1.8.2
+- Scheduled monthly dependency update for September (#35) [Luis
+  Alejandro Martínez Faneyth, pyup.io bot]
+
+  * Update setuptools from 40.8.0 to 41.2.0
+
+  * Update pip from 19.0.3 to 19.2.3
+
+  * Update flake8 from 3.7.7 to 3.7.8
+
+  * Update wheel from 0.33.1 to 0.33.6
+
+  * Update tox from 3.7.0 to 3.13.2
+
+  * Update pydocstyle from 3.0.0 to 4.0.1
+
+  * Update virtualenv from 16.4.3 to 16.7.4
+
+  * Update coverage from 4.5.2 to 4.5.4
+
+  * Update sphinx from 1.8.4 to 2.2.0
+
+  * Update lxml from 4.3.2 to 4.4.1
+
+  * Update lxml from 4.3.2 to 4.4.1
+
+  * Update coveralls from 1.6.0 to 1.8.2
+- Scheduled monthly dependency update for August (#34) [Luis Alejandro
+  Martínez Faneyth, pyup.io bot]
+
+  * Update setuptools from 40.8.0 to 41.0.1
+
+  * Update pip from 19.0.3 to 19.2.1
+
+  * Update flake8 from 3.7.7 to 3.7.8
+
+  * Update wheel from 0.33.1 to 0.33.4
+
+  * Update tox from 3.7.0 to 3.13.2
+
+  * Update pydocstyle from 3.0.0 to 4.0.0
+
+  * Update virtualenv from 16.4.3 to 16.7.2
+
+  * Update coverage from 4.5.2 to 4.5.4
+
+  * Update sphinx from 1.8.4 to 2.1.2
+
+  * Update lxml from 4.3.2 to 4.4.0
+
+  * Update lxml from 4.3.2 to 4.4.0
+
+  * Update coveralls from 1.6.0 to 1.8.2
+- Scheduled monthly dependency update for July (#33) [Luis Alejandro
+  Martínez Faneyth, pyup.io bot]
+
+  * Update setuptools from 40.8.0 to 41.0.1
+
+  * Update pip from 19.0.3 to 19.1.1
+
+  * Update wheel from 0.33.1 to 0.33.4
+
+  * Update tox from 3.7.0 to 3.13.1
+
+  * Update virtualenv from 16.4.3 to 16.6.1
+
+  * Update coverage from 4.5.2 to 4.5.3
+
+  * Update sphinx from 1.8.4 to 2.1.2
+
+  * Update lxml from 4.3.2 to 4.3.4
+
+  * Update lxml from 4.3.2 to 4.3.4
+
+  * Update coveralls from 1.6.0 to 1.8.1
+- Scheduled monthly dependency update for June (#32) [Luis Alejandro
+  Martínez Faneyth, pyup.io bot]
+
+  * Update setuptools from 40.8.0 to 41.0.1
+
+  * Update pip from 19.0.3 to 19.1.1
+
+  * Update wheel from 0.33.1 to 0.33.4
+
+  * Update tox from 3.7.0 to 3.12.1
+
+  * Update virtualenv from 16.4.3 to 16.6.0
+
+  * Update coverage from 4.5.2 to 4.5.3
+
+  * Update sphinx from 1.8.4 to 2.0.1
+
+  * Update lxml from 4.3.2 to 4.3.3
+
+  * Update lxml from 4.3.2 to 4.3.3
+
+  * Update coveralls from 1.6.0 to 1.7.0
+- Scheduled monthly dependency update for May (#31) [Luis Alejandro
+  Martínez Faneyth, pyup.io bot]
+
+  * Update setuptools from 40.8.0 to 41.0.1
+
+  * Update pip from 19.0.3 to 19.1
+
+  * Update tox from 3.7.0 to 3.9.0
+
+  * Update virtualenv from 16.4.3 to 16.5.0
+
+  * Update coverage from 4.5.2 to 4.5.3
+
+  * Update sphinx from 1.8.4 to 2.0.1
+
+  * Update lxml from 4.3.2 to 4.3.3
+
+  * Update lxml from 4.3.2 to 4.3.3
+
+  * Update coveralls from 1.6.0 to 1.7.0
+- Scheduled monthly dependency update for April (#30) [pyup.io bot]
+
+  * Update tox from 3.7.0 to 3.8.4
+
+  * Update coverage from 4.5.2 to 4.5.3
+
+  * Update sphinx from 1.8.4 to 2.0.0
+
+  * Update lxml from 4.3.2 to 4.3.3
+
+  * Update lxml from 4.3.2 to 4.3.3
+
+  * Update coveralls from 1.6.0 to 1.7.0
+- Scheduled monthly dependency update for March (#29) [pyup.io bot]
+
+  * Update setuptools from 40.7.2 to 40.8.0
+
+  * Update pip from 19.0.1 to 19.0.3
+
+  * Update flake8 from 3.7.4 to 3.7.7
+
+  * Update wheel from 0.32.3 to 0.33.1
+
+  * Update virtualenv from 16.3.0 to 16.4.3
+
+  * Update sphinx from 1.8.3 to 1.8.4
+
+  * Update lxml from 4.3.0 to 4.3.2
+
+  * Update lxml from 4.3.0 to 4.3.2
+
+  * Update coveralls from 1.5.1 to 1.6.0
+- Scheduled monthly dependency update for February (#28) [pyup.io bot]
+
+  * Update setuptools from 40.6.2 to 40.7.2
+
+  * Update pip from 18.1 to 19.0.1
+
+  * Update flake8 from 3.6.0 to 3.7.4
+
+  * Update tox from 3.5.3 to 3.7.0
+
+  * Update virtualenv from 16.1.0 to 16.3.0
+
+  * Update sphinx from 1.8.2 to 1.8.3
+
+  * Update lxml from 4.2.5 to 4.3.0
+
+  * Update lxml from 4.2.5 to 4.3.0
+
+  * Update gitchangelog from 3.0.3 to 3.0.4
+- Scheduled monthly dependency update for December (#26) [pyup.io bot]
+
+  * Update setuptools from 40.0.0 to 40.6.2
+
+  * Update pip from 18.0 to 18.1
+
+  * Update flake8 from 3.5.0 to 3.6.0
+
+  * Update wheel from 0.31.1 to 0.32.3
+
+  * Update tox from 3.1.2 to 3.5.3
+
+  * Update pydocstyle from 2.1.1 to 3.0.0
+
+  * Update virtualenv from 16.0.0 to 16.1.0
+
+  * Update coverage from 4.5.1 to 4.5.2
+
+  * Update sphinx from 1.7.6 to 1.8.2
+
+  * Update lxml from 4.2.3 to 4.2.5
+
+  * Update lxml from 4.2.3 to 4.2.5
+
+  * Update coveralls from 1.3.0 to 1.5.1
+
+
 0.1.5 (2018-12-12)
 ------------------
 

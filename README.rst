@@ -1,4 +1,4 @@
-.. image:: https://gitcdn.xyz/repo/LuisAlejandro/candyshop/master/docs/_static/banner.svg
+.. image:: https://rawcdn.githack.com/CollageLabs/candyshop/bd7fd97adee104d1e906130ec695f61368586d31/docs/_static/banner.svg
 
 ..
 
@@ -8,32 +8,32 @@
    :target: https://pypi.python.org/pypi/candyshop
    :alt: PyPI Package
 
-.. image:: https://img.shields.io/travis/LuisAlejandro/candyshop.svg
-   :target: https://travis-ci.org/LuisAlejandro/candyshop
+.. image:: https://img.shields.io/travis/CollageLabs/candyshop.svg
+   :target: https://travis-ci.org/CollageLabs/candyshop
    :alt: Travis CI
 
-.. image:: https://coveralls.io/repos/github/LuisAlejandro/candyshop/badge.svg?branch=master
-   :target: https://coveralls.io/github/LuisAlejandro/candyshop?branch=master
+.. image:: https://coveralls.io/repos/github/CollageLabs/candyshop/badge.svg?branch=develop
+   :target: https://coveralls.io/github/CollageLabs/candyshop?branch=develop
    :alt: Coveralls
 
-.. image:: https://codeclimate.com/github/LuisAlejandro/candyshop/badges/gpa.svg
-   :target: https://codeclimate.com/github/LuisAlejandro/candyshop
+.. image:: https://codeclimate.com/github/CollageLabs/candyshop/badges/gpa.svg
+   :target: https://codeclimate.com/github/CollageLabs/candyshop
    :alt: Code Climate
 
-.. image:: https://pyup.io/repos/github/LuisAlejandro/candyshop/shield.svg
-   :target: https://pyup.io/repos/github/LuisAlejandro/candyshop/
+.. image:: https://pyup.io/repos/github/CollageLabs/candyshop/shield.svg
+   :target: https://pyup.io/repos/github/CollageLabs/candyshop/
    :alt: Updates
 
 .. image:: https://readthedocs.org/projects/candyshop/badge/?version=latest
    :target: https://readthedocs.org/projects/candyshop/?badge=latest
    :alt: Read The Docs
 
-.. image:: https://cla-assistant.io/readme/badge/LuisAlejandro/candyshop
-   :target: https://cla-assistant.io/LuisAlejandro/candyshop
+.. image:: https://cla-assistant.io/readme/badge/CollageLabs/candyshop
+   :target: https://cla-assistant.io/CollageLabs/candyshop
    :alt: Contributor License Agreement
 
-.. image:: https://badges.gitter.im/LuisAlejandro/candyshop.svg
-   :target: https://gitter.im/LuisAlejandro/candyshop
+.. image:: https://badges.gitter.im/CollageLabs/candyshop.svg
+   :target: https://gitter.im/CollageLabs/candyshop
    :alt: Gitter Chat
 
 |
@@ -75,7 +75,7 @@ pip to install the stable version::
 If you want to install the development version (not recomended), you can install
 directlty from GitHub like this::
 
-    $ pip install --upgrade https://github.com/LuisAlejandro/candyshop/archive/master.tar.gz
+    $ pip install --upgrade https://github.com/CollageLabs/candyshop/archive/master.tar.gz
 
 Usage
 -----
@@ -149,11 +149,11 @@ and ask for specific information about them. For example::
 Getting help
 ============
 
-.. _Gitter Chat: https://gitter.im/LuisAlejandro/candyshop
+.. _Gitter Chat: https://gitter.im/CollageLabs/candyshop
 .. _StackOverflow: http://stackoverflow.com/questions/ask
 
 If you have any doubts or problems, suscribe to our `Gitter Chat`_ and ask for help. You can also
-ask your question on StackOverflow_ (tag it ``pypicontents``) or drop me an email at luis@huntingbears.com.ve.
+ask your question on StackOverflow_ (tag it ``pypicontents``) or drop me an email at luis@collagelabs.org.
 
 Contributing
 ============
@@ -184,29 +184,18 @@ Released under a `GPL-3 License`_ (read COPYING.rst_ for license details).
 Made with :heart: and :hamburger:
 =================================
 
-.. image:: http://huntingbears.com.ve/static/img/site/banner.svg
+.. image:: https://rawcdn.githack.com/CollageLabs/candyshop/4fc50d0f22c7c221275586b193b9e0b3170a0340/docs/_static/promo-open-source.svg
 
-.. _Patreon: https://www.patreon.com/luisalejandro
-.. _Flattr: https://flattr.com/profile/luisalejandro
-.. _PayPal: https://www.paypal.me/martinezfaneyth
-.. _LuisAlejandroTwitter: https://twitter.com/LuisAlejandro
-.. _LuisAlejandroGitHub: https://github.com/LuisAlejandro
-.. _huntingbears.com.ve: http://huntingbears.com.ve
+.. _CollageLabsTwitter: https://twitter.com/CollageLabs
+.. _CollageLabsGitHub: https://github.com/CollageLabs
+.. _collagelabs.org: http://collagelabs.org
 
 |
 
-My name is Luis (`@LuisAlejandro`__) and I'm a Free and
-Open-Source Software developer living in Maracay, Venezuela.
+    Web collagelabs.org_ · GitHub `@CollageLabs`__ · Twitter `@CollageLabs`__
 
-__ LuisAlejandroTwitter_
-
-If you like what I do, please support me on Patreon_, Flattr_, or donate via PayPal_,
-so that I can continue doing what I love.
-
-    Blog huntingbears.com.ve_ · GitHub `@LuisAlejandro`__ · Twitter `@LuisAlejandro`__
-
-__ LuisAlejandroGitHub_
-__ LuisAlejandroTwitter_
+__ CollageLabsGitHub_
+__ CollageLabsTwitter_
 
 |
 |

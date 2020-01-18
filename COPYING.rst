@@ -1,5 +1,5 @@
 
-Copyright (C) 2016-2017, Candyshop Developers.
+Copyright (C) 2016-2020, Candyshop Developers.
 
 Please refer to AUTHORS.rst for a complete list of Copyright holders.
 
