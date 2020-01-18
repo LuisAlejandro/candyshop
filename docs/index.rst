@@ -1,4 +1,4 @@
-.. image:: https://gitcdn.xyz/repo/CollageLabs/candyshop/master/docs/_static/title.svg
+.. image:: https://rawcdn.githack.com/CollageLabs/candyshop/bd7fd97adee104d1e906130ec695f61368586d31/docs/_static/banner.svg
 
 -----
 
@@ -10,8 +10,8 @@
    :target: https://travis-ci.org/CollageLabs/candyshop
    :alt: Travis CI
 
-.. image:: https://coveralls.io/repos/github/CollageLabs/candyshop/badge.svg?branch=master
-   :target: https://coveralls.io/github/CollageLabs/candyshop?branch=master
+.. image:: https://coveralls.io/repos/github/CollageLabs/candyshop/badge.svg?branch=develop
+   :target: https://coveralls.io/github/CollageLabs/candyshop?branch=develop
    :alt: Coveralls
 
 .. image:: https://codeclimate.com/github/CollageLabs/candyshop/badges/gpa.svg
