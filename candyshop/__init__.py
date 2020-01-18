@@ -32,7 +32,7 @@ as well as functions to resolve dependency trees.
 
 __author__ = 'Luis Alejandro Martínez Faneyth'
 __email__ = 'luis@collagelabs.org'
-__version__ = '0.1.5'
+__version__ = '0.1.6'
 __url__ = 'https://github.com/CollageLabs/candyshop'
 __description__ = ('Candyshop is a helper to determine if all your '
                    'dependencies are declared properly.')
