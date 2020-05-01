@@ -8,7 +8,7 @@ virtualenv==20.0.18
 coverage==5.1
 sphinx==3.0.3
 lxml==4.5.0
-sh==1.12.14
+sh==1.13.1
 gitchangelog==3.0.4
 bumpversion==0.5.3
 coveralls==1.11.1
