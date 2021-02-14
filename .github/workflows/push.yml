@@ -35,6 +35,7 @@ jobs:
       - name: Building project
         env:
           TOXENV: ${{ matrix.toxenv }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install -r requirements-dev.txt
           tox -e ${TOXENV}

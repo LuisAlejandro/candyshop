@@ -1,38 +1,42 @@
-.. image:: https://rawcdn.githack.com/CollageLabs/candyshop/bd7fd97adee104d1e906130ec695f61368586d31/docs/_static/banner.svg
+.. image:: https://rawcdn.githack.com/CollageLabs/candyshop/9ed8576d717bdbf53616c9b4cf71f3e00c3f038d/docs/_static/title.svg
 
 -----
 
-.. image:: https://img.shields.io/pypi/v/candyshop.svg
-   :target: https://pypi.python.org/pypi/candyshop
-   :alt: PyPI Package
+.. image:: https://img.shields.io/github/release/CollageLabs/candyshop.svg
+   :target: https://github.com/CollageLabs/candyshop/releases
+   :alt: Github Releases
 
-.. image:: https://img.shields.io/travis/CollageLabs/candyshop.svg
-   :target: https://travis-ci.org/CollageLabs/candyshop
-   :alt: Travis CI
+.. image:: https://img.shields.io/github/issues/CollageLabs/candyshop
+   :target: https://github.com/CollageLabs/candyshop/issues?q=is%3Aopen
+   :alt: Github Issues
 
-.. image:: https://coveralls.io/repos/github/CollageLabs/candyshop/badge.svg?branch=develop
-   :target: https://coveralls.io/github/CollageLabs/candyshop?branch=develop
-   :alt: Coveralls
+.. image:: https://github.com/CollageLabs/candyshop/workflows/Push/badge.svg
+   :target: https://github.com/CollageLabs/candyshop/actions?query=workflow%3APush
+   :alt: Push
 
 .. image:: https://codeclimate.com/github/CollageLabs/candyshop/badges/gpa.svg
    :target: https://codeclimate.com/github/CollageLabs/candyshop
    :alt: Code Climate
 
-.. image:: https://pyup.io/repos/github/CollageLabs/candyshop/shield.svg
-   :target: https://pyup.io/repos/github/CollageLabs/candyshop/
-   :alt: Updates
-
-.. image:: https://readthedocs.org/projects/candyshop/badge/?version=latest
-   :target: https://readthedocs.org/projects/candyshop/?badge=latest
-   :alt: Read The Docs
+.. image:: https://snyk.io/test/github/CollageLabs/candyshop/badge.svg
+   :target: https://snyk.io/test/github/CollageLabs/candyshop
+   :alt: Snyk
 
 .. image:: https://cla-assistant.io/readme/badge/CollageLabs/candyshop
    :target: https://cla-assistant.io/CollageLabs/candyshop
    :alt: Contributor License Agreement
 
-.. image:: https://badges.gitter.im/CollageLabs/candyshop.svg
-   :target: https://gitter.im/CollageLabs/candyshop
-   :alt: Gitter Chat
+.. image:: https://img.shields.io/pypi/v/candyshop.svg
+   :target: https://pypi.python.org/pypi/candyshop
+   :alt: PyPI Package
+
+.. image:: https://readthedocs.org/projects/candyshop/badge/?version=latest
+   :target: https://readthedocs.org/projects/candyshop/?badge=latest
+   :alt: Read The Docs
+
+.. image:: https://img.shields.io/badge/chat-discord-ff69b4.svg
+   :target: https://discord.gg/GMm3R76RQ2
+   :alt: Discord Channel
 
 |
 |

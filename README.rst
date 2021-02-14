@@ -1,4 +1,4 @@
-.. image:: https://rawcdn.githack.com/CollageLabs/candyshop/bd7fd97adee104d1e906130ec695f61368586d31/docs/_static/banner.svg
+.. image:: https://rawcdn.githack.com/CollageLabs/candyshop/9ed8576d717bdbf53616c9b4cf71f3e00c3f038d/docs/_static/banner.svg
 
 ..
 
@@ -188,7 +188,7 @@ Released under a `GPL-3 License`_ (read COPYING.rst_ for license details).
 Made with :heart: and :hamburger:
 =================================
 
-.. image:: https://rawcdn.githack.com/CollageLabs/candyshop/4fc50d0f22c7c221275586b193b9e0b3170a0340/docs/_static/promo-open-source.svg
+.. image:: https://rawcdn.githack.com/CollageLabs/candyshop/9ed8576d717bdbf53616c9b4cf71f3e00c3f038d/docs/_static/promo-open-source.svg
 
 .. _CollageLabsTwitter: https://twitter.com/CollageLabs
 .. _CollageLabsGitHub: https://github.com/CollageLabs
