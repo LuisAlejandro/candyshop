@@ -40,4 +40,4 @@ jobs:
           sudo apt-get install libxml2-dev libxslt-dev
           pip install -r requirements-dev.txt
           tox -e ${TOXENV}
-          coveralls
+          coveralls --service=github
