@@ -67,7 +67,7 @@ jobs:
           github-token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
           script: |
             await github.pulls.merge({
-              owner: context.payload.repository.owner.login,
-              repo: context.payload.repository.name,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
               pull_number: context.payload.pull_request.number
             })
