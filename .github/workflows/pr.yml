@@ -48,7 +48,7 @@ jobs:
     name: Approve pull request
     runs-on: ubuntu-20.04
     needs: build
-    if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' || github.actor == context.repo.owner
+    if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' || github.actor == github.repository_owner
     steps:
       - name: Approve
         uses: hmarr/auto-approve-action@v2.0.0
@@ -59,7 +59,7 @@ jobs:
     name: Merge pull request
     runs-on: ubuntu-20.04
     needs: approve
-    if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' || github.actor == context.repo.owner
+    if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]' || github.actor == github.repository_owner
     steps:
       - name: Merge
         uses: actions/github-script@v3
