@@ -1,5 +1,5 @@
 .. image:: https://rawcdn.githack.com/CollageLabs/candyshop/9ed8576d717bdbf53616c9b4cf71f3e00c3f038d/docs/_static/banner.svg
-
+test
 ..
 
     An assistant to determine if all your dependencies are declared properly in your odoo module.
