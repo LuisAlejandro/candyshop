@@ -6,7 +6,7 @@ tox==3.22.0
 pydocstyle==5.1.1
 virtualenv==20.4.2
 coverage==5.4
-sphinx==3.5.0
+sphinx==3.5.1
 lxml==4.6.2
 sh==1.14.1
 gitchangelog==3.0.4
