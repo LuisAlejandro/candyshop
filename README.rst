@@ -1,31 +1,31 @@
-.. image:: https://rawcdn.githack.com/CollageLabs/candyshop/9ed8576d717bdbf53616c9b4cf71f3e00c3f038d/docs/_static/banner.svg
+.. image:: https://rawcdn.githack.com/LuisAlejandro/candyshop/9ed8576d717bdbf53616c9b4cf71f3e00c3f038d/docs/_static/banner.svg
 test
 ..
 
     An assistant to determine if all your dependencies are declared properly in your odoo module.
 
-.. image:: https://img.shields.io/github/release/CollageLabs/candyshop.svg
-   :target: https://github.com/CollageLabs/candyshop/releases
+.. image:: https://img.shields.io/github/release/LuisAlejandro/candyshop.svg
+   :target: https://github.com/LuisAlejandro/candyshop/releases
    :alt: Github Releases
 
-.. image:: https://img.shields.io/github/issues/CollageLabs/candyshop
-   :target: https://github.com/CollageLabs/candyshop/issues?q=is%3Aopen
+.. image:: https://img.shields.io/github/issues/LuisAlejandro/candyshop
+   :target: https://github.com/LuisAlejandro/candyshop/issues?q=is%3Aopen
    :alt: Github Issues
 
-.. image:: https://github.com/CollageLabs/candyshop/workflows/Push/badge.svg
-   :target: https://github.com/CollageLabs/candyshop/actions?query=workflow%3APush
+.. image:: https://github.com/LuisAlejandro/candyshop/workflows/Push/badge.svg
+   :target: https://github.com/LuisAlejandro/candyshop/actions?query=workflow%3APush
    :alt: Push
 
-.. image:: https://codeclimate.com/github/CollageLabs/candyshop/badges/gpa.svg
-   :target: https://codeclimate.com/github/CollageLabs/candyshop
+.. image:: https://codeclimate.com/github/LuisAlejandro/candyshop/badges/gpa.svg
+   :target: https://codeclimate.com/github/LuisAlejandro/candyshop
    :alt: Code Climate
 
-.. image:: https://snyk.io/test/github/CollageLabs/candyshop/badge.svg
-   :target: https://snyk.io/test/github/CollageLabs/candyshop
+.. image:: https://snyk.io/test/github/LuisAlejandro/candyshop/badge.svg
+   :target: https://snyk.io/test/github/LuisAlejandro/candyshop
    :alt: Snyk
 
-.. image:: https://cla-assistant.io/readme/badge/CollageLabs/candyshop
-   :target: https://cla-assistant.io/CollageLabs/candyshop
+.. image:: https://cla-assistant.io/readme/badge/LuisAlejandro/candyshop
+   :target: https://cla-assistant.io/LuisAlejandro/candyshop
    :alt: Contributor License Agreement
 
 .. image:: https://img.shields.io/pypi/v/candyshop.svg
@@ -79,7 +79,7 @@ pip to install the stable version::
 If you want to install the development version (not recomended), you can install
 directlty from GitHub like this::
 
-    $ pip install --upgrade https://github.com/CollageLabs/candyshop/archive/master.tar.gz
+    $ pip install --upgrade https://github.com/LuisAlejandro/candyshop/archive/master.tar.gz
 
 Usage
 -----
@@ -153,7 +153,7 @@ and ask for specific information about them. For example::
 Getting help
 ============
 
-.. _Gitter Chat: https://gitter.im/CollageLabs/candyshop
+.. _Gitter Chat: https://gitter.im/LuisAlejandro/candyshop
 .. _StackOverflow: http://stackoverflow.com/questions/ask
 
 If you have any doubts or problems, suscribe to our `Gitter Chat`_ and ask for help. You can also
@@ -188,18 +188,18 @@ Released under a `GPL-3 License`_ (read COPYING.rst_ for license details).
 Made with :heart: and :hamburger:
 =================================
 
-.. image:: https://rawcdn.githack.com/CollageLabs/candyshop/9ed8576d717bdbf53616c9b4cf71f3e00c3f038d/docs/_static/promo-open-source.svg
+.. image:: https://rawcdn.githack.com/LuisAlejandro/candyshop/9ed8576d717bdbf53616c9b4cf71f3e00c3f038d/docs/_static/promo-open-source.svg
 
-.. _CollageLabsTwitter: https://twitter.com/CollageLabs
-.. _CollageLabsGitHub: https://github.com/CollageLabs
+.. _LuisAlejandroTwitter: https://twitter.com/LuisAlejandro
+.. _LuisAlejandroGitHub: https://github.com/LuisAlejandro
 .. _collagelabs.org: http://collagelabs.org
 
 |
 
-    Web collagelabs.org_ · GitHub `@CollageLabs`__ · Twitter `@CollageLabs`__
+    Web collagelabs.org_ · GitHub `@LuisAlejandro`__ · Twitter `@LuisAlejandro`__
 
-__ CollageLabsGitHub_
-__ CollageLabsTwitter_
+__ LuisAlejandroGitHub_
+__ LuisAlejandroTwitter_
 
 |
 |
