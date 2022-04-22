@@ -197,6 +197,3 @@ Made with :heart: and :hamburger:
 
 __ LuisAlejandroGitHub_
 __ LuisAlejandroTwitter_
-
-|
-|
