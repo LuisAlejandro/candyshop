@@ -40,7 +40,7 @@ class TestModule(unittest.TestCase):
                          os.path.join(self.openacademy_dir, '__openerp__.py'))
 
     def test_02_is_not_python_package(self):
-        self.assertRaisesRegexp(
+        self.assertRaisesRegex(
             AssertionError, 'The module is not a python package.',
             Module, self.is_not_package_dir
         )
@@ -132,25 +132,25 @@ class TestBrokenBundle(unittest.TestCase):
         self.empty_dir = os.path.join(self.exampledir, 'empty')
 
     def test_01_non_existent_bundle(self):
-        self.assertRaisesRegexp(
+        self.assertRaisesRegex(
             AssertionError, '%s is not a directory or does not exist.' % self.non_existent_dir,
             Bundle, self.non_existent_dir, exclude_tests=False
         )
 
     def test_02_empty_bundle(self):
-        self.assertRaisesRegexp(
+        self.assertRaisesRegex(
             AssertionError, 'The specified path does not contain valid Odoo modules.',
             Bundle, self.empty_dir, exclude_tests=False
         )
 
     def test_03_broken_manifest(self):
-        self.assertRaisesRegexp(
+        self.assertRaisesRegex(
             IOError, 'An error ocurred while reading.*',
             Bundle, self.broken_manifest_dir, exclude_tests=False
         )
 
     def test_04_is_not_package(self):
-        self.assertRaisesRegexp(
+        self.assertRaisesRegex(
             AssertionError, 'The module is not a python package.',
             Bundle, self.is_not_package_dir, exclude_tests=False
         )
