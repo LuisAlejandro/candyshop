@@ -1,29 +1,21 @@
-.. image:: https://rawcdn.githack.com/CollageLabs/candyshop/9ed8576d717bdbf53616c9b4cf71f3e00c3f038d/docs/_static/title.svg
+.. image:: https://github.com/LuisAlejandro/candyshop/blob/develop/docs/_static/banner.svg
 
 -----
 
-.. image:: https://img.shields.io/github/release/CollageLabs/candyshop.svg
-   :target: https://github.com/CollageLabs/candyshop/releases
+.. image:: https://img.shields.io/github/release/LuisAlejandro/candyshop.svg
+   :target: https://github.com/LuisAlejandro/candyshop/releases
    :alt: Github Releases
 
-.. image:: https://img.shields.io/github/issues/CollageLabs/candyshop
-   :target: https://github.com/CollageLabs/candyshop/issues?q=is%3Aopen
+.. image:: https://img.shields.io/github/issues/LuisAlejandro/candyshop
+   :target: https://github.com/LuisAlejandro/candyshop/issues?q=is%3Aopen
    :alt: Github Issues
 
-.. image:: https://github.com/CollageLabs/candyshop/workflows/Push/badge.svg
-   :target: https://github.com/CollageLabs/candyshop/actions?query=workflow%3APush
+.. image:: https://github.com/LuisAlejandro/candyshop/workflows/Push/badge.svg
+   :target: https://github.com/LuisAlejandro/candyshop/actions?query=workflow%3APush
    :alt: Push
 
-.. image:: https://codeclimate.com/github/CollageLabs/candyshop/badges/gpa.svg
-   :target: https://codeclimate.com/github/CollageLabs/candyshop
-   :alt: Code Climate
-
-.. image:: https://snyk.io/test/github/CollageLabs/candyshop/badge.svg
-   :target: https://snyk.io/test/github/CollageLabs/candyshop
-   :alt: Snyk
-
-.. image:: https://cla-assistant.io/readme/badge/CollageLabs/candyshop
-   :target: https://cla-assistant.io/CollageLabs/candyshop
+.. image:: https://cla-assistant.io/readme/badge/LuisAlejandro/candyshop
+   :target: https://cla-assistant.io/LuisAlejandro/candyshop
    :alt: Contributor License Agreement
 
 .. image:: https://img.shields.io/pypi/v/candyshop.svg
@@ -35,7 +27,7 @@
    :alt: Read The Docs
 
 .. image:: https://img.shields.io/badge/chat-discord-ff69b4.svg
-   :target: https://discord.gg/GMm3R76RQ2
+   :target: https://discord.gg/pVteBmNWZu
    :alt: Discord Channel
 
 |

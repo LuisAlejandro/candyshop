@@ -27,7 +27,7 @@ setup(
     package_dir={'candyshop': 'candyshop'},
     include_package_data=True,
     install_requires=read_requirements('requirements.txt'),
-    license=open('COPYING.rst').read(),
+    license=open('LICENSE').read(),
     zip_safe=False,
     keywords=['odoo', 'requirements'],
     classifiers=[

@@ -1,5 +1,5 @@
-.. image:: https://rawcdn.githack.com/LuisAlejandro/candyshop/9ed8576d717bdbf53616c9b4cf71f3e00c3f038d/docs/_static/banner.svg
-test
+.. image:: https://github.com/LuisAlejandro/candyshop/blob/develop/docs/_static/banner.svg
+
 ..
 
     An assistant to determine if all your dependencies are declared properly in your odoo module.
@@ -16,14 +16,6 @@ test
    :target: https://github.com/LuisAlejandro/candyshop/actions?query=workflow%3APush
    :alt: Push
 
-.. image:: https://codeclimate.com/github/LuisAlejandro/candyshop/badges/gpa.svg
-   :target: https://codeclimate.com/github/LuisAlejandro/candyshop
-   :alt: Code Climate
-
-.. image:: https://snyk.io/test/github/LuisAlejandro/candyshop/badge.svg
-   :target: https://snyk.io/test/github/LuisAlejandro/candyshop
-   :alt: Snyk
-
 .. image:: https://cla-assistant.io/readme/badge/LuisAlejandro/candyshop
    :target: https://cla-assistant.io/LuisAlejandro/candyshop
    :alt: Contributor License Agreement
@@ -37,13 +29,15 @@ test
    :alt: Read The Docs
 
 .. image:: https://img.shields.io/badge/chat-discord-ff69b4.svg
-   :target: https://discord.gg/GMm3R76RQ2
+   :target: https://discord.gg/pVteBmNWZu
    :alt: Discord Channel
 
 |
 |
 
 .. _full documentation: https://candyshop.readthedocs.org
+
+Current version: 0.1.6
 
 Candyshop is a helper to determine if all your dependencies are declared
 properly. A Candyshop is a place where you can pick sweets and candies from
@@ -153,11 +147,11 @@ and ask for specific information about them. For example::
 Getting help
 ============
 
-.. _Gitter Chat: https://gitter.im/LuisAlejandro/candyshop
+.. _Discord server: https://discord.gg/pVteBmNWZu
 .. _StackOverflow: http://stackoverflow.com/questions/ask
 
-If you have any doubts or problems, suscribe to our `Gitter Chat`_ and ask for help. You can also
-ask your question on StackOverflow_ (tag it ``pypicontents``) or drop me an email at luis@collagelabs.org.
+If you have any doubts or problems, suscribe to our `Discord server`_ and ask for help. You can also
+ask your question on StackOverflow_ (tag it ``candyshop``) or drop me an email at luis@collagelabs.org.
 
 Contributing
 ============
@@ -177,18 +171,17 @@ See HISTORY.rst_ for details.
 License
 =======
 
-.. _COPYING.rst: COPYING.rst
 .. _AUTHORS.rst: AUTHORS.rst
-.. _GPL-3 License: LICENSE.rst
+.. _GPL-3 License: LICENSE
 
-Copyright 2016-2017, Candyshop Developers (read AUTHORS.rst_ for a full list of copyright holders).
+Copyright 2016-2022, Candyshop Developers (read AUTHORS.rst_ for a full list of copyright holders).
 
-Released under a `GPL-3 License`_ (read COPYING.rst_ for license details).
+Released under a `GPL-3 License`_.
 
 Made with :heart: and :hamburger:
 =================================
 
-.. image:: https://rawcdn.githack.com/LuisAlejandro/candyshop/9ed8576d717bdbf53616c9b4cf71f3e00c3f038d/docs/_static/promo-open-source.svg
+.. image:: https://github.com/LuisAlejandro/candyshop/blob/develop/docs/_static/author-banner.svg
 
 .. _LuisAlejandroTwitter: https://twitter.com/LuisAlejandro
 .. _LuisAlejandroGitHub: https://github.com/LuisAlejandro

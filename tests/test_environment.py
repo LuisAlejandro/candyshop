@@ -1,24 +1,29 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+#
+# Please refer to AUTHORS.rst for a complete list of Copyright holders.
+# Copyright (C) 2016-2022, Candyshop Developers.
 
-from __future__ import print_function
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import os
 import sys
 import doctest
+import unittest
+from io import StringIO
 from contextlib import contextmanager
 
 from candyshop.environment import Environment
-
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from io import StringIO
-
-if sys.version_info[:2] == (2, 6):
-    import unittest2 as unittest
-else:
-    import unittest
 
 
 @contextmanager
@@ -60,12 +65,11 @@ class TestEnvironment(unittest.TestCase):
                                      'odoo-afr', 'odoo-beginners']))
 
     def test_03_unexistent_record_ids(self):
-        notmet_record_ids_should_be = [
-            {'odoo-beginners': {
+        notmet_record_ids_should_be = [{
+            'odoo-beginners': {
                 'references_absent_ids/view/test.xml': ['unexistent_module']
-                }
             }
-        ]
+        }]
         notmet_record_ids_report_should_be = (
             'The following record ids are not found in the environment:\n\n'
             '    Bundle: odoo-beginners\n'
@@ -84,14 +88,14 @@ class TestEnvironment(unittest.TestCase):
                                       output)
 
     def test_04_unexistent_dependency(self):
-        notmet_dependencies_should_be = [
-            {'odoo-beginners': {
+        notmet_dependencies_should_be = [{
+            'odoo-beginners': {
                 'missing_dependency': ['unexistent_dependency']
-                }
             }
-        ]
+        }]
         notmet_dependencies_report_should_be = (
-            'The following module dependencies are not found in the environment:\n\n'
+            'The following module dependencies are not '
+            'found in the environment:\n\n'
             '    Bundle: odoo-beginners\n'
             '    Module: missing_dependency\n'
             '    Missing dependencies:\n'
