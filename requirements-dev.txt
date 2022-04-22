@@ -7,8 +7,6 @@ pydocstyle==6.1.1
 virtualenv==20.14.1
 coverage==6.3.2
 sphinx==4.5.0
-lxml==4.8.0
-sh==1.14.2
 gitchangelog==3.0.4
 bumpversion==0.6.0
 coveralls==3.3.1
