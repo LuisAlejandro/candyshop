@@ -2,6 +2,27 @@ Changelog
 ============
 
 
+0.2.1 (2022-04-22)
+------------
+
+Changed
+~~~~~~~~~~~~
+
+* Adding coverage badge. [Luis Alejandro Martínez Faneyth]
+
+* Improving mantainer tools. [Luis Alejandro Martínez Faneyth]
+
+
+Fixed
+~~~~~~~~~~~~
+
+* Fixing typo. [Luis Alejandro Martínez Faneyth]
+
+* Fixing tests. [Luis Alejandro Martínez Faneyth]
+
+* Fixing tests. [Luis Alejandro Martínez Faneyth]
+
+
 0.2.0 (2022-04-22)
 ------------
 
