@@ -50,6 +50,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           flag-name: run-py${{ matrix.python-version }}-odoo${{ matrix.odoo-branch }}
+          path-to-lcov: ./.lcov
           parallel: true
 
   finish:
