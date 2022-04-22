@@ -13,6 +13,8 @@ jobs:
     if: github.repository == 'LuisAlejandro/candyshop'
     strategy:
       matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11.0-alpha.5"]
+        odoo-branch: ["13.0", "14.0", "15.0"]
         include:
           - python-version: "3.8"
             toxenv: "py38"
@@ -38,6 +40,7 @@ jobs:
       - name: Building project
         env:
           TOXENV: ${{ matrix.toxenv }}
+          ODOO_BRANCH: ${{ matrix.odoo-branch }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
         run: |

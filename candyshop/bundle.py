@@ -33,9 +33,12 @@ from lxml import etree
 
 from .utils import find_files, ModuleProperties, strip_comments_and_blanks
 
-MANIFEST_FILES = ['__odoo__.py', '__openerp__.py', '__terp__.py']
+MANIFEST_FILES = [
+    '__odoo__.py', '__openerp__.py',
+    '__terp__.py', '__manifest__.py'
+]
 DEFAULT_OCA_USER = 'OCA'
-DEFAULT_OCA_BRANCH = '8.0'
+DEFAULT_OCA_BRANCH = '15.0'
 
 if not sys.version_info < (3,):
     basestring = str
@@ -51,7 +54,7 @@ class Module(object):
 
     For more information, please refer to official documentation.
 
-    `Modules <https://www.odoo.com/documentation/8.0/howtos/backend.html>`_.
+    `Modules <https://www.odoo.com/documentation/15.0/howtos/backend.html>`_.
     """
 
     def __init__(self, path, bundle=None):

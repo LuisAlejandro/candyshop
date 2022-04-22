@@ -32,7 +32,7 @@ from sh import git
 from .bundle import Bundle
 
 DEFAULT_URL = 'https://github.com/odoo/odoo'
-DEFAULT_BRANCH = '8.0'
+DEFAULT_BRANCH = '15.0'
 
 
 class Environment(object):

@@ -44,7 +44,7 @@ class TestEnvironment(unittest.TestCase):
         self.odoo_afr_dir = os.path.join(self.exampledir, 'odoo-afr')
         self.odoo_beginners_dir = os.path.join(self.exampledir,
                                                'odoo-beginners')
-        self.odoo = Environment(branch=os.environ.get('ODOO_BRANCH', '8.0'))
+        self.odoo = Environment(branch=os.environ.get('ODOO_BRANCH', '15.0'))
 
     def tearDown(self):
         self.odoo.destroy()
