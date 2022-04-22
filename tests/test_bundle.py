@@ -37,7 +37,7 @@ class TestModule(unittest.TestCase):
 
     def test_01_has_manifest(self):
         self.assertEqual(self.openacademy.manifest,
-                         os.path.join(self.openacademy_dir, '__openerp__.py'))
+                         os.path.join(self.openacademy_dir, '__manifest__.py'))
 
     def test_02_is_not_python_package(self):
         self.assertRaisesRegex(
@@ -61,8 +61,6 @@ class TestModule(unittest.TestCase):
             {'view/openacademy_session_board.xml': ['openacademy']}
         ]
 
-        if sys.version_info < (3,):
-            self.assertCountEqual = self.assertItemsEqual
         self.assertCountEqual(list(self.openacademy.get_record_ids_module_references()),
                               record_ids_should_be)
 
@@ -145,13 +143,13 @@ class TestBrokenBundle(unittest.TestCase):
 
     def test_03_broken_manifest(self):
         self.assertRaisesRegex(
-            IOError, 'An error ocurred while reading.*',
+            AssertionError, 'The specified path does not contain valid Odoo modules.',
             Bundle, self.broken_manifest_dir, exclude_tests=False
         )
 
     def test_04_is_not_package(self):
         self.assertRaisesRegex(
-            AssertionError, 'The module is not a python package.',
+            AssertionError, 'The specified path does not contain valid Odoo modules.',
             Bundle, self.is_not_package_dir, exclude_tests=False
         )
 

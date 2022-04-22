@@ -23,8 +23,6 @@ This module contains abstraction classes to represent a ``Module`` or a
 you cannot create or modify Bundles or Modules through these abstractions.
 """
 
-from __future__ import print_function
-
 import os
 import sys
 from ast import literal_eval
@@ -33,10 +31,7 @@ from lxml import etree
 
 from .utils import find_files, ModuleProperties, strip_comments_and_blanks
 
-MANIFEST_FILES = [
-    '__odoo__.py', '__openerp__.py',
-    '__terp__.py', '__manifest__.py'
-]
+DEFAULT_MANIFEST_FILE = '__manifest__.py'
 DEFAULT_OCA_USER = 'OCA'
 DEFAULT_OCA_BRANCH = '15.0'
 
@@ -83,8 +78,7 @@ class Module(object):
         self.path = os.path.abspath(path)
 
         #: Attribute ``Module.manifest`` (string): Refers to the absolute path
-        #: to the manifest file of the module (``__openerp__.py``,
-        #: ``__odoo__.py`` or ``__terp__.py``).
+        #: to the manifest file of the module (``__manifest__.py``).
         self.manifest = self.__get_manifest()
 
         #: Object ``Module.properties`` (``ModuleProperties``): Placeholder
@@ -111,12 +105,10 @@ class Module(object):
         """
         assert self.__is_python_package(), \
             'The module is not a python package.'
-        for mfst in MANIFEST_FILES:
-            found = find_files(self.path, mfst)
-            if not found:
-                continue
-            return found[0]
-        return False
+        found = find_files(self.path, DEFAULT_MANIFEST_FILE)
+        if not found:
+            return False
+        return found[0]
 
     def __extract_properties(self):
         """
@@ -317,15 +309,13 @@ class Bundle(object):
 
         .. versionadded:: 0.1.0
         """
-        for mfst in MANIFEST_FILES:
-            for mods in find_files(self.path, mfst):
-                if ((self.exclude_tests and
-                     'tests' not in mods.split(os.sep)) or
-                   not self.exclude_tests):
-                    try:
-                        yield Module(os.path.dirname(mods), bundle=self)
-                    except BaseException:
-                        pass
+        for mods in find_files(self.path, DEFAULT_MANIFEST_FILE):
+            if ((self.exclude_tests and 'tests' not in mods.split(os.sep)) or
+               not self.exclude_tests):
+                try:
+                    yield Module(os.path.dirname(mods), bundle=self)
+                except BaseException:
+                    pass
 
     def __get_oca_dependencies_file(self):
         """
