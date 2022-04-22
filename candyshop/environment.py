@@ -88,6 +88,9 @@ class Environment(object):
         .. versionadded:: 0.1.0
         """
         if init_from:
+            if not os.path.isdir(init_from):
+                raise Exception('init_from directory "{0}" doesn\'t'
+                                ' exist'.format(init_from))
             odoo_dir = os.path.abspath(init_from)
         else:
             odoo_dir = os.path.join(self.path, 'odoo')

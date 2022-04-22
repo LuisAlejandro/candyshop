@@ -322,7 +322,10 @@ class Bundle(object):
                 if ((self.exclude_tests and
                      'tests' not in mods.split(os.sep)) or
                    not self.exclude_tests):
-                    yield Module(os.path.dirname(mods), bundle=self)
+                    try:
+                        yield Module(os.path.dirname(mods), bundle=self)
+                    except BaseException:
+                        pass
 
     def __get_oca_dependencies_file(self):
         """

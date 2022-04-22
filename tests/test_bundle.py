@@ -102,7 +102,7 @@ class TestBundle(unittest.TestCase):
     def test_04_parse_oca_dependencies(self):
         oca_dependencies_should_be = [['addons-vauxoo',
                                        'https://github.com/Vauxoo/addons-vauxoo.git',
-                                       '8.0']]
+                                       '15.0']]
         self.assertListEqual(self.odoo_afr.oca_dependencies,
                              oca_dependencies_should_be)
 
@@ -113,8 +113,8 @@ class TestBundle(unittest.TestCase):
 
     def test_06_parse_complicated_oca_dependencies(self):
         oca_dependencies_should_be = [['addon', 'http://myurl.com/foo', 'branch'],
-                                      ['foo', 'https://github.com/OCA/foo', '8.0'],
-                                      ['bar', 'http://bar.foo/jhon', '8.0'],
+                                      ['foo', 'https://github.com/OCA/foo', '15.0'],
+                                      ['bar', 'http://bar.foo/jhon', '15.0'],
                                       ['bundle', 'http://doe.com/joe', 'master'],
                                       ['odoo', 'http://another.url/', 'anotherbranch']]
         self.assertListEqual(self.oca_deps.oca_dependencies,
