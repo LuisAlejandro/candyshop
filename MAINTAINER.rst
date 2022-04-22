@@ -33,7 +33,7 @@ leave uncommitted changes.
 
 9. Bump your version (check everything before next step)::
 
-    bumpversion --no-commit --new-version <release number> patch
+    bumpversion --no-commit <major, minor or patch>
 
 10. Update your changelog (edit HISTORY.rst after to customize)::
 
