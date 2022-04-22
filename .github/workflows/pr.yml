@@ -16,7 +16,6 @@ jobs:
     runs-on: ubuntu-20.04
     if: github.repository == 'LuisAlejandro/candyshop'
     strategy:
-      fail-fast: false
       matrix:
         python-version: ["3.8", "3.9", "3.10", "3.11.0-alpha.5"]
         odoo-branch: ["13.0", "14.0", "15.0"]
@@ -42,10 +41,11 @@ jobs:
         run: |
           sudo apt-get install libxml2-dev libxslt-dev
           pip install -r requirements.txt -r requirements-dev.txt
-      - name: Building project
+      - name: Measuring coverage
         env:
           TOXENV: ${{ matrix.toxenv }}
           ODOO_BRANCH: ${{ matrix.odoo-branch }}
+          PYTHON_VERSION: ${{ matrix.python-version }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
         run: |

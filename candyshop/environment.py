@@ -168,9 +168,8 @@ class Environment(object):
         locations = locations or []
         for location in locations:
             location = os.path.abspath(location)
-            if not os.path.isdir(location):
-                continue
-            if location in self.get_bundle_path_list():
+            if location in self.get_bundle_path_list() or \
+               not os.path.isdir(location):
                 continue
             try:
                 self.bundles.append(Bundle(location, exclude_tests))
