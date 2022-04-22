@@ -1,16 +1,27 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+#
+# Please refer to AUTHORS.rst for a complete list of Copyright holders.
+# Copyright (C) 2016-2022, Candyshop Developers.
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import os
 import sys
 import doctest
+import unittest
 
 from candyshop.bundle import Bundle, Module
-
-if sys.version_info[:2] == (2, 6):
-    import unittest2 as unittest
-else:
-    import unittest
 
 
 class TestModule(unittest.TestCase):
@@ -26,10 +37,10 @@ class TestModule(unittest.TestCase):
 
     def test_01_has_manifest(self):
         self.assertEqual(self.openacademy.manifest,
-                         os.path.join(self.openacademy_dir, '__openerp__.py'))
+                         os.path.join(self.openacademy_dir, '__manifest__.py'))
 
     def test_02_is_not_python_package(self):
-        self.assertRaisesRegexp(
+        self.assertRaisesRegex(
             AssertionError, 'The module is not a python package.',
             Module, self.is_not_package_dir
         )
@@ -50,8 +61,6 @@ class TestModule(unittest.TestCase):
             {'view/openacademy_session_board.xml': ['openacademy']}
         ]
 
-        if sys.version_info < (3,):
-            self.assertCountEqual = self.assertItemsEqual
         self.assertCountEqual(list(self.openacademy.get_record_ids_module_references()),
                               record_ids_should_be)
 
@@ -91,7 +100,7 @@ class TestBundle(unittest.TestCase):
     def test_04_parse_oca_dependencies(self):
         oca_dependencies_should_be = [['addons-vauxoo',
                                        'https://github.com/Vauxoo/addons-vauxoo.git',
-                                       '8.0']]
+                                       '15.0']]
         self.assertListEqual(self.odoo_afr.oca_dependencies,
                              oca_dependencies_should_be)
 
@@ -102,8 +111,8 @@ class TestBundle(unittest.TestCase):
 
     def test_06_parse_complicated_oca_dependencies(self):
         oca_dependencies_should_be = [['addon', 'http://myurl.com/foo', 'branch'],
-                                      ['foo', 'https://github.com/OCA/foo', '8.0'],
-                                      ['bar', 'http://bar.foo/jhon', '8.0'],
+                                      ['foo', 'https://github.com/OCA/foo', '15.0'],
+                                      ['bar', 'http://bar.foo/jhon', '15.0'],
                                       ['bundle', 'http://doe.com/joe', 'master'],
                                       ['odoo', 'http://another.url/', 'anotherbranch']]
         self.assertListEqual(self.oca_deps.oca_dependencies,
@@ -121,26 +130,26 @@ class TestBrokenBundle(unittest.TestCase):
         self.empty_dir = os.path.join(self.exampledir, 'empty')
 
     def test_01_non_existent_bundle(self):
-        self.assertRaisesRegexp(
+        self.assertRaisesRegex(
             AssertionError, '%s is not a directory or does not exist.' % self.non_existent_dir,
             Bundle, self.non_existent_dir, exclude_tests=False
         )
 
     def test_02_empty_bundle(self):
-        self.assertRaisesRegexp(
+        self.assertRaisesRegex(
             AssertionError, 'The specified path does not contain valid Odoo modules.',
             Bundle, self.empty_dir, exclude_tests=False
         )
 
     def test_03_broken_manifest(self):
-        self.assertRaisesRegexp(
-            IOError, 'An error ocurred while reading.*',
+        self.assertRaisesRegex(
+            AssertionError, 'The specified path does not contain valid Odoo modules.',
             Bundle, self.broken_manifest_dir, exclude_tests=False
         )
 
     def test_04_is_not_package(self):
-        self.assertRaisesRegexp(
-            AssertionError, 'The module is not a python package.',
+        self.assertRaisesRegex(
+            AssertionError, 'The specified path does not contain valid Odoo modules.',
             Bundle, self.is_not_package_dir, exclude_tests=False
         )
 

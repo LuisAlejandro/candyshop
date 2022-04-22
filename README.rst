@@ -1,45 +1,43 @@
-.. image:: https://rawcdn.githack.com/CollageLabs/candyshop/bd7fd97adee104d1e906130ec695f61368586d31/docs/_static/banner.svg
+.. image:: https://github.com/LuisAlejandro/candyshop/blob/develop/docs/_static/banner.svg
 
 ..
 
     An assistant to determine if all your dependencies are declared properly in your odoo module.
 
+.. image:: https://img.shields.io/github/release/LuisAlejandro/candyshop.svg
+   :target: https://github.com/LuisAlejandro/candyshop/releases
+   :alt: Github Releases
+
+.. image:: https://img.shields.io/github/issues/LuisAlejandro/candyshop
+   :target: https://github.com/LuisAlejandro/candyshop/issues?q=is%3Aopen
+   :alt: Github Issues
+
+.. image:: https://github.com/LuisAlejandro/candyshop/workflows/Push/badge.svg
+   :target: https://github.com/LuisAlejandro/candyshop/actions?query=workflow%3APush
+   :alt: Push
+
+.. image:: https://cla-assistant.io/readme/badge/LuisAlejandro/candyshop
+   :target: https://cla-assistant.io/LuisAlejandro/candyshop
+   :alt: Contributor License Agreement
+
 .. image:: https://img.shields.io/pypi/v/candyshop.svg
    :target: https://pypi.python.org/pypi/candyshop
    :alt: PyPI Package
-
-.. image:: https://img.shields.io/travis/CollageLabs/candyshop.svg
-   :target: https://travis-ci.org/CollageLabs/candyshop
-   :alt: Travis CI
-
-.. image:: https://coveralls.io/repos/github/CollageLabs/candyshop/badge.svg?branch=develop
-   :target: https://coveralls.io/github/CollageLabs/candyshop?branch=develop
-   :alt: Coveralls
-
-.. image:: https://codeclimate.com/github/CollageLabs/candyshop/badges/gpa.svg
-   :target: https://codeclimate.com/github/CollageLabs/candyshop
-   :alt: Code Climate
-
-.. image:: https://pyup.io/repos/github/CollageLabs/candyshop/shield.svg
-   :target: https://pyup.io/repos/github/CollageLabs/candyshop/
-   :alt: Updates
 
 .. image:: https://readthedocs.org/projects/candyshop/badge/?version=latest
    :target: https://readthedocs.org/projects/candyshop/?badge=latest
    :alt: Read The Docs
 
-.. image:: https://cla-assistant.io/readme/badge/CollageLabs/candyshop
-   :target: https://cla-assistant.io/CollageLabs/candyshop
-   :alt: Contributor License Agreement
-
-.. image:: https://badges.gitter.im/CollageLabs/candyshop.svg
-   :target: https://gitter.im/CollageLabs/candyshop
-   :alt: Gitter Chat
+.. image:: https://img.shields.io/badge/chat-discord-ff69b4.svg
+   :target: https://discord.gg/pVteBmNWZu
+   :alt: Discord Channel
 
 |
 |
 
 .. _full documentation: https://candyshop.readthedocs.org
+
+Current version: 0.2.0
 
 Candyshop is a helper to determine if all your dependencies are declared
 properly. A Candyshop is a place where you can pick sweets and candies from
@@ -75,7 +73,7 @@ pip to install the stable version::
 If you want to install the development version (not recomended), you can install
 directlty from GitHub like this::
 
-    $ pip install --upgrade https://github.com/CollageLabs/candyshop/archive/master.tar.gz
+    $ pip install --upgrade https://github.com/LuisAlejandro/candyshop/archive/master.tar.gz
 
 Usage
 -----
@@ -149,11 +147,11 @@ and ask for specific information about them. For example::
 Getting help
 ============
 
-.. _Gitter Chat: https://gitter.im/CollageLabs/candyshop
+.. _Discord server: https://discord.gg/pVteBmNWZu
 .. _StackOverflow: http://stackoverflow.com/questions/ask
 
-If you have any doubts or problems, suscribe to our `Gitter Chat`_ and ask for help. You can also
-ask your question on StackOverflow_ (tag it ``pypicontents``) or drop me an email at luis@collagelabs.org.
+If you have any doubts or problems, suscribe to our `Discord server`_ and ask for help. You can also
+ask your question on StackOverflow_ (tag it ``candyshop``) or drop me an email at luis@collagelabs.org.
 
 Contributing
 ============
@@ -173,29 +171,28 @@ See HISTORY.rst_ for details.
 License
 =======
 
-.. _COPYING.rst: COPYING.rst
 .. _AUTHORS.rst: AUTHORS.rst
-.. _GPL-3 License: LICENSE.rst
+.. _GPL-3 License: LICENSE
 
-Copyright 2016-2017, Candyshop Developers (read AUTHORS.rst_ for a full list of copyright holders).
+Copyright 2016-2022, Candyshop Developers (read AUTHORS.rst_ for a full list of copyright holders).
 
-Released under a `GPL-3 License`_ (read COPYING.rst_ for license details).
+Released under a `GPL-3 License`_.
 
 Made with :heart: and :hamburger:
 =================================
 
-.. image:: https://rawcdn.githack.com/CollageLabs/candyshop/4fc50d0f22c7c221275586b193b9e0b3170a0340/docs/_static/promo-open-source.svg
+.. image:: https://github.com/LuisAlejandro/candyshop/blob/develop/docs/_static/author-banner.svg
 
-.. _CollageLabsTwitter: https://twitter.com/CollageLabs
-.. _CollageLabsGitHub: https://github.com/CollageLabs
+.. _LuisAlejandroTwitter: https://twitter.com/LuisAlejandro
+.. _LuisAlejandroGitHub: https://github.com/LuisAlejandro
 .. _collagelabs.org: http://collagelabs.org
 
 |
 
-    Web collagelabs.org_ · GitHub `@CollageLabs`__ · Twitter `@CollageLabs`__
+    Web collagelabs.org_ · GitHub `@LuisAlejandro`__ · Twitter `@LuisAlejandro`__
 
-__ CollageLabsGitHub_
-__ CollageLabsTwitter_
+__ LuisAlejandroGitHub_
+__ LuisAlejandroTwitter_
 
 |
 |

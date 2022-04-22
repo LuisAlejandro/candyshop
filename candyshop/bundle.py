@@ -1,24 +1,20 @@
 # -*- coding: utf-8 -*-
 #
-#   This file is part of Candyshop
-#   Copyright (C) 2016, Candyshop Developers
-#   All rights reserved.
-#
-#   Please refer to AUTHORS.md for a complete list of Copyright
-#   holders.
-#
-#   Candyshop is free software: you can redistribute it and/or modify
-#   it under the terms of the GNU Affero General Public License as published
-#   by the Free Software Foundation, either version 3 of the License, or
-#   (at your option) any later version.
-#
-#   Candyshop is distributed in the hope that it will be useful,
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#   GNU Affero General Public License for more details.
-#
-#   You should have received a copy of the GNU Affero General Public License
-#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# Please refer to AUTHORS.rst for a complete list of Copyright holders.
+# Copyright (C) 2016-2022, Candyshop Developers.
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 ``candyshop.bundle`` is a module for representing Odoo Modules.
 
@@ -26,8 +22,6 @@ This module contains abstraction classes to represent a ``Module`` or a
 ``Bundle`` (a group of modules). These classes are *read-only*. For now,
 you cannot create or modify Bundles or Modules through these abstractions.
 """
-
-from __future__ import print_function
 
 import os
 import sys
@@ -37,9 +31,9 @@ from lxml import etree
 
 from .utils import find_files, ModuleProperties, strip_comments_and_blanks
 
-MANIFEST_FILES = ['__odoo__.py', '__openerp__.py', '__terp__.py']
+DEFAULT_MANIFEST_FILE = '__manifest__.py'
 DEFAULT_OCA_USER = 'OCA'
-DEFAULT_OCA_BRANCH = '8.0'
+DEFAULT_OCA_BRANCH = '15.0'
 
 if not sys.version_info < (3,):
     basestring = str
@@ -55,7 +49,7 @@ class Module(object):
 
     For more information, please refer to official documentation.
 
-    `Modules <https://www.odoo.com/documentation/8.0/howtos/backend.html>`_.
+    `Modules <https://www.odoo.com/documentation/15.0/howtos/backend.html>`_.
     """
 
     def __init__(self, path, bundle=None):
@@ -84,8 +78,7 @@ class Module(object):
         self.path = os.path.abspath(path)
 
         #: Attribute ``Module.manifest`` (string): Refers to the absolute path
-        #: to the manifest file of the module (``__openerp__.py``,
-        #: ``__odoo__.py`` or ``__terp__.py``).
+        #: to the manifest file of the module (``__manifest__.py``).
         self.manifest = self.__get_manifest()
 
         #: Object ``Module.properties`` (``ModuleProperties``): Placeholder
@@ -112,12 +105,10 @@ class Module(object):
         """
         assert self.__is_python_package(), \
             'The module is not a python package.'
-        for mfst in MANIFEST_FILES:
-            found = find_files(self.path, mfst)
-            if not found:
-                continue
-            return found[0]
-        return False
+        found = find_files(self.path, DEFAULT_MANIFEST_FILE)
+        if not found:
+            return False
+        return found[0]
 
     def __extract_properties(self):
         """
@@ -318,12 +309,13 @@ class Bundle(object):
 
         .. versionadded:: 0.1.0
         """
-        for mfst in MANIFEST_FILES:
-            for mods in find_files(self.path, mfst):
-                if ((self.exclude_tests and
-                     'tests' not in mods.split(os.sep)) or
-                   not self.exclude_tests):
+        for mods in find_files(self.path, DEFAULT_MANIFEST_FILE):
+            if ((self.exclude_tests and 'tests' not in mods.split(os.sep)) or
+               not self.exclude_tests):
+                try:
                     yield Module(os.path.dirname(mods), bundle=self)
+                except BaseException:
+                    pass
 
     def __get_oca_dependencies_file(self):
         """

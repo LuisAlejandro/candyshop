@@ -48,19 +48,25 @@ clean-test:
 clean-docs:
 	rm -fr docs/_build
 
-lint:
-	flake8 candyshop tests
+lint: start
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop flake8 candyshop tests
 
-test:
-	python setup.py test
+test: start
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop python setup.py test
 
-test-all:
-	tox
+test-all: start
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop tox
 
-coverage:
-	coverage run --source candyshop setup.py test
-	coverage report -m
-	coverage html
+coverage: start
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop coverage run --source candyshop setup.py test
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop coverage report -m
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop coverage html
 	$(BROWSER) htmlcov/index.html
 
 docs:
@@ -68,17 +74,55 @@ docs:
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html
 
-servedocs: docs
-	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
+servedocs: docs start
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
 
-release: clean
-	python setup.py sdist upload
-	python setup.py bdist_wheel upload
+release: clean start
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop python setup.py sdist upload
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop python setup.py bdist_wheel upload
 
-dist: clean
-	python setup.py sdist
-	python setup.py bdist_wheel
+dist: clean start
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop python setup.py sdist
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop python setup.py bdist_wheel
 	ls -l dist
 
-install: clean
-	python setup.py install
+install: clean start
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop python setup.py install
+
+image:
+	@docker-compose -p candyshop -f docker-compose.yml build \
+		--force-rm --pull
+
+start:
+	@docker-compose -p candyshop -f docker-compose.yml up \
+		--remove-orphans -d
+
+console: start
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop bash
+
+stop:
+	@docker-compose -p candyshop -f docker-compose.yml stop
+
+down:
+	@docker-compose -p candyshop -f docker-compose.yml down \
+		--remove-orphans
+
+destroy:
+	@docker-compose -p candyshop -f docker-compose.yml down \
+		--rmi all --remove-orphans -v
+
+virtualenv: start
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop python3 -m venv --clear --copies ./virtualenv
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop ./virtualenv/bin/pip install -U wheel setuptools
+	@docker-compose -p candyshop -f docker-compose.yml exec \
+		--user luisalejandro candyshop ./virtualenv/bin/pip install -r requirements.txt -r requirements-dev.txt
+

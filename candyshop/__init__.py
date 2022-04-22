@@ -1,24 +1,20 @@
 # -*- coding: utf-8 -*-
 #
-#   This file is part of Candyshop
-#   Copyright (C) 2016, Candyshop Developers
-#   All rights reserved.
-#
-#   Please refer to AUTHORS.md for a complete list of Copyright
-#   holders.
-#
-#   Candyshop is free software: you can redistribute it and/or modify
-#   it under the terms of the GNU Affero General Public License as published
-#   by the Free Software Foundation, either version 3 of the License, or
-#   (at your option) any later version.
-#
-#   Candyshop is distributed in the hope that it will be useful,
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#   GNU Affero General Public License for more details.
-#
-#   You should have received a copy of the GNU Affero General Public License
-#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# Please refer to AUTHORS.rst for a complete list of Copyright holders.
+# Copyright (C) 2016-2022, Candyshop Developers.
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 ``candyshop`` is just pure art.
 
@@ -32,7 +28,7 @@ as well as functions to resolve dependency trees.
 
 __author__ = 'Luis Alejandro Martínez Faneyth'
 __email__ = 'luis@collagelabs.org'
-__version__ = '0.1.6'
-__url__ = 'https://github.com/CollageLabs/candyshop'
+__version__ = '0.2.0'
+__url__ = 'https://github.com/LuisAlejandro/candyshop'
 __description__ = ('Candyshop is a helper to determine if all your '
                    'dependencies are declared properly.')

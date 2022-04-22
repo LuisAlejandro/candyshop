@@ -1,24 +1,20 @@
 # -*- coding: utf-8 -*-
 #
-#   This file is part of Candyshop
-#   Copyright (C) 2016, Candyshop Developers
-#   All rights reserved.
-#
-#   Please refer to AUTHORS.md for a complete list of Copyright
-#   holders.
-#
-#   Candyshop is free software: you can redistribute it and/or modify
-#   it under the terms of the GNU Affero General Public License as published
-#   by the Free Software Foundation, either version 3 of the License, or
-#   (at your option) any later version.
-#
-#   Candyshop is distributed in the hope that it will be useful,
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#   GNU Affero General Public License for more details.
-#
-#   You should have received a copy of the GNU Affero General Public License
-#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# Please refer to AUTHORS.rst for a complete list of Copyright holders.
+# Copyright (C) 2016-2022, Candyshop Developers.
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 ``candyshop.environment`` is a module for creating Odoo environments.
 
@@ -36,7 +32,7 @@ from sh import git
 from .bundle import Bundle
 
 DEFAULT_URL = 'https://github.com/odoo/odoo'
-DEFAULT_BRANCH = '8.0'
+DEFAULT_BRANCH = '15.0'
 
 
 class Environment(object):
@@ -92,6 +88,9 @@ class Environment(object):
         .. versionadded:: 0.1.0
         """
         if init_from:
+            if not os.path.isdir(init_from):
+                raise Exception('init_from directory "{0}" doesn\'t'
+                                ' exist'.format(init_from))
             odoo_dir = os.path.abspath(init_from)
         else:
             odoo_dir = os.path.join(self.path, 'odoo')
@@ -99,7 +98,7 @@ class Environment(object):
                 self.__git_clone(url, branch, odoo_dir)
         self.addbundles([
             os.path.join(odoo_dir, 'addons'),
-            os.path.join(odoo_dir, 'openerp', 'addons')
+            os.path.join(odoo_dir, 'odoo', 'addons')
         ])
 
     @staticmethod
@@ -169,7 +168,8 @@ class Environment(object):
         locations = locations or []
         for location in locations:
             location = os.path.abspath(location)
-            if location in self.get_bundle_path_list():
+            if location in self.get_bundle_path_list() or \
+               not os.path.isdir(location):
                 continue
             try:
                 self.bundles.append(Bundle(location, exclude_tests))

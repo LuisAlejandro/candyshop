@@ -19,7 +19,7 @@ existing bugs to your new milestone.
 
     git flow feature start <feature name>
 
-5. Code, code and code. More coding. Fuck it up several times. Push to feature
+5. Code, code and code. More coding. Mess it up several times. Push to feature
 branch. Watch Travis go red. Write unit tests. Watch Travis go red again. Don't
 leave uncommitted changes.
 6. Finish your feature::
@@ -33,7 +33,7 @@ leave uncommitted changes.
 
 9. Bump your version (check everything before next step)::
 
-    bumpversion --no-commit --new-version <release number> patch
+    bumpversion --no-commit <major, minor or patch>
 
 10. Update your changelog (edit HISTORY.rst after to customize)::
 
