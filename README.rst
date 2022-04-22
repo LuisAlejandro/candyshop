@@ -37,7 +37,7 @@
 
 .. _full documentation: https://candyshop.readthedocs.org
 
-Current version: 0.1.6
+Current version: 0.2.0
 
 Candyshop is a helper to determine if all your dependencies are declared
 properly. A Candyshop is a place where you can pick sweets and candies from
