@@ -9,7 +9,7 @@ except:
 webbrowser.open("file://" + pathname2url(os.path.abspath(sys.argv[1])))
 endef
 export BROWSER_PYSCRIPT
-BROWSER := python -c "$$BROWSER_PYSCRIPT"
+BROWSER := python3 -c "$$BROWSER_PYSCRIPT"
 
 help:
 	@echo "clean - remove all build, test, coverage and Python artifacts"
@@ -50,11 +50,11 @@ clean-docs:
 
 lint: start
 	@docker-compose -p candyshop -f docker-compose.yml exec \
-		--user luisalejandro candyshop flake8 candyshop tests
+		--user luisalejandro candyshop flake8 candyshop
 
 test: start
 	@docker-compose -p candyshop -f docker-compose.yml exec \
-		--user luisalejandro candyshop python setup.py test
+		--user luisalejandro candyshop python3 -m unittest -v -f
 
 test-all: start
 	@docker-compose -p candyshop -f docker-compose.yml exec \
@@ -62,7 +62,7 @@ test-all: start
 
 coverage: start
 	@docker-compose -p candyshop -f docker-compose.yml exec \
-		--user luisalejandro candyshop coverage run --source candyshop setup.py test
+		--user luisalejandro candyshop coverage run --source candyshop -m unittest -v -f
 	@docker-compose -p candyshop -f docker-compose.yml exec \
 		--user luisalejandro candyshop coverage report -m
 	@docker-compose -p candyshop -f docker-compose.yml exec \
@@ -78,22 +78,17 @@ servedocs: docs start
 	@docker-compose -p candyshop -f docker-compose.yml exec \
 		--user luisalejandro candyshop watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
 
-release: clean start
-	@docker-compose -p candyshop -f docker-compose.yml exec \
-		--user luisalejandro candyshop python setup.py sdist upload
-	@docker-compose -p candyshop -f docker-compose.yml exec \
-		--user luisalejandro candyshop python setup.py bdist_wheel upload
+release: clean start dist
+	twine upload -s -i luis@luisalejandro.org dist/*
 
 dist: clean start
 	@docker-compose -p candyshop -f docker-compose.yml exec \
-		--user luisalejandro candyshop python setup.py sdist
-	@docker-compose -p candyshop -f docker-compose.yml exec \
-		--user luisalejandro candyshop python setup.py bdist_wheel
+		--user luisalejandro candyshop python3 -m build
 	ls -l dist
 
 install: clean start
 	@docker-compose -p candyshop -f docker-compose.yml exec \
-		--user luisalejandro candyshop python setup.py install
+		--user luisalejandro candyshop pip3 install .
 
 image:
 	@docker-compose -p candyshop -f docker-compose.yml build \

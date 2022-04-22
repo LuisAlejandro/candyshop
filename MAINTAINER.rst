@@ -51,10 +51,6 @@ leave uncommitted changes.
 
     git flow release finish -s -p <release number>
 
-14. Push your tags::
-
-    git push --tags
-
 15. Draft a new release in GitHub (based on the new version tag) and include
 a description. Also pick a codename because it makes you cool.
 
@@ -62,7 +58,7 @@ a description. Also pick a codename because it makes you cool.
 
 17. Publish your new version to PyPI::
 
-    python setup.py sdist upload
+    make release
 
 18. Write about your new version in your blog. Tweet it, post it on facebook.
 
@@ -95,10 +91,6 @@ Making a new hotfix
 
     git flow hotfix finish -s -p <new version>
 
-9. Push your tags::
-
-    git push --tags
-
 10. Draft a new release in GitHub (based on the new version tag) and include
 a description. Don't change the codename if it is a hotfix.
 
@@ -106,6 +98,6 @@ a description. Don't change the codename if it is a hotfix.
 
 12. Publish your new version to PyPI::
 
-    python setup.py sdist upload
+    make release
 
 13. Write about your new version in your blog. Tweet it, post it on facebook.
