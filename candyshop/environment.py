@@ -95,7 +95,7 @@ class Environment(object):
                 self.__git_clone(url, branch, odoo_dir)
         self.addbundles([
             os.path.join(odoo_dir, 'addons'),
-            os.path.join(odoo_dir, 'openerp', 'addons')
+            os.path.join(odoo_dir, 'odoo', 'addons')
         ])
 
     @staticmethod
@@ -165,6 +165,8 @@ class Environment(object):
         locations = locations or []
         for location in locations:
             location = os.path.abspath(location)
+            if not os.path.isdir(location):
+                continue
             if location in self.get_bundle_path_list():
                 continue
             try:
