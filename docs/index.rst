@@ -18,6 +18,10 @@
    :target: https://github.com/LuisAlejandro/candyshop/actions?query=workflow%3APush
    :alt: Push
 
+.. image:: https://coveralls.io/repos/github/LuisAlejandro/candyshop/badge.svg?branch=develop
+   :target: https://coveralls.io/github/LuisAlejandro/candyshop?branch=develop
+   :alt: Coverage
+
 .. image:: https://cla-assistant.io/readme/badge/LuisAlejandro/candyshop
    :target: https://cla-assistant.io/LuisAlejandro/candyshop
    :alt: Contributor License Agreement
