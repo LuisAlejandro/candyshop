@@ -120,4 +120,3 @@ virtualenv: start
 		--user luisalejandro candyshop ./virtualenv/bin/pip install -U wheel setuptools
 	@docker-compose -p candyshop -f docker-compose.yml exec \
 		--user luisalejandro candyshop ./virtualenv/bin/pip install -r requirements.txt -r requirements-dev.txt
-
