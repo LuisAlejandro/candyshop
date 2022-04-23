@@ -1,9 +1,9 @@
-.. image:: https://raw.githubusercontent.com/LuisAlejandro/candyshop/develop/docs/_static/banner.svg
+.. image:: https://raw.githubusercontent.com/LuisAlejandro/candyshop/develop/docs/_static/title.svg
 
 -----
 
 .. image:: https://img.shields.io/pypi/v/candyshop.svg
-   :target: https://pypi.python.org/pypi/candyshop
+   :target: https://pypi.org/project/candyshop
    :alt: PyPI Package
 
 .. image:: https://img.shields.io/github/release/LuisAlejandro/candyshop.svg
@@ -56,3 +56,4 @@ Table of Contents
    contributing
    authors
    history
+   maintainer

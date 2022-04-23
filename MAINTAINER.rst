@@ -73,7 +73,7 @@ Making a new hotfix
 3. Code your hotfix.
 4. Bump your version (check everything before next step)::
 
-    bumpversion --no-commit --new-version <new version> patch
+    bumpversion --no-commit <major, minor or patch>
 
 5. Update your changelog (edit HISTORY.rst after to customize)::
 

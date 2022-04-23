@@ -24,7 +24,6 @@ you cannot create or modify Bundles or Modules through these abstractions.
 """
 
 import os
-import sys
 from ast import literal_eval
 
 from lxml import etree
@@ -34,9 +33,6 @@ from .utils import find_files, ModuleProperties, strip_comments_and_blanks
 DEFAULT_MANIFEST_FILE = '__manifest__.py'
 DEFAULT_OCA_USER = 'OCA'
 DEFAULT_OCA_BRANCH = '15.0'
-
-if not sys.version_info < (3,):
-    basestring = str
 
 
 class Module(object):
@@ -172,7 +168,7 @@ class Module(object):
         if model:
             model_filter = '[@model="{model}"]'.format(model=model)
         doc = self.parse_xml_fromfile(xmlfile)
-        if isinstance(doc, basestring):
+        if isinstance(doc, str):
             return []
         return (doc.xpath('/openerp//record' + model_filter) +
                 doc.xpath('/odoo//record' + model_filter))

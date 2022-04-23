@@ -5,7 +5,7 @@
     An assistant to determine if all your dependencies are declared properly in your odoo module.
 
 .. image:: https://img.shields.io/pypi/v/candyshop.svg
-   :target: https://pypi.python.org/pypi/candyshop
+   :target: https://pypi.org/project/candyshop
    :alt: PyPI Package
 
 .. image:: https://img.shields.io/github/release/LuisAlejandro/candyshop.svg
@@ -67,7 +67,7 @@ Getting started
 Installation
 ------------
 
-.. _PyPI: https://pypi.python.org/pypi/candyshop
+.. _PyPI: https://pypi.org/project/candyshop
 
 The ``candyshop`` program is written in python and hosted on PyPI_. Therefore, you can use
 pip to install the stable version::
