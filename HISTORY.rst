@@ -2,6 +2,31 @@ Changelog
 ============
 
 
+0.2.2 (2022-04-24)
+------------
+
+Changed
+~~~~~~~~~~~~
+
+* Adding platform to setup script. [Luis Alejandro Martínez Faneyth]
+
+* Improving documentation. [Luis Alejandro Martínez Faneyth]
+
+* Updating banner. [Luis Alejandro Martínez Faneyth]
+
+* Improving documentation. [Luis Alejandro Martínez Faneyth]
+
+
+Fixed
+~~~~~~~~~~~~
+
+* Fixing tests. [Luis Alejandro Martínez Faneyth]
+
+* Fixing PR tests. [Luis Alejandro Martínez Faneyth]
+
+* Fixing tests. [Luis Alejandro Martínez Faneyth]
+
+
 0.2.1 (2022-04-22)
 ------------
 
