@@ -1,11 +1,11 @@
-.. image:: https://github.com/LuisAlejandro/candyshop/blob/develop/docs/_static/banner.svg
+.. image:: https://raw.githubusercontent.com/LuisAlejandro/candyshop/develop/docs/_static/banner.svg
 
 ..
 
     An assistant to determine if all your dependencies are declared properly in your odoo module.
 
 .. image:: https://img.shields.io/pypi/v/candyshop.svg
-   :target: https://pypi.python.org/pypi/candyshop
+   :target: https://pypi.org/project/candyshop
    :alt: PyPI Package
 
 .. image:: https://img.shields.io/github/release/LuisAlejandro/candyshop.svg
@@ -41,7 +41,7 @@
 
 .. _full documentation: https://candyshop.readthedocs.org
 
-Current version: 0.2.1
+Current version: 0.2.2
 
 Candyshop is a helper to determine if all your dependencies are declared
 properly. A Candyshop is a place where you can pick sweets and candies from
@@ -67,86 +67,24 @@ Getting started
 Installation
 ------------
 
-.. _PyPI: https://pypi.python.org/pypi/candyshop
+.. _PyPI: https://pypi.org/project/candyshop
 
 The ``candyshop`` program is written in python and hosted on PyPI_. Therefore, you can use
 pip to install the stable version::
 
-    $ pip install --upgrade candyshop
+   $ pip install --upgrade candyshop
 
 If you want to install the development version (not recomended), you can install
 directlty from GitHub like this::
 
-    $ pip install --upgrade https://github.com/LuisAlejandro/candyshop/archive/master.tar.gz
+   $ pip install --upgrade https://github.com/LuisAlejandro/candyshop/archive/master.tar.gz
 
 Usage
 -----
 
-Here you can consult practical uses for some of the Candyshop functions.
-For a more detailed review on what you can do with it, we recommend you to read
-the `api` documentation.
+.. _USAGE.rst: USAGE.rst
 
-The ``Module`` class
-~~~~~~~~~~~~~~~~~~~~
-
-The ``Module`` class is an abstraction of an Odoo Module. You can perform
-several operations to access the module information::
-
-    from candyshop.bundle import Module
-
-    # Create a Module instance
-    module = Module('path/to/module')
-
-    # Query for data
-    print(module.path)
-    print(module.manifest)
-
-    # Query information in manifest file
-    print(module.properties.name)
-    print(module.properties.version)
-    print(module.properties.depends)
-
-The ``Bundle`` class
-~~~~~~~~~~~~~~~~~~~~
-
-The ``Bundle`` class is an abstraction of a *Group* of modules, often referred
-to as *Addons*. Here you can see how to interact with a bundle::
-
-    from candyshop.bundle import Bundle
-
-    # Create a Bundle instance
-    bundle = Bundle('path/to/bundle')
-
-    # Query for data
-    print(bundle.name)
-    print(bundle.path)
-    print(bundle.modules)
-    print(bundle.oca_dependencies)
-
-The ``Environment`` class
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The ``Environment`` class is an abstraction of a virtual Odoo Environment.
-Think of it as an imaginary container inside of which you can add ``Bundles``
-and ask for specific information about them. For example::
-
-    from candyshop.environment import Environment
-
-    # Create an Environment
-    env = Environment()
-
-    # Insert bundles
-    # If any bundle has an oca_dependencies.txt file,
-    # clone its dependencies and insert them as bundles
-    env.addbundles(['./path-to-bundle', '../addons', '../etc'])
-
-    # Make a report about dependencies that are not present in
-    # the environment
-    env.get_notmet_dependencies_report()
-
-    # Make a report about record ids that reference modules
-    # which are not present in the environment
-    env.get_notmet_record_ids_report()
+See USAGE.rst_ for details.
 
 Getting help
 ============
@@ -182,10 +120,10 @@ Copyright 2016-2022, Candyshop Developers (read AUTHORS.rst_ for a full list of 
 
 Released under a `GPL-3 License`_.
 
-Made with :heart: and :hamburger:
-=================================
+Made with 💖 and 🍔
+====================
 
-.. image:: https://github.com/LuisAlejandro/candyshop/blob/develop/docs/_static/author-banner.svg
+.. image:: https://raw.githubusercontent.com/LuisAlejandro/candyshop/develop/docs/_static/author-banner.svg
 
 .. _LuisAlejandroTwitter: https://twitter.com/LuisAlejandro
 .. _LuisAlejandroGitHub: https://github.com/LuisAlejandro

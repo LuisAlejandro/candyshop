@@ -1,9 +1,9 @@
-.. image:: https://raw.githubusercontent.com/LuisAlejandro/candyshop/develop/docs/_static/banner.svg
+.. image:: https://raw.githubusercontent.com/LuisAlejandro/candyshop/develop/docs/_static/title.svg
 
 -----
 
 .. image:: https://img.shields.io/pypi/v/candyshop.svg
-   :target: https://pypi.python.org/pypi/candyshop
+   :target: https://pypi.org/project/candyshop
    :alt: PyPI Package
 
 .. image:: https://img.shields.io/github/release/LuisAlejandro/candyshop.svg
@@ -17,14 +17,6 @@
 .. image:: https://github.com/LuisAlejandro/candyshop/workflows/Push/badge.svg
    :target: https://github.com/LuisAlejandro/candyshop/actions?query=workflow%3APush
    :alt: Push
-
-.. image:: https://coveralls.io/repos/github/LuisAlejandro/candyshop/badge.svg?branch=develop
-   :target: https://coveralls.io/github/LuisAlejandro/candyshop?branch=develop
-   :alt: Coverage
-
-.. image:: https://cla-assistant.io/readme/badge/LuisAlejandro/candyshop
-   :target: https://cla-assistant.io/LuisAlejandro/candyshop
-   :alt: Contributor License Agreement
 
 .. image:: https://readthedocs.org/projects/candyshop/badge/?version=latest
    :target: https://readthedocs.org/projects/candyshop/?badge=latest
@@ -56,3 +48,20 @@ Table of Contents
    contributing
    authors
    history
+   maintainer
+
+Made with 💖 and 🍔
+====================
+
+.. image:: https://raw.githubusercontent.com/LuisAlejandro/candyshop/develop/docs/_static/author-banner.svg
+
+.. _LuisAlejandroTwitter: https://twitter.com/LuisAlejandro
+.. _LuisAlejandroGitHub: https://github.com/LuisAlejandro
+.. _luisalejandro.org: https://luisalejandro.org
+
+|
+
+    Web luisalejandro.org_ · GitHub `@LuisAlejandro`__ · Twitter `@LuisAlejandro`__
+
+__ LuisAlejandroGitHub_
+__ LuisAlejandroTwitter_

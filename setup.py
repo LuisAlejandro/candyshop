@@ -49,6 +49,7 @@ setup(
     license=open('LICENSE').read(),
     zip_safe=False,
     keywords=['odoo', 'requirements'],
+    platforms=['posix', 'linux'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',

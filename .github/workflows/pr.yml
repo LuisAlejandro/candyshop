@@ -33,6 +33,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: develop
+          fetch-depth: 0
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
@@ -54,6 +55,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           flag-name: run-py${{ matrix.python-version }}-odoo${{ matrix.odoo-branch }}
+          path-to-lcov: ./.lcov
           parallel: true
 
   finish:
