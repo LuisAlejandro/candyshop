@@ -1,4 +1,4 @@
-.. image:: https://github.com/LuisAlejandro/candyshop/blob/develop/docs/_static/banner.svg
+.. image:: https://raw.githubusercontent.com/LuisAlejandro/candyshop/develop/docs/_static/banner.svg
 
 ..
 
